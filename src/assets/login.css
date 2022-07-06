@@ -1,0 +1,14 @@
+.page-login {
+    display: flex;
+    height: 100vh;
+}
+
+.page-login .banner {
+    width: 65%;
+    background-color: red;
+}
+
+.page-login .login-container {
+    width: 35%;
+    background-color: #fff;
+}
