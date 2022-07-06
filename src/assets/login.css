@@ -14,4 +14,55 @@
 .page-login .login-container {
     width: 35%;
     background-color: #fff;
+    display: flex;
+    align-items: center;
+}
+
+.login-container form {
+    padding: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.login-container .logo-container {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.logo-container img {
+    width: 80px;
+}
+
+.login-container input, button {
+    width: 100%;
+    height: 40px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border: 1px solid gray;
+}
+
+.login-container input {
+    padding: 12px;
+}
+
+.login-container button {
+    width: 50%;
+    cursor: pointer;
+    border: 1px solid #009acc;
+    background-color: #009acc;
+    color: #fff;
+    border-radius: 20px;
+    margin-top: 30px;
+    transition: .5s ease;
+    filter: drop-shadow(-2px 2px 1px #006d9153);
+    text-transform: uppercase;
+}
+
+.login-container p {
+    margin-top: 80px;
+    text-align: center;
+    font-size: 13px;
+    color: #808080;
 }
