@@ -1,7 +1,7 @@
 <template>
-  <main>
-    Pagina About
-  </main>
+  <div>
+    
+  </div>
 </template>
 
 <script>
