@@ -1,7 +1,6 @@
 <template>
   <div class="page-login">
     <div class="banner"> 
-      banner
     </div>
     <div class="login-container">
       form
