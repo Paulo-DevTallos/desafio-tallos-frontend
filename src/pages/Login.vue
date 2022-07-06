@@ -1,6 +1,6 @@
 <template>
   <main>
-    Pagina About
+    Login
   </main>
 </template>
 
