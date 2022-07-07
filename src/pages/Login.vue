@@ -3,13 +3,13 @@
     <div class="banner"> 
     </div>
     <div class="login-container">
-      <form>
+      <form @submit.prevent="handleSubmit">
         <div class="logo-container">
           <img src="/img/tallos-logo-(1).png" alt="Logo Tallos">
         </div>
         <div>
-          <input type="text" placeholder="Digite seu e-mail">
-          <input type="password" placeholder="Digite sua senha">
+          <input type="text" v-model="user.email" placeholder="Digite seu e-mail">
+          <input type="password" v-model="user.password" placeholder="Digite sua senha">
           <button>Login</button>
           <p>Desafio Tallos gerenciador de funcionários &copy;2022</p>
         </div>
@@ -19,8 +19,29 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'About',
+  data() {
+    return {
+      user: {
+        email: '',
+        password: '',
+      }
+    }
+  },
+  methods: {
+    async handleSubmit() {
+      const response = await axios.post('http://localhost:3001/api/login', {
+        email: this.user.email,
+        password: this.user.password
+      }).then(res => localStorage.setItem(res.data.access_token))
+
+    
+      console.log(response)
+    }
+  }
 }
 </script>
 
