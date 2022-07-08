@@ -1,0 +1,21 @@
+.container-dash {
+  width: 100%;
+  padding: 20px 30px;
+}
+
+.container-dash .menu {
+  display: flex;
+  justify-content: space-between;
+}
+
+.container-dash li {
+  width: 33.3%;
+  height: 150px;
+  margin: 10px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  filter: drop-shadow(-2px 2px 3px #c4c4c4);
+}

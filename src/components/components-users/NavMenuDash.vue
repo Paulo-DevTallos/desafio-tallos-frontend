@@ -1,6 +1,19 @@
 <template>
-	<nav class="container-menu">
-		menu de opções
+	<nav class="container-dash">
+		<ul class="menu">
+			<li>
+				Email dos usuários
+			</li>
+			<li>
+				Acessar Chat
+			</li>
+			<li>
+				Acessar Contatos
+			</li>
+			<li>
+				Falar com Suporte
+			</li>
+		</ul>
 	</nav>
 </template>
 
@@ -11,4 +24,5 @@ export default {
 </script>
 
 <style scoped>
+	@import '../../assets/components/menu-dashboard.css';
 </style>
