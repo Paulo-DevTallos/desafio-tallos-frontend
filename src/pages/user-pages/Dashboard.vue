@@ -1,6 +1,6 @@
 <template>
   <HeaderUser />
-    <main>
+    <main id="bg-color">
       <Grettings />
       <NavMenuDash />
     </main>
@@ -25,5 +25,7 @@ export default {
 </script>
 
 <style>
-
+  #bg-color {
+    background-color: #c4c4c42d;
+  }
 </style>

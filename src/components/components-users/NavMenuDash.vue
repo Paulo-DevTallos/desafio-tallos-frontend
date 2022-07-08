@@ -2,16 +2,28 @@
 	<nav class="container-dash">
 		<ul class="menu">
 			<li>
-				Email dos usuários
+				<RouterLink to="#">
+					<font-awesome-icon :icon="['fas', 'envelope']" />
+					<span>Email dos usuários</span>
+				</RouterLink>
 			</li>
 			<li>
-				Acessar Chat
+				<RouterLink to="#">
+					<font-awesome-icon :icon="['fas', 'headset']" />
+					<span>Acessar Chat</span> 
+				</RouterLink>
 			</li>
 			<li>
-				Acessar Contatos
+				<RouterLink to="#">
+					<font-awesome-icon :icon="['fas', 'list-check']" />
+					<span>Acessar Contatos</span>
+				</RouterLink>
 			</li>
 			<li>
-				Falar com Suporte
+				<RouterLink to="#">
+					<font-awesome-icon icon="fa-solid fa-circle-info" />
+					<span>Falar com Suporte</span>
+				</RouterLink>
 			</li>
 		</ul>
 	</nav>
