@@ -33,9 +33,12 @@
 .container-form button {
     background-color: #009acc;
     border: 1px solid #009acc;
+    border-radius: 20px;
     color: #fff;
     text-transform: uppercase;
     cursor: pointer;
+    width: 150px;
+    filter: drop-shadow(-2px 2px 1px #006d9153);
 } 
 
 .container-contacts .user-list {

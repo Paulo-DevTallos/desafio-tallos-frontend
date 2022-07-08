@@ -21,7 +21,13 @@
           </form>
         </div>
         <div class="user-list">
-          listar usuarios
+          <ul class="users">
+            <li>
+              Nome: 
+              E-mail:
+              Cargo:
+            </li>
+          </ul>
         </div>
       </div>
     </main>
