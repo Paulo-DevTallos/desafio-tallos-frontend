@@ -1,11 +1,14 @@
 <template>
   <Header />
     <main>
-      Pagina Home
-      novo teste de pagina novo teste
-      <RouterLink to="/login">
-        to login
-      </RouterLink>
+      <div class="content-home">
+        <div class="size-content">
+          <h1>Conheça a plataforma que nasceu para impulsionar o seu negócio!</h1>
+        </div>
+        <div class="size-content">
+          <img src="img/home-page.png" alt="home page image">
+        </div>
+      </div>
     </main>
   <Footer />
 </template>
@@ -22,3 +25,7 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+  @import '../assets/home.css';
+</style>
