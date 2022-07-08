@@ -1,7 +1,7 @@
 <template>
   <HeaderUser />
     <main id="bg-color">
-      <Typography />
+      <Typography :title="title" />
       <div class="container-contacts">
         <div class="container-form">
           <form action="">
@@ -39,7 +39,12 @@ export default {
     HeaderUser,
     FooterUser,
     Typography
-}
+  },
+  data() {
+    return {
+      title: 'Cadastro de usuários'
+    }
+  }
 }
 </script>
 <style scoped>
