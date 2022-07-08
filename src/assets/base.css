@@ -29,6 +29,10 @@ a {
 ul {
   list-style: none;
 }
+
+#bg-color {
+  background-color: #c4c4c42d;
+}
 /* color palette from <https://github.com/vuejs/theme> */
 /*:root {
   --vt-c-white: #ffffff;

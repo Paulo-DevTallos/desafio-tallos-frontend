@@ -1,3 +1,38 @@
 .container-contacts {
     display: flex;
 }
+
+.container-form {
+    background-color: #fff;
+    width: 40%;
+    border-radius: 5px;
+    box-shadow: -2px 2px 5px #80808060;
+}
+
+.container-form form {
+    padding: 40px 70px;
+    text-align: center;
+}
+
+.container-form svg {
+    font-size: 60px;
+    margin-bottom: 30px;
+    color: #009acc;
+}
+
+.container-form form input, select, button {
+    width: 100%;
+    height: 40px;
+    margin-bottom: 10px;
+    padding: 12px;
+    border: 1px solid gray;
+    border-radius: 10px;
+}
+
+.container-form button {
+    background-color: #009acc;
+    border: 1px solid #009acc;
+    color: #fff;
+    text-transform: uppercase;
+    cursor: pointer;
+} 

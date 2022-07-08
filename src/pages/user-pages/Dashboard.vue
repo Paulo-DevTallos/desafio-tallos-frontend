@@ -23,9 +23,3 @@ export default {
 }
 }
 </script>
-
-<style>
-  #bg-color {
-    background-color: #c4c4c42d;
-  }
-</style>
