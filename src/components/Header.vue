@@ -3,17 +3,18 @@
     <RouterLink to="/">
       <img src="img/tallos-logo.png" alt="Tallos logo">
     </RouterLink>
-    <!--<NavBar />-->
+    <NavBar />
   </header>
 </template>
 
 <script>
-//import NavBar from './NavBar.vue'
+import NavBar from './NavBar.vue'
+
 export default {
-    name: "header",
-  /*  components: { 
-      NavBar, 
-    }*/
+  name: "header",
+  components: { 
+    NavBar, 
+  }
 }
 </script>
 
