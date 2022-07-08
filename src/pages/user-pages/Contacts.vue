@@ -1,7 +1,14 @@
 <template>
   <HeaderUser />
     <main>
-      conteudo
+      <div class="container-contacts">
+        <div>
+          formulario de cadastro
+        </div>
+        <div>
+          listar usuarios
+        </div>
+      </div>
     </main>
 </template>
 
@@ -12,3 +19,6 @@ export default {
     components: { HeaderUser }
 }
 </script>
+<style>
+  @import '../../assets/contacts.css';
+</style>
