@@ -2,7 +2,7 @@
   <HeaderUser />
     <main>
       <Grettings />
-      conteudo
+      <NavMenuDash />
     </main>
   <FooterUser />
 </template>
@@ -11,6 +11,7 @@
 import HeaderUser from '../../components/components-users/HeaderUser.vue';
 import Grettings from '../../components/components-users/Grettings.vue';
 import FooterUser from '../../components/components-users/FooterUser.vue';
+import NavMenuDash from '../../components/components-users/NavMenuDash.vue';
 
 export default {
   name: "Dashboard",
@@ -18,7 +19,8 @@ export default {
     HeaderUser,
     Grettings,
     FooterUser,
-  }
+    NavMenuDash
+}
 }
 </script>
 
