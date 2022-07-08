@@ -14,7 +14,7 @@
 				</RouterLink>
 			</li>
 			<li>
-				<RouterLink to="#">
+				<RouterLink to="/contacts">
 					<font-awesome-icon :icon="['fas', 'list-check']" />
 					<span>Acessar Contatos</span>
 				</RouterLink>

@@ -7,6 +7,7 @@
     width: 40%;
     border-radius: 5px;
     box-shadow: -2px 2px 5px #80808060;
+    margin: 0 5px;
 }
 
 .container-form form {
@@ -36,3 +37,11 @@
     text-transform: uppercase;
     cursor: pointer;
 } 
+
+.container-contacts .user-list {
+    background-color: #fff;
+    box-shadow: -2px 2px 5px #80808060;
+    border-radius: 5px;
+    width: 60%;
+    margin: 0 5px;
+}

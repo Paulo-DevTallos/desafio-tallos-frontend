@@ -20,7 +20,7 @@
             </div>
           </form>
         </div>
-        <div>
+        <div class="user-list">
           listar usuarios
         </div>
       </div>
