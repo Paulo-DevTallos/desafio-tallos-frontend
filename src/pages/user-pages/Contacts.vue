@@ -1,6 +1,7 @@
 <template>
   <HeaderUser />
     <main id="bg-color">
+      <Typography :title="title" />
       <div class="container-contacts">
         <div class="container-form">
           <form action="">
@@ -30,11 +31,19 @@
 <script>
 import HeaderUser from '../../components/components-users/HeaderUser.vue';
 import FooterUser from '../../components/components-users/FooterUser.vue';
+import Typography from '../../components/components-users/Typography.vue';
+
 export default {
   name: "Contacts",
-  components: { 
+  components: {
     HeaderUser,
     FooterUser,
+    Typography
+  },
+  data() {
+    return {
+      title: 'Cadastro de usuários'
+    }
   }
 }
 </script>
