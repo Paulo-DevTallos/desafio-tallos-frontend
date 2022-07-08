@@ -1,15 +1,13 @@
 <template>
-  <div>
-    <Header />
-      <main>
-        Pagina Home
-        novo teste de pagina novo teste
-        <RouterLink to="/login">
-          to login
-        </RouterLink>
-      </main>
-    <Footer />
-  </div>
+  <Header />
+    <main>
+      Pagina Home
+      novo teste de pagina novo teste
+      <RouterLink to="/login">
+        to login
+      </RouterLink>
+    </main>
+  <Footer />
 </template>
 
 <script>
