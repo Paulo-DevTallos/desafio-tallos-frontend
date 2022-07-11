@@ -26,25 +26,7 @@
               <h4>Resultados de usuários</h4>
             </header>
           </div>
-          <ul class="users">
-            <li>
-              <div>
-                <div class="content-user">
-                  <span class="title-id">Nome:</span><span>Paulo Sérgio</span>
-                </div>
-                <div class="content-user"> 
-                  <span class="title-id">Email:</span><span>email@email.com</span>
-                </div>
-                <div class="content-user"> 
-                  <span class="title-id">Permissão:</span><span>User</span>
-                </div>
-              </div>
-              <div class="command-user">
-                <font-awesome-icon :icon="['fas', 'user-pen']" />
-                <font-awesome-icon :icon="['fas', 'trash-can']" />
-              </div>
-            </li>
-          </ul>
+          <CardUsers />
         </div>
       </div>
     </main>
@@ -55,14 +37,16 @@
 import HeaderUser from '../../components/components-users/HeaderUser.vue';
 import FooterUser from '../../components/components-users/FooterUser.vue';
 import Typography from '../../components/components-users/Typography.vue';
+import CardUsers from '../../components/components-users/CardUsers.vue';
 
 export default {
   name: "Contacts",
   components: {
     HeaderUser,
     FooterUser,
-    Typography
-  },
+    Typography,
+    CardUsers
+},
   data() {
     return {
       title: 'Cadastro de usuários'

@@ -1,0 +1,43 @@
+.users {
+    padding: 0 10px;
+    font-size: 13px;
+    position: relative;
+}
+
+.users li {
+    display: flex;
+    border-bottom: 1px solid #c6c6c6;
+    padding: 10px;
+}
+
+.users .title-id {
+    padding-right: 5px;
+    font-weight: bold;
+}
+
+.users .command-user {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 10px;
+}
+
+.users .command-user svg {
+    font-size: 20px;
+    margin: 10px;
+    cursor: pointer;
+    transition: .2s ease-in;
+}
+
+.users .command-user svg:first-child:hover {
+    color: #00125b;
+    transform: scale(1.1);
+}
+
+.users .command-user svg:last-child:hover {
+    color: red;
+    transform: scale(1.1);
+}
