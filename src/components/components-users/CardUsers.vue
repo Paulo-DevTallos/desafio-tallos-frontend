@@ -14,13 +14,14 @@
       </div>
       <div class="command-user">
         <font-awesome-icon :icon="['fas', 'user-pen']" />
-        <font-awesome-icon :icon="['fas', 'trash-can']" />
+        <font-awesome-icon @click="deleteUser(user.email)" :icon="['fas', 'trash-can']" />
       </div>
     </li>
   </ul>
 </template>
 
 <script>
+import axios from 'axios';
 import Services from '../../services/axios-request';
 
 export default {
@@ -32,7 +33,13 @@ export default {
   },
   mounted() {
     Services.listar().then(res => this.users = res.data)
-  } 
+  },
+  methods: {
+    async deleteUser(email) {
+      await axios.delete(`/remove/${email}`).then(res => console.log(res))
+    }
+
+  }
 }
 </script>
 
