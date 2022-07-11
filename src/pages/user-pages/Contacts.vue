@@ -4,18 +4,19 @@
       <Typography :title="title" />
       <div class="container-contacts">
         <div class="container-form">
-          <form action="">
+          <form @submit.prevent="handleSubmitUser">
             <div>
               <font-awesome-icon :icon="['fas', 'user-plus']" />
             </div>
             <div>
-              <input type="text" placeholder="Digite um nome de usuário">
-              <input type="text" placeholder="Digite o e-mail do usuário">
-              <select name="" id="" >
-                <option value="">Operador</option>
-                <option value="">Admin</option>
+              <input type="text" v-model="user.name" placeholder="Digite um nome de usuário">
+              <input type="text" v-model="user.email" placeholder="Digite o e-mail do usuário">
+              <select name="permission" v-model="user.rules">
+                <option value="null" disabled>--Selecione a permissão--</option>
+                <option value="operador">Operador</option>
+                <option value="admin">Admin</option>
               </select>
-              <input type="text" placeholder="Digite uma senha para o usuário">
+              <input type="password" v-model="user.password" placeholder="Digite uma senha para o usuário">
               <button>Cadastrar</button>
             </div>
           </form>
@@ -34,6 +35,8 @@
 </template>
 
 <script>
+import Services from '../../services/axios-request';
+
 import HeaderUser from '../../components/components-users/HeaderUser.vue';
 import FooterUser from '../../components/components-users/FooterUser.vue';
 import Typography from '../../components/components-users/Typography.vue';
@@ -49,7 +52,25 @@ export default {
 },
   data() {
     return {
-      title: 'Cadastro de usuários'
+      title: 'Cadastro de usuários',
+      user: {
+        name: '',
+        email: '',
+        rules: '',
+        password: '',
+      }
+    }
+  },
+  methods: {
+    async handleSubmitUser() {
+      const response = await Services.createUser({
+        name: this.user.name,
+        email: this.user.email,
+        rules: this.user.rules,
+        password: this.user.password
+      })
+
+      console.log(response)
     }
   }
 }
