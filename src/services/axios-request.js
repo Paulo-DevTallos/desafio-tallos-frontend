@@ -6,5 +6,8 @@ export default {
     },
     createUser: (data) => {
         return http.post('/register', data)
+    },
+    loginUser: (data) => {
+        return http.post('/login', data)
     }
 }
