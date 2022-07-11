@@ -11,7 +11,7 @@
 }
 
 .container-form form {
-    padding: 40px 70px;
+    padding: 40px 50px;
     text-align: center;
 }
 
@@ -33,9 +33,12 @@
 .container-form button {
     background-color: #009acc;
     border: 1px solid #009acc;
+    border-radius: 20px;
     color: #fff;
     text-transform: uppercase;
     cursor: pointer;
+    width: 150px;
+    filter: drop-shadow(-2px 2px 1px #006d9153);
 } 
 
 .container-contacts .user-list {
@@ -45,3 +48,13 @@
     width: 60%;
     margin: 0 5px;
 }
+
+.user-list .user-avaliable {
+    padding: 10px;
+    border-bottom: 1px solid gray;
+}
+
+.user-list .user-avaliable h4 {
+    font-weight: 500;
+}
+

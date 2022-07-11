@@ -21,7 +21,12 @@
           </form>
         </div>
         <div class="user-list">
-          listar usuarios
+          <div>
+            <header class="user-avaliable">
+              <h4>Resultados de usuários</h4>
+            </header>
+          </div>
+          <CardUsers />
         </div>
       </div>
     </main>
@@ -32,14 +37,16 @@
 import HeaderUser from '../../components/components-users/HeaderUser.vue';
 import FooterUser from '../../components/components-users/FooterUser.vue';
 import Typography from '../../components/components-users/Typography.vue';
+import CardUsers from '../../components/components-users/CardUsers.vue';
 
 export default {
   name: "Contacts",
   components: {
     HeaderUser,
     FooterUser,
-    Typography
-  },
+    Typography,
+    CardUsers
+},
   data() {
     return {
       title: 'Cadastro de usuários'
