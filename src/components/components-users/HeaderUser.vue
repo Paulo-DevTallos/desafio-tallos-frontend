@@ -10,7 +10,7 @@
       </div>
       <div class="user-icon">
         <div class="user-name">
-          Usuário
+          {{ $store.state.user.name }}
         </div> 
         <img src="/img/user.svg" class="icon" alt="icone do usuário">
       </div>

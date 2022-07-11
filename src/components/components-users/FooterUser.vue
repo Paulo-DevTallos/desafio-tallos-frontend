@@ -1,6 +1,6 @@
 <template>
   <footer class="footer-user">
-    Usuário <strong> email@email.com </strong> logado <span> - {{ data_time }}</span>
+    Usuário <strong> {{ $store.state.user.email }} </strong> logado <span> - {{ data_time }}</span>
   </footer>
 </template>
 
