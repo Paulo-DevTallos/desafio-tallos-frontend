@@ -21,11 +21,28 @@
           </form>
         </div>
         <div class="user-list">
+          <div>
+            <header class="user-avaliable">
+              <h4>Resultados de usuários</h4>
+            </header>
+          </div>
           <ul class="users">
             <li>
-              Nome: 
-              E-mail:
-              Cargo:
+              <div>
+                <div class="content-user">
+                  <span class="title-id">Nome:</span><span>Paulo Sérgio</span>
+                </div>
+                <div class="content-user"> 
+                  <span class="title-id">Email:</span><span>email@email.com</span>
+                </div>
+                <div class="content-user"> 
+                  <span class="title-id">Permissão:</span><span>User</span>
+                </div>
+              </div>
+              <div class="command-user">
+                <font-awesome-icon :icon="['fas', 'user-pen']" />
+                <font-awesome-icon :icon="['fas', 'trash-can']" />
+              </div>
             </li>
           </ul>
         </div>
