@@ -1,7 +1,12 @@
 <template>
   <header class="header-user">
-      <div>
-        conteudo 1
+      <div class="useful-links">
+        <a href="https://tallos.com.br/blog/" target="_blank">
+          Tallos blog
+        </a>
+        <a href="https://help.tallos.com.br/" target="_blank">
+          FAQ
+        </a>
       </div>
       <div>
         <RouterLink to="/painel">

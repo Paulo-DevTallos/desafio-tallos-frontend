@@ -24,7 +24,6 @@ export const store = createStore({
       await Services.loginUser({
         email: user.email,
         password: user.password
-
       })
       .then(res => {
         console.log(res)
