@@ -33,15 +33,6 @@ export default {
     handleSubmitLogin() {
       this.$store.dispatch('handleSubmitLogin', this.user)
     }
-    /*async handleSubmit() {
-      const response = await axios.post('http://localhost:3001/api/login', {
-        email: this.user.email,
-        password: this.user.password
-      }).then(res => localStorage.setItem(res.data.access_token))
-
-    
-      console.log(response)
-    }*/
   }
 }
 </script>
