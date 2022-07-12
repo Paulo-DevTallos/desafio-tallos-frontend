@@ -31,15 +31,17 @@ export default {
       users: [],
     }
   },
+  methods: {
+    async deleteUser(email) {
+      await axios.delete(`http://localhost:3001/api/remove/${email}`).then(res => {
+        console.log(res.data)
+      })
+    }
+
+  },
   mounted() {
     Services.listar().then(res => this.users = res.data)
   },
-  methods: {
-    async deleteUser(email) {
-      await axios.delete(`/remove/${email}`).then(res => console.log(res))
-    }
-
-  }
 }
 </script>
 
