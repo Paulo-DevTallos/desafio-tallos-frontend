@@ -21,6 +21,23 @@
   filter: drop-shadow(-2px 2px 3px #c4c4c4);
 }
 
+.container-dash li:hover {
+  color: #009acc;
+  animation: jump .5s;
+}
+
+@keyframes jump {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
 .container-dash a {
   display: flex;
   flex-direction: column;

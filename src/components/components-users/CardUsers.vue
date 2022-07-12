@@ -34,7 +34,10 @@ export default {
   methods: {
     async deleteUser(email) {
       await axios.delete(`http://localhost:3001/api/remove/${email}`).then(res => {
-        console.log(res.data)
+        console.log(res.status)
+        if(res.status === 200) {
+          Services.listar().then(res => this.users = res.data)
+        }
       })
     }
 
