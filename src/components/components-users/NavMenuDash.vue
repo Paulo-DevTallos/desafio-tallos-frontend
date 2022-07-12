@@ -3,12 +3,6 @@
 		<ul class="menu">
 			<li>
 				<RouterLink to="#">
-					<font-awesome-icon :icon="['fas', 'envelope']" />
-					<span>Email dos usuários</span>
-				</RouterLink>
-			</li>
-			<li>
-				<RouterLink to="#">
 					<font-awesome-icon :icon="['fas', 'headset']" />
 					<span>Acessar Chat</span> 
 				</RouterLink>

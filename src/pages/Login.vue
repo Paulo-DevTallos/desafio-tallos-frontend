@@ -3,7 +3,7 @@
     <div class="banner"> 
     </div>
     <div class="login-container">
-      <form @submit.prevent="handleSubmit">
+      <form @submit.prevent="handleSubmitLogin">
         <div class="logo-container">
           <img src="/img/tallos-logo-(1).png" alt="Logo Tallos">
         </div>
@@ -19,8 +19,6 @@
 </template>
 
 <script>
-import axios from 'axios'
-
 export default {
   name: 'About',
   data() {
@@ -32,14 +30,8 @@ export default {
     }
   },
   methods: {
-    async handleSubmit() {
-      const response = await axios.post('http://localhost:3001/api/login', {
-        email: this.user.email,
-        password: this.user.password
-      }).then(res => localStorage.setItem(res.data.access_token))
-
-    
-      console.log(response)
+    handleSubmitLogin() {
+      this.$store.dispatch('handleSubmitLogin', this.user)
     }
   }
 }

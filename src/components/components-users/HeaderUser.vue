@@ -1,25 +1,43 @@
 <template>
   <header class="header-user">
-      <div>
-        conteudo 1
+      <div class="useful-links">
+        <a href="https://tallos.com.br/blog/" target="_blank">
+          Tallos blog
+        </a>
+        <a href="https://help.tallos.com.br/" target="_blank">
+          FAQ
+        </a>
       </div>
       <div>
         <RouterLink to="/painel">
           <img src="/img/tallos-logo-(1).png" alt="botão do menu">
         </RouterLink>
       </div>
-      <div class="user-icon">
+      <div @click="toggleCardInfo" class="user-icon">
         <div class="user-name">
-          Usuário
+          {{ $store.state.user.name }}
         </div> 
         <img src="/img/user.svg" class="icon" alt="icone do usuário">
+        <CardInfo v-if="status"/>
       </div>
   </header>
 </template>
 
 <script>
+import CardInfo from './CardInfo.vue';
 export default {
-  name: 'HeaderUser',
+    name: "HeaderUser",
+    data() {
+      return {
+        status: null,
+      }
+    },
+    methods: {
+      toggleCardInfo() {
+        this.status = !this.status
+      }
+    },
+    components: { CardInfo }
 }
 </script>
 

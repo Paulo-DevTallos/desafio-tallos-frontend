@@ -6,3 +6,7 @@
 	align-items: center;
 	box-shadow: -2px -2px 5px #80808086;
 }
+
+.footer-user strong {
+	padding: 0 5px;
+}
