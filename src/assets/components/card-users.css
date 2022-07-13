@@ -1,7 +1,6 @@
 .users {
     padding: 0 10px;
     font-size: 13px;
-    
     overflow-y: scroll;
     height: 60vh;
 }
@@ -44,3 +43,4 @@
     color: red;
     transform: scale(1.1);
 }
+

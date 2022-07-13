@@ -1,0 +1,62 @@
+.confirm-modal {
+    width: 320px;
+    height: 160px;
+    border: 1px solid #e6e6e6;
+    border-radius: 10px;
+    background-color: #fff;
+    padding: 20px;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    filter: drop-shadow(0 2px 5px #80808068);
+    animation: blow .5s ease-in-out;
+}
+
+@keyframes blow {
+    0% {
+        opacity: 0;
+        visibility: hidden;
+        transform: scale(0.0);
+    }
+    70% {
+        opacity: 1;
+        visibility: visible;
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1.1);
+    }
+}
+
+.confirm-modal svg {
+    font-size: 40px;
+    color: #ffff00;
+    filter: drop-shadow(0 0 3px #131313);
+    margin: 10px 0;
+}
+
+.confirm-modal .btn-actions {
+    margin: 10px 0;
+}
+
+.confirm-modal span {
+    font-size: 15px;
+}
+
+.confirm-modal .btn-actions button {
+    margin: 5px;
+    padding: 10px;
+    cursor: pointer;
+    border: 1px solid rgb(226, 226, 226);
+    border-radius: 10px;
+}
+
+.confirm-modal .btn-actions button:first-child {
+    background-color: red;
+    color: #fff;
+    border: 1px solid red;
+}

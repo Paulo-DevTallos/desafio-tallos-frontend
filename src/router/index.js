@@ -1,5 +1,14 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
+const guard = () => (to, from, next) => {
+  //checando token valido para liberação de rotas
+  if(localStorage.getItem('token') || "") {
+    next()
+  } else {
+    next('/login')
+  }
+}
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -16,11 +25,13 @@ const router = createRouter({
     {
       path: '/painel',
       name: 'dashboard',
+      beforeEnter: guard(),
       component: () => import('../pages/user-pages/Dashboard.vue')
     },
     {
       path: '/contacts',
       name: 'contacts',
+      beforeEnter: guard(),
       component: () => import('../pages/user-pages/Contacts.vue')
     }
   ]

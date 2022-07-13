@@ -26,7 +26,6 @@ export const store = createStore({
         password: user.password
       })
       .then(res => {
-        console.log(res)
         if(res.data.access_token) {
           localStorage.setItem('token', res.data.access_token)
           context.commit('authSet', res.data)
