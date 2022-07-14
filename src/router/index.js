@@ -29,6 +29,12 @@ const router = createRouter({
       component: () => import('../pages/user-pages/Dashboard.vue')
     },
     {
+      path: '/chat',
+      name: 'chat',
+      beforeEnter: guard(),
+      component: () => import('../pages/user-pages/Chat.vue')
+    },
+    {
       path: '/contacts',
       name: 'contacts',
       beforeEnter: guard(),

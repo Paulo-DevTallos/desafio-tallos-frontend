@@ -2,7 +2,7 @@
 	<nav class="container-dash">
 		<ul class="menu">
 			<li>
-				<RouterLink to="#">
+				<RouterLink to="/chat">
 					<font-awesome-icon :icon="['fas', 'headset']" />
 					<span>Acessar Chat</span> 
 				</RouterLink>

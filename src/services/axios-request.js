@@ -10,7 +10,7 @@ export default {
     loginUser: (data) => {
         return http.post('/login', data)
     },
-    /*removeUser: () => {
-        return http.delete(`/remove/${ _id }`)
-    }*/
+    removeUser: (email) => {
+        return http.delete(`/remove/${email}`)
+    }
 }
