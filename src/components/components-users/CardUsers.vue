@@ -13,22 +13,21 @@
             <span class="title-id">Permissão:</span><span>{{ user.rules }}</span>
           </div>
         </div>
-        <div class="command-user">
-          <font-awesome-icon :icon="['fas', 'user-pen']" />
-          <font-awesome-icon @click="toggleHidden(user._id)" :icon="['fas', 'trash-can']" />
-        </div>
         <ConfirmModal 
           v-if="hidden && id === user._id" 
           @delete-user="deleteUser(user.email)"
           @close-modal="closeModal"
         />
+        <div class="command-user">
+          <font-awesome-icon @click="editUser" :icon="['fas', 'user-pen']" />
+          <font-awesome-icon @click="toggleHidden(user._id)" :icon="['fas', 'trash-can']" />
+        </div>
       </li>
     </ul>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
 import Services from '../../services/axios-request';
 import ConfirmModal from './ConfirmModal.vue';
 
@@ -54,16 +53,21 @@ export default {
     closeModal() {
       this.hidden = false
     },
-
+    //delete user
     async deleteUser(email) {
-      await axios.delete(`http://localhost:3001/api/remove/${email}`).then(res => {
+      await Services.removeUser(email).then(res => {
         console.log(res.status);
         if (res.status === 200) {
           Services.listar().then(res => this.users = res.data);
         }
         this.hidden = false
-      });
+      })
     },
+
+    //update user
+    async editUser(email) {
+      alert('ok')
+    }
   },
   mounted() {
     //filtrando usuario logado na lista de usuarios
