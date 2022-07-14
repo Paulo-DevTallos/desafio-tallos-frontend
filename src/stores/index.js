@@ -30,6 +30,7 @@ export const store = createStore({
           localStorage.setItem('token', res.data.access_token)
           context.commit('authSet', res.data)
 
+
           window.location.replace('/painel')
         }
       })

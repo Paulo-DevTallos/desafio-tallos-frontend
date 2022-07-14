@@ -41,6 +41,7 @@ export default {
     return {
       users: [],
       hidden: false,
+      isCurrentUser: true,
       id: 0,
     };
   },
@@ -48,11 +49,12 @@ export default {
     toggleHidden(id) {
       this.hidden = true
       this.id = id
-      console.log(id)
     },
+
     closeModal() {
       this.hidden = false
     },
+
     async deleteUser(email) {
       await axios.delete(`http://localhost:3001/api/remove/${email}`).then(res => {
         console.log(res.status);
@@ -61,10 +63,14 @@ export default {
         }
         this.hidden = false
       });
-    }
+    },
   },
   mounted() {
-    Services.listar().then(res => this.users = res.data);
+    //filtrando usuario logado na lista de usuarios
+    Services.listar().then(res => {
+      const dataUser = this.users = res.data
+      return this.users = dataUser.filter(user => user.name !== this.$store.state.user.name)
+    });
   },
 }
 </script>
