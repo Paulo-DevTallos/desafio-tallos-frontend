@@ -60,7 +60,6 @@ export default {
           Services.listar().then(res => {
             const renderList = this.users = res.data
             return this.users = renderList.filter(user => user.name !== this.$store.state.user.name)
-
           });
         }
         this.hidden = false
