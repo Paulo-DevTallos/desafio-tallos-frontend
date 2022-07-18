@@ -1,0 +1,103 @@
+.container-chat {
+    display: flex;
+}
+
+.online-users, .messages-box {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: -2px 2px 5px #80808060;
+    margin: 0 5px;
+}
+
+.online-users {
+    width: 40%;
+    padding: 30px;
+}
+
+.online-users h3 {
+    font-weight: 500;  
+    border-bottom: 1px solid #c0c0c0;
+    padding-bottom: 20px;
+}
+
+.online-users .users li {
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #c0c0c0;
+}
+
+.online-users .users li .status {
+    width: 10px;
+    height: 10px;
+    background-color: #13d413;
+    border-radius: 100%;
+    margin-right: 10px;
+} 
+
+.messages-box {
+    width: 60%;
+    height: 65vh;
+}
+
+.messages-box .messages {
+    height: 91%;
+    padding: 30px;
+    padding-bottom: 0;
+    overflow-y: auto;
+}
+
+.messages li {
+    margin: 4px 0;
+}
+
+#my-message {
+    padding: 8px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 200px;
+    color: #fff;
+    background-color: #009acc;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    text-align: right;
+}
+
+#other-message {
+    padding: 8px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    width: 200px;
+    background: #cfcfcf;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.messages-box .write-field {
+    height: 7%;
+    width: 100%;
+    padding: 0;
+    border-top: 1px solid #c0c0c0;
+}
+
+.messages-box .write-field input {
+    width: 93%;
+    height: 130%;
+    padding: 10px 12px;
+    border: none;
+}
+
+.messages-box .write-field button {
+    width: 7%;
+    height: 130%;
+    background-color: #009acc;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
