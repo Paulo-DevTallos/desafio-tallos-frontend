@@ -56,9 +56,11 @@ export default {
     //delete user
     async deleteUser(email) {
       await Services.removeUser(email).then(res => {
-        console.log(res.status);
         if (res.status === 200) {
-          Services.listar().then(res => this.users = res.data);
+          Services.listar().then(res => {
+            const renderList = this.users = res.data
+            return this.users = renderList.filter(user => user.name !== this.$store.state.user.name)
+          });
         }
         this.hidden = false
       })
@@ -70,11 +72,11 @@ export default {
     }
   },
   mounted() {
-    //filtrando usuario logado na lista de usuarios
+  //filtrando usuario logado na lista de usuarios
     Services.listar().then(res => {
       const dataUser = this.users = res.data
       return this.users = dataUser.filter(user => user.name !== this.$store.state.user.name)
-    });
+    })
   },
 }
 </script>

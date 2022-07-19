@@ -7,6 +7,7 @@
   align-items: center;
   background-color: #fff;
   filter: drop-shadow(2px -2px 5px #80808086);
+  position: relative;
 }
 
 .header-user .useful-links a {

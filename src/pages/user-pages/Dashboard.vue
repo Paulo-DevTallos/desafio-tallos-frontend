@@ -1,9 +1,9 @@
 <template>
   <HeaderUser />
-    <main id="bg-color">
+    <Template>
       <Grettings />
       <NavMenuDash />
-    </main>
+    </Template>
   <FooterUser />
 </template>
 
@@ -12,6 +12,7 @@ import HeaderUser from '../../components/components-users/HeaderUser.vue';
 import Grettings from '../../components/components-users/Grettings.vue';
 import FooterUser from '../../components/components-users/FooterUser.vue';
 import NavMenuDash from '../../components/components-users/NavMenuDash.vue';
+import Template from '../../components/components-users/Template.vue';
 
 export default {
   name: "Dashboard",
@@ -19,7 +20,8 @@ export default {
     HeaderUser,
     Grettings,
     FooterUser,
-    NavMenuDash
-}
+    NavMenuDash,
+    Template,
+  }
 }
 </script>
