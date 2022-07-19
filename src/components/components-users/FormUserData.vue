@@ -12,38 +12,45 @@
         <option value="admin">Admin</option>
       </select>
       <input type="password" v-model="user.password" placeholder="Digite uma senha para o usuário">
-      <button>Cadastrar</button>
+      <ButtonSubmit 
+        @submitNewUser="handleSubmitUser"
+        :btn_title="title"
+      />
     </div>
   </form>
 </template>
 
 <script>
 import Services from '../../services/axios-request';
+import ButtonSubmit from './ButtonSubmit.vue';
 
 export default {
-  name: 'FormUserData',
-  data() {
-    return {
-      user: {
-        name: '',
-        email: '',
-        rules: '',
-        password: '',
-      },
-    }
-  },
-  methods: {
-    async handleSubmitUser() {
-      const response = await Services.createUser({
-        name: this.user.name,
-        email: this.user.email,
-        rules: this.user.rules,
-        password: this.user.password
-      })
-
-      console.log(response)
-    }
-  }
+    name: "FormUserData",
+    components: { 
+      ButtonSubmit 
+    },
+    data() {
+      return {
+        title: 'Cadastrar',
+        user: {
+          name: "",
+          email: "",
+          rules: "",
+          password: "",
+        },
+      };
+    },
+    methods: {
+      async handleSubmitUser() {
+        const response = await Services.createUser({
+          name: this.user.name,
+          email: this.user.email,
+          rules: this.user.rules,
+          password: this.user.password
+        });
+        console.log(response);
+      }
+    },
 }
 </script>
 
