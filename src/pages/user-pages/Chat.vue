@@ -26,39 +26,11 @@
           <div class="messages">
             <ul>
               <li>
-                <div id="my-message">
-                  mensagem
+                <div class="ballon">
+                  <span class="user-name">Paulo Sérgio</span>
+                  <p>Texto de teste para chat</p>
                 </div>
               </li>
-              <li>
-                <div id="other-message">
-                  mensagem
-                </div> 
-              </li>
-              <li>mensagem</li>
-              <li>mensagem</li>
-              <li>mensagem</li>
-              <li>mensagem</li>
-              <li>mensagem</li>
-              <li>mensagem</li>
-              <li>mensagem</li>
-              <li>mensagem</li>
-              <li>mensagem</li>
-              <li>mensagem</li>
-              <li>mensagem</li>
-              <li>mensagem</li>
-              <li>mensagem</li>
-              <li>mensagem</li>
-              <li>mensagem</li>
-              <li>mensagem</li>
-              <li>mensagem</li>
-              <li>mensagem</li>
-              <li>mensagem</li>
-              <li>mensagem</li>
-              <li>mensagem</li>
-              <li>mensagem</li>
-              <li>mensagem</li>
-              <li>mensagem</li>
             </ul>
           </div>
           <div class="write-field">
@@ -74,6 +46,8 @@
 </template>
 
 <script>
+//import { SocketModule } from '../../services/socket'
+
 import HeaderUser from '../../components/components-users/HeaderUser.vue'
 import FooterUser from '../../components/components-users/FooterUser.vue'
 import Typography from '../../components/components-users/Typography.vue'
@@ -89,6 +63,10 @@ export default {
     return {
       title: 'Chat - Usuários'
     }
+  },
+  setup() {
+    const teste = 'Paulo'
+    console.log(teste)
   }
 }
 </script>

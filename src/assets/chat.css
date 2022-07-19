@@ -51,7 +51,22 @@
     margin: 4px 0;
 }
 
-#my-message {
+.messages li .ballon {
+    background-color: #009acc;
+    width: 200px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding: 4px;
+    font-size: 12px;
+    filter: drop-shadow(-1.5px 2px 0.5px #80808068);
+    color: #fff;
+}
+
+.messages li .user-name {
+    font-weight: 500;
+}
+
+/*#my-message {
     padding: 8px;
     text-decoration: none;
     display: flex;
@@ -78,7 +93,7 @@
     border-top-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
-
+*/
 .messages-box .write-field {
     height: 7%;
     width: 100%;
