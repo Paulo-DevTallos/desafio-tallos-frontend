@@ -1,6 +1,6 @@
 <template>
   <HeaderUser />
-    <main id="bg-color">
+    <Template>
       <Typography :title="title" />
       <div class="container-chat">
         <div class="online-users">
@@ -41,7 +41,7 @@
           </div>
         </div>
       </div>
-    </main>
+    </Template>
   <FooterUser />
 </template>
 
@@ -51,14 +51,16 @@
 import HeaderUser from '../../components/components-users/HeaderUser.vue'
 import FooterUser from '../../components/components-users/FooterUser.vue'
 import Typography from '../../components/components-users/Typography.vue'
+import Template from '../../components/components-users/Template.vue'
 
 export default {
   name: 'Chat',
   components: {
     HeaderUser,
     FooterUser,
-    Typography
-  },
+    Typography,
+    Template,
+},
   data() {
     return {
       title: 'Chat - Usuários'

@@ -1,6 +1,6 @@
 <template>
   <HeaderUser />
-    <main id="bg-color">
+    <Template>
       <Typography :title="title" />
       <div class="container-contacts">
         <div class="container-form">
@@ -30,7 +30,7 @@
           <CardUsers />
         </div>
       </div>
-    </main>
+    </Template>
   <FooterUser />
 </template>
 
@@ -41,6 +41,7 @@ import HeaderUser from '../../components/components-users/HeaderUser.vue';
 import FooterUser from '../../components/components-users/FooterUser.vue';
 import Typography from '../../components/components-users/Typography.vue';
 import CardUsers from '../../components/components-users/CardUsers.vue';
+import Template from '../../components/components-users/Template.vue';
 
 export default {
   name: "Contacts",
@@ -48,7 +49,8 @@ export default {
     HeaderUser,
     FooterUser,
     Typography,
-    CardUsers
+    CardUsers,
+    Template,
 },
   data() {
     return {
