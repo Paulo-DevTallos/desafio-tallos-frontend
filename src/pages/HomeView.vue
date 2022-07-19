@@ -1,6 +1,6 @@
 <template>
   <Header />
-    <main>
+    <Template>
       <div class="content-home">
         <div class="size-content">
           <h1>Conheça a plataforma que nasceu para impulsionar o seu negócio!</h1>
@@ -9,19 +9,21 @@
           <img src="img/home-page.png" alt="home page image">
         </div>
       </div>
-    </main>
+    </Template>
   <Footer />
 </template>
 
 <script>
 import Header from '../components/Header.vue';
 import Footer from '../components/Footer.vue';
+import Template from '../components/components-users/Template.vue';
 
 export default {
   name: "Home",
-  components: { 
+  components: {
     Header,
-    Footer
+    Footer,
+    Template
   },
 }
 </script>
