@@ -30,7 +30,7 @@ export default {
   button:hover {
     background-color: #006d91;
     border: 1px solid #006d91;
-    filter: drop-shadow(-2px 2px 1px #006d91c7);
+    filter: drop-shadow(-2px 2px 1px #006d9153);
   }
 </style>
 

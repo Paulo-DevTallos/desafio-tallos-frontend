@@ -13,19 +13,33 @@
 					<span>Acessar Contatos</span>
 				</RouterLink>
 			</li>
-			<li>
-				<RouterLink to="#">
+			<li @click="callSupport">
+				<div>
 					<font-awesome-icon icon="fa-solid fa-circle-info" />
 					<span>Falar com Suporte</span>
-				</RouterLink>
+				</div>
 			</li>
 		</ul>
+    <SupportView v-if="isVisible" />
 	</nav>
 </template>
 
 <script>
+import SupportView from '../../components/alert-popups/SupportView.vue';
+
 export default {
-	name: 'NavMenuDash',
+  name: "NavMenuDash",
+  data() {
+    return {
+      isVisible: false,
+    }
+  },
+  methods: {
+    callSupport() {
+      this.isVisible = !this.isVisible
+    }
+  },
+  components: { SupportView }
 }
 </script>
 
