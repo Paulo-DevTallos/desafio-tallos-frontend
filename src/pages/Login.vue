@@ -51,7 +51,6 @@ export default {
       const currentEmail = localStorage.getItem('email')
 
       if(email !== currentEmail) {
-        localStorage.setItem('email', this.user.email)
         this.$store.dispatch("handleSubmitLogin", this.user);
       } else {
         this.isLoggedUser = true

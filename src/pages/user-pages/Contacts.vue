@@ -10,6 +10,10 @@
           <header class="user-avaliable">
             <h4>Resultados de usuários</h4>
           </header>
+          <div class="user-avaliable">
+            <input type="text" v-model="email" placeholder="Digite um e-mail de usuário">
+            <button @click="findUser(email)">ok</button>
+          </div>
           <CardUsers />
         </div>
       </div>
@@ -18,6 +22,8 @@
 </template>
 
 <script>
+import Services from  '../../services/axios-request'
+
 import HeaderUser from '../../components/components-users/HeaderUser.vue';
 import FooterUser from '../../components/components-users/FooterUser.vue';
 import Typography from '../../components/components-users/Typography.vue';
@@ -38,8 +44,15 @@ export default {
   data() {
     return {
       title: 'Cadastro de usuários',
+      email: '',
     }
   },
+  methods: {
+    async findUser(email) {
+      await Services.findOne(email)
+        .then(res => console.log(res.data))
+    }
+  }
 }
 </script>
 <style scoped>
