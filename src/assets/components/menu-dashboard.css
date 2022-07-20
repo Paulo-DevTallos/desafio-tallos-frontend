@@ -22,6 +22,10 @@
   cursor: pointer;
 }
 
+.container-dash li span {
+  padding-left: 10px;
+}
+
 .container-dash li:hover {
   color: #009acc;
   animation: jump .5s;

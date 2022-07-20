@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import PopUpAlert from '../components/components-alert/PopUpAlert.vue'
+import PopUpAlert from '../components/alert-popups/PopUpAlert.vue';
 import ButtonSubmit from '../components/components-users/ButtonSubmit.vue';
 
 export default {
