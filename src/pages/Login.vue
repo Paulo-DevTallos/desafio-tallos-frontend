@@ -10,30 +10,58 @@
         <div>
           <input type="text" v-model="user.email" placeholder="Digite seu e-mail">
           <input type="password" v-model="user.password" placeholder="Digite sua senha">
-          <button>Login</button>
+          <ButtonSubmit 
+            @submitUser="handleSubmitLogin"
+            :btn_title="title"
+          />
           <p>Desafio Tallos gerenciador de funcionários &copy;2022</p>
         </div>
       </form>
+      <PopUpAlert 
+        :info_alert="user_connected"
+        v-if="isLoggedUser"/>
     </div>
   </div>
 </template>
 
 <script>
+import PopUpAlert from '../components/alert-popups/PopUpAlert.vue';
+import ButtonSubmit from '../components/components-users/ButtonSubmit.vue';
+
 export default {
-  name: 'About',
+  name: "About",
+  components: {
+    PopUpAlert,
+    ButtonSubmit
+},
   data() {
     return {
+      user_connected: '',
+      isLoggedUser: false,
+      title: 'Login',
       user: {
-        email: '',
-        password: '',
+        email: "",
+        password: "",
       }
-    }
+    };
   },
   methods: {
     handleSubmitLogin() {
-      this.$store.dispatch('handleSubmitLogin', this.user)
+      const email = this.user.email
+      const currentEmail = localStorage.getItem('email')
+
+      if(email !== currentEmail) {
+        localStorage.setItem('email', this.user.email)
+        this.$store.dispatch("handleSubmitLogin", this.user);
+      } else {
+        this.isLoggedUser = true
+        this.user_connected = email
+        setInterval(() => {
+          this.isLoggedUser = false
+        }, 4000)
+      }
     }
-  }
+  },
 }
 </script>
 

@@ -19,6 +19,11 @@
   flex-direction: column;
   background-color: #fff;
   filter: drop-shadow(-2px 2px 3px #c4c4c4);
+  cursor: pointer;
+}
+
+.container-dash li span {
+  padding-left: 10px;
 }
 
 .container-dash li:hover {
@@ -41,7 +46,7 @@
 .container-dash a {
   display: flex;
   flex-direction: column;
-  padding: 40px;
+  padding: 40px 80px;
 }
 
 .container-dash a span {
