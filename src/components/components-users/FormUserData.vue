@@ -13,7 +13,7 @@
       </select>
       <input type="password" v-model="user.password" placeholder="Digite uma senha para o usuário">
       <ButtonSubmit 
-        @submitNewUser="handleSubmitUser"
+        @submitUser="handleSubmitUser"
         :btn_title="title"
       />
     </div>
