@@ -13,15 +13,15 @@
             <span class="title-id">Permissão:</span><span>{{ user.rules }}</span>
           </div>
         </div>
+        <div class="command-user">
+          <font-awesome-icon @click="editUser" :icon="['fas', 'user-pen']" />
+          <font-awesome-icon @click="toggleHidden(user._id)" :icon="['fas', 'trash-can']" />
+        </div>
         <ConfirmModal 
           v-if="hidden && id === user._id" 
           @delete-user="deleteUser(user.email)"
           @close-modal="closeModal"
         />
-        <div class="command-user">
-          <font-awesome-icon @click="editUser" :icon="['fas', 'user-pen']" />
-          <font-awesome-icon @click="toggleHidden(user._id)" :icon="['fas', 'trash-can']" />
-        </div>
       </li>
     </ul>
   </div>

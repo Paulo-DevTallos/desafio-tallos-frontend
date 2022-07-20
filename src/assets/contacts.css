@@ -13,9 +13,7 @@
     align-items: center;
 }
 
-
-
-.container-contacts .user-list {
+.user-list {
     background-color: #fff;
     box-shadow: -2px 2px 5px #80808060;
     border-radius: 5px;
@@ -26,6 +24,7 @@
 .user-list .user-avaliable {
     padding: 10px;
     border-bottom: 1px solid gray;
+    z-index: 0;
 }
 
 .user-list .user-avaliable h4 {

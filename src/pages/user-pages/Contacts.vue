@@ -7,11 +7,9 @@
           <FormUserData />
         </div>
         <div class="user-list">
-          <div>
-            <header class="user-avaliable">
-              <h4>Resultados de usuários</h4>
-            </header>
-          </div>
+          <header class="user-avaliable">
+            <h4>Resultados de usuários</h4>
+          </header>
           <CardUsers />
         </div>
       </div>

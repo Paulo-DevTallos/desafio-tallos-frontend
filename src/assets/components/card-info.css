@@ -4,7 +4,7 @@
   border-radius: 10px;
   background-color: #fff;
   position: absolute;
-  z-index: 10000 !important;
+  z-index: 10000;
   top: 80px;
   right: 85px;
   padding: 10px;
