@@ -1,5 +1,5 @@
 <template>
-  <form>
+  <form @submit.prevent="updateUser">
     <div>
       <font-awesome-icon :icon="['fas', 'file-pen']" />
     </div>
@@ -12,7 +12,7 @@
         <option value="admin">Admin</option>
       </select>
       <input type="password" v-model="user.password" placeholder="Digite uma senha para o usuário">
-      <ButtonSubmit />
+      <ButtonSubmit @submitUser="updateUser(user._id)"/>
     </div>
   </form>
 </template>
@@ -38,15 +38,8 @@ export default {
     };
   },
   methods: {
-    async handleSubmitUser() {
-      await Services.createUser({
-        name: this.user.name,
-        email: this.user.email,
-        rules: this.user.rules,
-        password: this.user.password
-      });
-
-      this.user = ''
+    async updateUser(email) {
+      Services.update(email).then(res => console.log(res.data))
     }
   },
 }
