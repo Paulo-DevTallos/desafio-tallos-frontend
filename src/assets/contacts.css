@@ -23,11 +23,18 @@
 
 .user-list .user-avaliable {
     padding: 10px;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid #80808068;
     z-index: 0;
 }
 
 .user-list .user-avaliable h4 {
     font-weight: 500;
+}
+
+.user-list .user-avaliable input {
+    padding: 5px 10px;
+    width: 300px;
+    border: 1px solid gray;
+    border-radius: 5px;
 }
 

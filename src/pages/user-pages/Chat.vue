@@ -48,6 +48,14 @@
 <script>
 //import { SocketModule } from '../../services/socket'
 
+import { io } from 'socket.io-client'
+
+const socket = io('http://localhost:3001')
+
+console.log(socket, 'connected to the chat')
+
+socket.connect('message')
+
 import HeaderUser from '../../components/components-users/HeaderUser.vue'
 import FooterUser from '../../components/components-users/FooterUser.vue'
 import Typography from '../../components/components-users/Typography.vue'

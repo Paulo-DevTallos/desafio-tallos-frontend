@@ -10,6 +10,12 @@ export default {
   loginUser: (data) => {
     return http.post('/login', data)
   },
+  findOne: (email) => {
+    return http.get(`/finduser/${email}`)
+  },
+  update: (email) => {
+    return http.patch(`update/${email}`)
+  },
   removeUser: (email) => {
     return http.delete(`/remove/${email}`)
   }

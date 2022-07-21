@@ -1,7 +1,7 @@
 <template>
-  <form @submit.prevent="handleSubmitUser">
+  <form @submit.prevent="updateUser">
     <div>
-      <font-awesome-icon :icon="['fas', 'user-plus']" />
+      <font-awesome-icon :icon="['fas', 'file-pen']" />
     </div>
     <div>
       <input type="text" v-model="user.name" placeholder="Digite um nome de usuário">
@@ -12,10 +12,7 @@
         <option value="admin">Admin</option>
       </select>
       <input type="password" v-model="user.password" placeholder="Digite uma senha para o usuário">
-      <ButtonSubmit 
-        @submitUser="handleSubmitUser"
-        :btn_title="title"
-      />
+      <ButtonSubmit @submitUser="updateUser(user._id)"/>
     </div>
   </form>
 </template>
@@ -25,7 +22,7 @@ import Services from '../../services/axios-request';
 import ButtonSubmit from './ButtonSubmit.vue';
 
 export default {
-  name: "FormUserData",
+  name: "UpdateForm",
   components: { 
     ButtonSubmit 
   },
@@ -41,15 +38,8 @@ export default {
     };
   },
   methods: {
-    async handleSubmitUser() {
-      await Services.createUser({
-        name: this.user.name,
-        email: this.user.email,
-        rules: this.user.rules,
-        password: this.user.password
-      });
-
-      this.user = ''
+    async updateUser(email) {
+      Services.update(email).then(res => console.log(res.data))
     }
   },
 }
