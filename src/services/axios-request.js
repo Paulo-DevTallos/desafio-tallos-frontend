@@ -2,21 +2,21 @@ import { http } from "./axios-config"
 
 export default {
   listar: () => {
-    return http.get('/listusers') 
+    return http.get('/api/listusers') 
   },
   createUser: (data) => {
-    return http.post('/register', data)
+    return http.post('/api/register', data)
   },
   loginUser: (data) => {
-    return http.post('/login', data)
+    return http.post('/api/login', data)
   },
   findOne: (email) => {
-    return http.get(`/finduser/${email}`)
+    return http.get(`/api/finduser/${email}`)
   },
   update: (email) => {
-    return http.patch(`update/${email}`)
+    return http.patch(`/apiupdate/${email}`)
   },
   removeUser: (email) => {
-    return http.delete(`/remove/${email}`)
+    return http.delete(`/api/remove/${email}`)
   }
 }

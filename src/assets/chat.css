@@ -2,7 +2,7 @@
     display: flex;
 }
 
-.online-users, .messages-box {
+.online-users, .message-box {
     background-color: #fff;
     border-radius: 5px;
     box-shadow: -2px 2px 5px #80808060;
@@ -34,13 +34,14 @@
     border-radius: 100%;
     margin-right: 10px;
 } 
-
-.messages-box {
+.message-box {
     width: 60%;
     height: 65vh;
 }
 
-.messages-box .messages {
+.messages {
+    width: 100%;
+    background-color: #fff;
     height: 91%;
     padding: 30px;
     padding-bottom: 0;
@@ -94,21 +95,21 @@
     border-bottom-right-radius: 10px;
 }
 */
-.messages-box .write-field {
+.messages .write-field {
     height: 7%;
     width: 100%;
     padding: 0;
     border-top: 1px solid #c0c0c0;
 }
 
-.messages-box .write-field input {
+.messages .write-field input {
     width: 93%;
     height: 130%;
     padding: 10px 12px;
     border: none;
 }
 
-.messages-box .write-field button {
+.messages .write-field button {
     width: 7%;
     height: 130%;
     background-color: #009acc;

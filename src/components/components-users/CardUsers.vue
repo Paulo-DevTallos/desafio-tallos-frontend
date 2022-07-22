@@ -77,6 +77,7 @@ export default {
   //filtrando usuario logado na lista de usuarios
     Services.listar().then(res => {
       const dataUser = this.users = res.data
+      console.log(dataUser)
       return this.users = dataUser.filter(user => user.name !== this.$store.state.user.name)
     })
   },
