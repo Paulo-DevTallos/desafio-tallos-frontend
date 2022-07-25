@@ -23,13 +23,11 @@
           </div>
         </div>
         <div class="message-box">
-          <div v-if="!joined">
-            <form @submit.prevent="join">
-              <label>Qual é o seu nome</label>
-              <input type="text" v-model="name">
-              <button>Iniciar Chat</button>
-            </form>
-          </div>
+          <form v-if="!joined" @submit.prevent="join" class="form-user-chat">
+            <label>Usuário:</label>
+            <input type="text" v-model="name" disabled>
+            <button>Iniciar Chat</button>
+          </form>
           <div class="messages" v-else>
             <div class="chat-box">
               <div v-for="message in messages" :key="message" class="messages-container">
@@ -64,7 +62,7 @@ export default {
     return {
       title: 'Chat',
       joined: false,
-      name: '',
+      name: this.$store.state.user.name,
       messageText: '',
       messages: [],
     }
@@ -89,7 +87,6 @@ export default {
   },
   mounted() {
     socket.emit('findAllChat', {}, res => {
-      console.log(res)
       this.messages = res
     })
 
