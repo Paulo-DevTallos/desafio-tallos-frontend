@@ -37,18 +37,61 @@
 .message-box {
     width: 60%;
     height: 65vh;
+    
+    padding-bottom: 0;
 }
 
 .messages {
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    background-color: #fff;
-    height: 91%;
-    padding: 30px;
-    padding-bottom: 0;
-    overflow-y: auto;
+    height: 100%;
+    padding-top: 20px;
 }
 
-.messages li {
+.messages .chat-box {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0 20px;    
+}
+
+.messages .write-field {
+    height: 8%;
+    width: 100%;
+    padding: 0;
+    border-top: 1px solid #c0c0c0;
+}
+
+.messages .write-field input {
+    width: 93%;
+    height: 100%;
+    padding: 10px 12px;
+    border: none;
+}
+
+.messages .write-field button {
+    width: 7%;
+    height: 100%;
+    background-color: #009acc;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+/*.messages {
+    width: 100%;
+    background-color: red;
+    height: 91%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.messages .messages-container {
+    background-color: #fff;
+    height: 90%;
+}
+
+/*.messages li {
     margin: 4px 0;
 }
 
@@ -65,7 +108,7 @@
 
 .messages li .user-name {
     font-weight: 500;
-}
+}*/
 
 /*#my-message {
     padding: 8px;
@@ -95,25 +138,6 @@
     border-bottom-right-radius: 10px;
 }
 */
-.messages .write-field {
-    height: 7%;
-    width: 100%;
-    padding: 0;
-    border-top: 1px solid #c0c0c0;
-}
 
-.messages .write-field input {
-    width: 93%;
-    height: 130%;
-    padding: 10px 12px;
-    border: none;
-}
 
-.messages .write-field button {
-    width: 7%;
-    height: 130%;
-    background-color: #009acc;
-    border: none;
-    color: #fff;
-    cursor: pointer;
-}
+

@@ -31,9 +31,10 @@
             </form>
           </div>
           <div class="messages" v-else>
-            <div v-for="message in messages" :key="message" class="messages-container">
-              teste
-              [{{ message.name }}]: {{ message.text }}
+            <div class="chat-box">
+              <div v-for="message in messages" :key="message" class="messages-container">
+                [{{ message.name }}]: {{ message.text }}
+              </div>
             </div>
             <form @submit.prevent="sendMessage" class="write-field">
               <input type="text" v-model="messageText" placeholder="Digite uma mensagem">
@@ -43,31 +44,12 @@
             </form>
           </div>
         </div>
-        <!--<div class="messages-box">
-          <div class="messages">
-            <ul>
-              <li>
-                <div class="ballon">
-                  <span class="user-name">Paulo Sérgio</span>
-                  <p>Texto de teste para chat</p>
-                </div>
-              </li>
-            </ul>
-          </div>
-          <div class="write-field">
-            <input type="text" placeholder="Digite uma mensagem">
-            <button>
-              <font-awesome-icon :icon="['fas', 'paper-plane']" />
-            </button>
-          </div>
-        </div>-->
       </div>
     </Template>
   <FooterUser />
 </template>
 
 <script>
-import { ref, onBeforeMount } from 'vue'
 import { io } from 'socket.io-client'
 
 const socket = io('http://localhost:3002')
@@ -84,6 +66,7 @@ export default {
       joined: false,
       name: '',
       messageText: '',
+      messages: [],
     }
   },
   components: {
@@ -104,19 +87,14 @@ export default {
       })
     }
   },
-  setup() {
-    const messages = ref([])
+  mounted() {
+    socket.emit('findAllChat', {}, res => {
+      console.log(res)
+      this.messages = res
+    })
 
-    onBeforeMount(() => {
-      socket.emit('findAllChat', {}, res => {
-        console.log(messages.value = res)
-        messages.value = res
-      })
-
-      socket.on('message', (message) => {
-        messages.value.push(message)
-        console.log('message', message)
-      })
+    socket.on('message', (message) => {
+      this.messages.push(message)
     })
   }
 }
