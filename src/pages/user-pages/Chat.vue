@@ -22,22 +22,24 @@
             </ul>
           </div>
         </div>
-        <div class="messages-box">
-          <div class="messages">
-            <ul>
-              <li>
-                <div class="ballon">
-                  <span class="user-name">Paulo Sérgio</span>
-                  <p>Texto de teste para chat</p>
-                </div>
-              </li>
-            </ul>
-          </div>
-          <div class="write-field">
-            <input type="text" placeholder="Digite uma mensagem">
-            <button>
-              <font-awesome-icon :icon="['fas', 'paper-plane']" />
-            </button>
+        <div class="message-box">
+          <form v-if="!joined" @submit.prevent="join" class="form-user-chat">
+            <label>Usuário:</label>
+            <input type="text" v-model="name" disabled>
+            <button>Iniciar Chat</button>
+          </form>
+          <div class="messages" v-else>
+            <div class="chat-box">
+              <div v-for="message in messages" :key="message" class="messages-container">
+                [{{ message.name }}]: {{ message.text }}
+              </div>
+            </div>
+            <form @submit.prevent="sendMessage" class="write-field">
+              <input type="text" v-model="messageText" placeholder="Digite uma mensagem">
+              <button>
+                <font-awesome-icon :icon="['fas', 'paper-plane']" />
+              </button>
+            </form>
           </div>
         </div>
       </div>
@@ -46,37 +48,51 @@
 </template>
 
 <script>
-//import { SocketModule } from '../../services/socket'
-
 import { io } from 'socket.io-client'
 
-const socket = io('http://localhost:3001')
-
-console.log(socket, 'connected to the chat')
-
-socket.connect('message')
-
+const socket = io('http://localhost:3002')
 import HeaderUser from '../../components/components-users/HeaderUser.vue'
 import FooterUser from '../../components/components-users/FooterUser.vue'
-import Typography from '../../components/components-users/Typography.vue'
 import Template from '../../components/components-users/Template.vue'
+import Typography from '../../components/components-users/Typography.vue'
 
 export default {
   name: 'Chat',
+  data() {
+    return {
+      title: 'Chat',
+      joined: false,
+      name: this.$store.state.user.name,
+      messageText: '',
+      messages: [],
+    }
+  },
   components: {
     HeaderUser,
     FooterUser,
     Typography,
     Template,
-},
-  data() {
-    return {
-      title: 'Chat - Usuários'
+  },
+  methods: {
+    join() {
+      socket.emit('join', { name: this.name }, () => {
+        this.joined = true
+      })
+    },
+    sendMessage() {
+      socket.emit('createChat', {text: this.messageText }, () => {
+        this.messageText = ''
+      })
     }
   },
-  setup() {
-    const teste = 'Paulo'
-    console.log(teste)
+  mounted() {
+    socket.emit('findAllChat', {}, res => {
+      this.messages = res
+    })
+
+    socket.on('message', (message) => {
+      this.messages.push(message)
+    })
   }
 }
 </script>
