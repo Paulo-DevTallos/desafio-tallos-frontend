@@ -22,7 +22,9 @@
         @close-modal="closeModal"
       />
       <div class="modal-update" v-if="call_form && id === user._id">
-        <UpdateForm />
+        <UpdateForm 
+          @update-user="(updateUser)"  
+        />
       </div>
     </li>
   </ul>
@@ -38,7 +40,7 @@ export default {
   components: {
     ConfirmModal,
     UpdateForm
-},
+  },
   data() {
     return {
       users: [],
@@ -46,16 +48,21 @@ export default {
       hidden: false,
       isCurrentUser: true,
       id: 0,
+      teste_id: null,
     };
   },
   methods: {
-    toggleHidden(id) {
-      this.hidden = true
-      this.id = id
+    //update user
+    async updateUser(user) {
+      const id = this.teste_id
+
+      await Services.update(user, id).then(res => {
+          Services.listar() 
+      })
+
+      this.call_form = false
     },
-    closeModal() {
-      this.hidden = false
-    },
+
     //delete user
     async deleteUser(email) {
       await Services.removeUser(email).then(res => {
@@ -68,10 +75,22 @@ export default {
         this.hidden = false
       })
     },
+    //toggle functions
     editUser(id) {
       this.call_form = !this.call_form
       this.id = id
-    }
+
+      this.teste_id = id
+
+      console.log(this.id, 'esse é o id do card')
+    },
+    toggleHidden(id) {
+      this.hidden = true
+      this.id = id
+    },
+    closeModal() {
+      this.hidden = false
+    },
   },
   mounted() {
   //filtrando usuario logado na lista de usuarios

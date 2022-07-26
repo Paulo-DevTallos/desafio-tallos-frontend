@@ -13,8 +13,9 @@ export default {
   findOne: (email) => {
     return http.get(`/api/finduser/${email}`)
   },
-  update: (email) => {
-    return http.patch(`/apiupdate/${email}`)
+  update: (data, id) => {
+    console.log(data, id)
+    return http.patch(`/api/update/${id}`, data)
   },
   removeUser: (email) => {
     return http.delete(`/api/remove/${email}`)

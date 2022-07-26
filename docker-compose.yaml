@@ -6,7 +6,7 @@ services:
     entrypoint: sh ./.docker/entrypoint.sh
     container_name: app-front
     volumes: 
-      - .:/app
+      - ./:/home/app
     working_dir: /app
     ports:
       - 8080:8080
