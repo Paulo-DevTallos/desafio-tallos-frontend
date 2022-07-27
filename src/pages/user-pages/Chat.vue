@@ -31,9 +31,9 @@
           <div class="messages" v-else>
             <div class="chat-box">
               <div v-for="message in messages" :key="message" class="messages-container">
-                <span>
+                <div class="chat-ballom">
                   [{{ message.name }}]: {{ message.text }}
-                </span>
+                </div>
               </div>
             </div>
             <form @submit.prevent="sendMessage" class="write-field">

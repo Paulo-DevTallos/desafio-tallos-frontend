@@ -1,6 +1,6 @@
 <template>
-  <div class="box-modal">
-    Usuário {{ info_alert }} já logado!
+  <div id="box-modal">
+    prop
   </div>
 </template>
 
@@ -14,7 +14,7 @@ export default {
 </script>
 
 <style scoped>
-  .box-modal {
+  #box-modal {
     padding: 30px;
     height: 80px;
     display: flex;
