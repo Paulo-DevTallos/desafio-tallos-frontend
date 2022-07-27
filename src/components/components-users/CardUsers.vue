@@ -75,6 +75,12 @@ export default {
         this.hidden = false
       })
     },
+
+    //list user 
+    async listuser(email) {
+      console.log('teste')
+    }, 
+
     //toggle functions
     editUser(id) {
       this.call_form = !this.call_form

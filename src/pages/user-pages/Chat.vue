@@ -31,7 +31,9 @@
           <div class="messages" v-else>
             <div class="chat-box">
               <div v-for="message in messages" :key="message" class="messages-container">
-                [{{ message.name }}]: {{ message.text }}
+                <span>
+                  [{{ message.name }}]: {{ message.text }}
+                </span>
               </div>
             </div>
             <form @submit.prevent="sendMessage" class="write-field">
@@ -76,11 +78,11 @@ export default {
   methods: {
     join() {
       socket.emit('join', { name: this.name }, () => {
-        this.joined = true
+        this.joined = true  
       })
     },
     sendMessage() {
-      socket.emit('createChat', {text: this.messageText }, () => {
+      socket.emit('createChat', { text: this.messageText, type: 0 }, () => {
         this.messageText = ''
       })
     }
@@ -92,6 +94,7 @@ export default {
 
     socket.on('message', (message) => {
       this.messages.push(message)
+      console.log('testando evento')
     })
   }
 }

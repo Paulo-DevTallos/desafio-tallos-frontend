@@ -47,18 +47,8 @@ export default {
   },
   methods: {
     handleSubmitLogin() {
-      const email = this.user.email
-      const currentEmail = localStorage.getItem('email')
-
-      if(email !== currentEmail) {
-        this.$store.dispatch("handleSubmitLogin", this.user);
-      } else {
-        this.isLoggedUser = true
-        this.user_connected = email
-        setInterval(() => {
-          this.isLoggedUser = false
-        }, 4000)
-      }
+      this.$store.dispatch("handleSubmitLogin", this.user);
+      alert('usuario logado')
     }
   },
 }
