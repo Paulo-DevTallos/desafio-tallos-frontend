@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="updateUser">
+  <form @submit.prevent="$emit('update-user', user)">
     <div>
       <font-awesome-icon :icon="['fas', 'file-pen']" />
     </div>
@@ -11,37 +11,28 @@
         <option value="operador">Operador</option>
         <option value="admin">Admin</option>
       </select>
-      <input type="password" v-model="user.password" placeholder="Digite uma senha para o usuário">
-      <ButtonSubmit @submitUser="updateUser(user._id)"/>
+      <button>
+        {{ title }}
+      </button>
     </div>
   </form>
 </template>
 
 <script>
-import Services from '../../services/axios-request';
-import ButtonSubmit from './ButtonSubmit.vue';
-
 export default {
   name: "UpdateForm",
-  components: { 
-    ButtonSubmit 
-  },
+  emits: ['update-user'],
   data() {
     return {
-      title: 'Cadastrar',
+      emits: ['update-user'],
+      title: 'Atualizar',
       user: {
         name: "",
         email: "",
         rules: "",
-        password: "",
       }
-    };
-  },
-  methods: {
-    async updateUser(email) {
-      Services.update(email).then(res => console.log(res.data))
     }
-  },
+  }
 }
 </script>
 

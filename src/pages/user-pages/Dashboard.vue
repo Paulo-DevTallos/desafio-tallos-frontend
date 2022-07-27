@@ -27,9 +27,8 @@ export default {
     Template,
   },
   mounted() {
-
-    socket.emit('is-logged', 'is-logged', () => {
-      alert(`usuario ${this.$store.state.user.name} logado`)
+    socket.on('is-logged', () => {
+      alert(`um novo usuario logou`)
     })
   }
 }
