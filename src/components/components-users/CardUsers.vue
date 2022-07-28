@@ -31,9 +31,12 @@
 </template>
 
 <script>
+import { io } from 'socket.io-client'
 import Services from '../../services/axios-request';
 import ConfirmModal from './ConfirmModal.vue';
 import UpdateForm from './UpdateForm.vue';
+
+const socket = io('http://localhost:3002')
 
 export default {
   name: "CardUsers",
@@ -95,6 +98,15 @@ export default {
   },
   mounted() {
     this.listUsers()
+    socket.on('update-user', () => {
+      alert('usuario alterado')
+      this.listUsers()
+    })
+
+    socket.on('remove-user', () => {
+      alert('usuario deletado')
+      this.listUsers()
+    })
   },
 }
 </script>
