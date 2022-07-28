@@ -1,5 +1,6 @@
 .container-contacts {
     display: flex;
+    justify-content: center;
 }
 
 .container-form {
