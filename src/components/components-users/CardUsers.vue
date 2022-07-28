@@ -12,7 +12,10 @@
           <span class="title-id">Permissão:</span><span>{{ user.rules }}</span>
         </div>
       </div>
-      <div class="command-user">
+      <div 
+        class="command-user" 
+        v-if="accessLevel && this.$store.state.user.rules === 'admin'"
+      >
         <font-awesome-icon @click="editUser(user._id)" :icon="['fas', 'user-pen']" />
         <font-awesome-icon @click="toggleHidden(user._id)" :icon="['fas', 'trash-can']" />
       </div>
@@ -52,6 +55,7 @@ export default {
       isCurrentUser: true,
       id: 0,
       teste_id: null,
+      accessLevel: true,
     };
   },
   methods: {

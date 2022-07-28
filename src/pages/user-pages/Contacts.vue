@@ -3,7 +3,10 @@
     <Template>
       <Typography :title="title" />
       <div class="container-contacts">
-        <div class="container-form">
+        <div 
+          class="container-form" 
+          v-if="accessLevel && this.$store.state.user.rules === 'admin'"
+        >
           <FormUserData />
         </div>
         <div class="user-list">
@@ -44,6 +47,7 @@ export default {
   data() {
     return {
       title: 'Cadastro de usuários',
+      accessLevel: true
     }
   },
   methods: {
