@@ -32,7 +32,8 @@
             <div class="chat-box">
               <div v-for="message in messages" :key="message" class="messages-container">
                 <div class="chat-ballom">
-                  [{{ message.name }}]: {{ message.text }}
+                  <span>{{ message.name }}</span>
+                  <p>{{ message.text }}</p>
                 </div>
               </div>
             </div>
