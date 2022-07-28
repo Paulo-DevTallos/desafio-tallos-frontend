@@ -104,7 +104,7 @@ export default {
     })
 
     socket.on('remove-user', () => {
-      alert('usuario deletado')
+      alert('usuario alterado')
       this.listUsers()
     })
   },
