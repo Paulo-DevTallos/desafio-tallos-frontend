@@ -47,6 +47,7 @@
         </div>
       </div>
     </Template>
+    <PopUpWarn v-if="hiddenPopup" :info_message="message"/>
   <FooterUser />
 </template>
 
@@ -58,6 +59,7 @@ import HeaderUser from '../../components/components-users/HeaderUser.vue'
 import FooterUser from '../../components/components-users/FooterUser.vue'
 import Template from '../../components/components-users/Template.vue'
 import Typography from '../../components/components-users/Typography.vue'
+import PopUpWarn from '../../components/alert-popups/PopUpWarn.vue'
 
 export default {
   name: 'Chat',
@@ -68,6 +70,8 @@ export default {
       name: this.$store.state.user.name,
       messageText: '',
       messages: [],
+      message: '',
+      hiddenPopup: false,
     }
   },
   components: {
@@ -75,6 +79,7 @@ export default {
     FooterUser,
     Typography,
     Template,
+    PopUpWarn,
   },
   methods: {
     join() {
@@ -83,9 +88,17 @@ export default {
       })
     },
     sendMessage() {
-      socket.emit('createChat', { text: this.messageText, type: 0 }, () => {
-        this.messageText = ''
-      })
+      if(this.messageText === '') {
+        this.message = 'Digite uma mensagem!'
+        this.hiddenPopup = true
+        setTimeout(() => {
+          this.hiddenPopup = false
+        }, 3000)
+      } else {
+        socket.emit('createChat', { text: this.messageText, type: 0 }, () => {
+          this.messageText = ''
+        })
+      }
     }
   },
   mounted() {
