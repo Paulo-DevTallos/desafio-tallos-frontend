@@ -1,0 +1,54 @@
+.container-dash {
+  width: 100%;
+  padding: 20px 30px;
+}
+
+.container-dash .menu {
+  display: flex;
+  justify-content: space-between;
+}
+
+.container-dash li {
+  width: 33.3%;
+  height: 150px;
+  margin: 10px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #fff;
+  filter: drop-shadow(-2px 2px 3px #c4c4c4);
+  cursor: pointer;
+}
+
+.container-dash li span {
+  padding-left: 10px;
+}
+
+.container-dash li:hover {
+  color: #009acc;
+  animation: jump .5s;
+}
+
+@keyframes jump {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.container-dash a {
+  display: flex;
+  flex-direction: column;
+  padding: 40px 80px;
+}
+
+.container-dash a span {
+  margin-top: 20px;
+}
