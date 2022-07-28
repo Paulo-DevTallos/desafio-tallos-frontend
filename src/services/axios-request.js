@@ -14,7 +14,6 @@ export default {
     return http.get(`/api/finduser/${email}`)
   },
   update: (data, id) => {
-    console.log(data, id)
     return http.patch(`/api/update/${id}`, data)
   },
   removeUser: (email) => {

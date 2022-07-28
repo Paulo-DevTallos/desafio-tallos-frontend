@@ -18,8 +18,8 @@
         </div>
       </form>
       <PopUpAlert 
-        :info_alert="user_connected"
-        v-if="isLoggedUser"/>
+        :info_message="message"
+        v-if="hiddenPopup"/>
     </div>
   </div>
 </template>
@@ -36,8 +36,8 @@ export default {
 },
   data() {
     return {
-      user_connected: '',
-      isLoggedUser: false,
+      message: '',
+      hiddenPopup: false,
       title: 'Login',
       user: {
         email: "",
@@ -47,8 +47,7 @@ export default {
   },
   methods: {
     handleSubmitLogin() {
-      this.$store.dispatch("handleSubmitLogin", this.user);
-      alert('usuario logado')
+      this.$store.dispatch("handleSubmitLogin", this.user)
     }
   },
 }

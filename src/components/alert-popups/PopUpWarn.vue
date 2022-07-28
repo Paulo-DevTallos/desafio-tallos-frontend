@@ -21,8 +21,8 @@ export default {
     justify-content: center;
     align-items: center;
     border-radius: 10px;
-    border: 2px solid red;
-    background-color: #ff000068;
+    border: 2px solid rgb(251, 201, 21);
+    background-color: #ece80068;
     position: absolute;
     bottom: 25px;
     right: 25px;

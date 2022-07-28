@@ -1,6 +1,6 @@
 <template>
   <div id="box-modal">
-    {{ info_message }}
+    prop
   </div>
 </template>
 
@@ -8,7 +8,7 @@
 export default {
   name: 'PopUpAlert',
   props: {
-    info_message: String,
+    info_alert: String,
   }
 }
 </script>
@@ -24,8 +24,8 @@ export default {
     border: 2px solid red;
     background-color: #ff000068;
     position: absolute;
-    bottom: 25px;
-    right: 25px;
+    top: 25px;
+    right: 85px;
     font-size: 15px;
     animation: roar .5s;
   }

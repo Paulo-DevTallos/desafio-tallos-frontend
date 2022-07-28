@@ -12,7 +12,10 @@
           <span class="title-id">Permissão:</span><span>{{ user.rules }}</span>
         </div>
       </div>
-      <div class="command-user">
+      <div 
+        class="command-user" 
+        v-if="accessLevel && this.$store.state.user.rules === 'admin'"
+      >
         <font-awesome-icon @click="editUser(user._id)" :icon="['fas', 'user-pen']" />
         <font-awesome-icon @click="toggleHidden(user._id)" :icon="['fas', 'trash-can']" />
       </div>
@@ -31,9 +34,12 @@
 </template>
 
 <script>
+import { io } from 'socket.io-client'
 import Services from '../../services/axios-request';
 import ConfirmModal from './ConfirmModal.vue';
 import UpdateForm from './UpdateForm.vue';
+
+const socket = io('http://localhost:3002')
 
 export default {
   name: "CardUsers",
@@ -49,38 +55,34 @@ export default {
       isCurrentUser: true,
       id: 0,
       teste_id: null,
+      accessLevel: true,
     };
   },
   methods: {
+    //list users 
+    async listUsers() {
+      Services.listar().then(res => {
+        const dataUser = this.users = res.data
+        return this.users = dataUser.filter(user => user.name !== this.$store.state.user.name)
+      })
+    },
     //update user
     async updateUser(user) {
       const id = this.teste_id
 
-      await Services.update(user, id).then(res => {
-          Services.listar() 
-      })
-
+      await Services.update(user, id)
       this.call_form = false
+      this.listUsers()
     },
-
     //delete user
     async deleteUser(email) {
       await Services.removeUser(email).then(res => {
         if (res.status === 200) {
-          Services.listar().then(res => {
-            const renderList = this.users = res.data
-            return this.users = renderList.filter(user => user.name !== this.$store.state.user.name)
-          });
+          this.listUsers()
         }
         this.hidden = false
       })
     },
-
-    //list user 
-    async listuser(email) {
-      console.log('teste')
-    }, 
-
     //toggle functions
     editUser(id) {
       this.call_form = !this.call_form
@@ -99,10 +101,15 @@ export default {
     },
   },
   mounted() {
-  //filtrando usuario logado na lista de usuarios
-    Services.listar().then(res => {
-      const dataUser = this.users = res.data
-      return this.users = dataUser.filter(user => user.name !== this.$store.state.user.name)
+    this.listUsers()
+    socket.on('update-user', () => {
+      alert('usuario alterado')
+      this.listUsers()
+    })
+
+    socket.on('remove-user', () => {
+      alert('usuario alterado')
+      this.listUsers()
     })
   },
 }
