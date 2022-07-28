@@ -52,35 +52,30 @@ export default {
     };
   },
   methods: {
+    //list users 
+    async listUsers() {
+      Services.listar().then(res => {
+        const dataUser = this.users = res.data
+        return this.users = dataUser.filter(user => user.name !== this.$store.state.user.name)
+      })
+    },
     //update user
     async updateUser(user) {
       const id = this.teste_id
 
-      await Services.update(user, id).then(res => {
-          Services.listar() 
-      })
-
+      await Services.update(user, id)
       this.call_form = false
+      this.listUsers()
     },
-
     //delete user
     async deleteUser(email) {
       await Services.removeUser(email).then(res => {
         if (res.status === 200) {
-          Services.listar().then(res => {
-            const renderList = this.users = res.data
-            return this.users = renderList.filter(user => user.name !== this.$store.state.user.name)
-          });
+          this.listUsers()
         }
         this.hidden = false
       })
     },
-
-    //list user 
-    async listuser(email) {
-      console.log('teste')
-    }, 
-
     //toggle functions
     editUser(id) {
       this.call_form = !this.call_form
@@ -99,11 +94,7 @@ export default {
     },
   },
   mounted() {
-  //filtrando usuario logado na lista de usuarios
-    Services.listar().then(res => {
-      const dataUser = this.users = res.data
-      return this.users = dataUser.filter(user => user.name !== this.$store.state.user.name)
-    })
+    this.listUsers()
   },
 }
 </script>
