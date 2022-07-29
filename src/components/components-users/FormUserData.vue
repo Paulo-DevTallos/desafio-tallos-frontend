@@ -52,6 +52,9 @@ export default {
       this.user = ''
     }
   },
+  mounted() {
+    this.handleSubmitUser()
+  }
 }
 </script>
 

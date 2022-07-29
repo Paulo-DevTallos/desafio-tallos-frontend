@@ -7,17 +7,9 @@
           <h3>Usuários online</h3>
           <div>
             <ul class="users">
-              <li>
+              <li v-for="user in users" :key="user">
                 <div class="status"></div>
-                Paulo Sérgio
-              </li>
-              <li>
-                <div class="status"></div>
-                Usuário Teste
-              </li>
-              <li>
-                <div class="status"></div>
-                Usuário Cadastrado
+                {{ user }}
               </li>
             </ul>
           </div>
@@ -66,12 +58,13 @@ export default {
   data() {
     return {
       title: 'Chat',
-      joined: false,
       name: this.$store.state.user.name,
       messageText: '',
-      messages: [],
+      users: '',
       message: '',
+      messages: [],
       hiddenPopup: false,
+      joined: false,
     }
   },
   components: {
@@ -109,6 +102,10 @@ export default {
     socket.on('message', (message) => {
       this.messages.push(message)
       console.log('testando evento')
+    })    
+
+    socket.on('join-room', res => {
+      this.users = res
     })
   }
 }

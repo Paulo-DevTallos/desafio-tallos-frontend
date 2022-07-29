@@ -20,7 +20,7 @@ export default {
     logout() {
       localStorage.removeItem('token')
       localStorage.removeItem('email')
-      localStorage.removeItem('user_id')
+      localStorage.removeItem('idUserLogin')
       localStorage.removeItem('vuex')
       this.$router.push('/login')
     }
