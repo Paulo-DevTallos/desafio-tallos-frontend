@@ -111,6 +111,11 @@ export default {
       alert('usuario alterado')
       this.listUsers()
     })
+
+    socket.on('user-created', () => {
+      this.listUsers()
+      window.location.reload()
+    }) 
   },
 }
 </script>
