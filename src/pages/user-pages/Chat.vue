@@ -6,7 +6,10 @@
         <div class="online-users">
           <h3>Usuários online</h3>
           <div>
-            <ul class="users">
+            <div v-if="emptyList" class="emptyList"> 
+              Nenhum usuário está online!
+            </div>
+            <ul v-else class="users">
               <li v-for="user in users" :key="user">
                 <div class="status"></div>
                 {{ user }}
@@ -40,6 +43,7 @@
       </div>
     </Template>
     <PopUpWarn v-if="hiddenPopup" :info_message="message"/>
+    <PopUpOk v-if="hiddenPopupOk" :info_message="message"/>
   <FooterUser />
 </template>
 
@@ -52,27 +56,35 @@ import FooterUser from '../../components/components-users/FooterUser.vue'
 import Template from '../../components/components-users/Template.vue'
 import Typography from '../../components/components-users/Typography.vue'
 import PopUpWarn from '../../components/alert-popups/PopUpWarn.vue'
+import PopUpOk from '../../components/alert-popups/PopUpOk.vue'
 
 export default {
   name: 'Chat',
-  data() {
-    return {
-      title: 'Chat',
-      name: this.$store.state.user.name,
-      messageText: '',
-      users: '',
-      message: '',
-      messages: [],
-      hiddenPopup: false,
-      joined: false,
-    }
-  },
   components: {
     HeaderUser,
     FooterUser,
     Typography,
     Template,
     PopUpWarn,
+    PopUpOk,
+  },
+  data() {
+    return {
+      title: 'Chat',
+      name: this.$store.state.user.name,
+      messageText: '',
+      message: '',
+      users: [],
+      messages: [],
+      hiddenPopup: false,
+      hiddenPopupOk: false,
+      joined: false,
+    }
+  },
+  computed: {
+    emptyList() {
+      return this.users.length === 0
+    }
   },
   methods: {
     join() {
@@ -106,7 +118,16 @@ export default {
 
     socket.on('join-room', res => {
       this.users = res
+    
+      socket.on('joined-room', (user) => {
+        this.message = `Usuário ${user} está online`
+        this.hiddenPopupOk = true
+        setTimeout(() => {
+          this.hiddenPopupOk = false
+        }, 3000)
+      })
     })
+    
   }
 }
 </script>
