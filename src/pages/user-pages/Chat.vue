@@ -118,6 +118,8 @@ export default {
 
     socket.on('join-room', res => {
       this.users = res
+
+      console.log(res)
     
       socket.on('joined-room', (user) => {
         this.message = `Usuário ${user} está online`
@@ -127,7 +129,6 @@ export default {
         }, 3000)
       })
     })
-    
   }
 }
 </script>
