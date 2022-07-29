@@ -47,6 +47,9 @@ export default {
     ConfirmModal,
     UpdateForm
   },
+  props: {
+    data_user: {},
+  },
   data() {
     return {
       users: [],
@@ -89,8 +92,6 @@ export default {
       this.id = id
 
       this.teste_id = id
-
-      console.log(this.id, 'esse é o id do card')
     },
     toggleHidden(id) {
       this.hidden = true
@@ -102,13 +103,12 @@ export default {
   },
   mounted() {
     this.listUsers()
+   
     socket.on('update-user', () => {
-      alert('usuario alterado')
       this.listUsers()
     })
 
     socket.on('remove-user', () => {
-      alert('usuario alterado')
       this.listUsers()
     })
 

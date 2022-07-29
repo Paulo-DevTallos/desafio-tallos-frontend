@@ -3,6 +3,7 @@
     <Template>
       <Typography :title="title" />
       <div class="container-chat">
+        
         <div class="online-users">
           <h3>Usuários online</h3>
           <div>
@@ -39,6 +40,7 @@
               </button>
             </form>
           </div>
+          <button v-if="joined" @click="sairDoChat" style="background: red; cursor: pointer;">sair do chat</button>
         </div>
       </div>
     </Template>
@@ -104,6 +106,12 @@ export default {
           this.messageText = ''
         })
       }
+    },
+    sairDoChat() {
+      this.joined = false
+      socket.on('left-room', () => {
+        alert('teste')
+      })
     }
   },
   mounted() {
@@ -129,6 +137,20 @@ export default {
         }, 3000)
       })
     })
+
+    /*socket.on('is-logged', () => {
+      this.users = res
+
+      console.log(res)
+    
+      socket.on('joined-room', (user) => {
+        this.message = `Usuário ${user} está online`
+        this.hiddenPopupOk = true
+        setTimeout(() => {
+          this.hiddenPopupOk = false
+        }, 3000)
+      })
+    })*/
   }
 }
 </script>

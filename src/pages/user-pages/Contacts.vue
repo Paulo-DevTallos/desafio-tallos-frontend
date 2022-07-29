@@ -13,8 +13,8 @@
           <header class="user-avaliable">
             <h4>Resultados de usuários</h4>
           </header>
-          <SearchBar />
-          <CardUsers />
+          <SearchBar @finduser="findOneUser"/>
+          <CardUsers :data_user="user_founded"/>
         </div>
       </div>
     </Template>
@@ -22,7 +22,7 @@
 </template>
 
 <script>
-//import Services from  '../../services/axios-request'
+import Services from  '../../services/axios-request'
 
 import HeaderUser from '../../components/components-users/HeaderUser.vue';
 import FooterUser from '../../components/components-users/FooterUser.vue';
@@ -47,11 +47,19 @@ export default {
   data() {
     return {
       title: 'Cadastro de usuários',
-      accessLevel: true
+      accessLevel: true,
+      user_founded: {}
     }
   },
   methods: {
-    
+    async findOneUser(email) {
+      await Services.findOne(email).then(res => {
+        this.user_founded = res.data
+        console.log(this.user_founded)
+      })
+
+      this.user_founded
+    }
   }
 }
 </script>
