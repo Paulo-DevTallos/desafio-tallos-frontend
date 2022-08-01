@@ -47,12 +47,6 @@ export default {
     ConfirmModal,
     UpdateForm
   },
-  props: {
-    data_user: {
-      type: Function,
-      default: () =>({})
-    }
-  },
   data() {
     return {
       users: [],
@@ -65,11 +59,11 @@ export default {
     };
   },
   async created() {
+    //search users
     await this.emitter.on('finduser', (user) => {
       Services.findOne(user).then(res => {
         this.users = res.data
-        console.log(this.users.name, this.users.email)
-        //this.listUsers()
+        console.log('problema resolvido!')
       })
     })
   },
