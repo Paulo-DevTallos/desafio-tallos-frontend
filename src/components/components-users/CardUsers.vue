@@ -63,13 +63,15 @@ export default {
     await this.emitter.on('finduser', (user) => {
       Services.findOne(user).then(res => {
         this.users = res.data
-        console.log('problema resolvido!')
       })
+    }),
+    this.emitter.on('cleanAndUpdateList', (email) => {
+      if(!email) {
+        this.listUsers()
+      }
     })
   },
   methods: {
-
-
     //list users 
     async listUsers() {
       await Services.listar().then(res => {

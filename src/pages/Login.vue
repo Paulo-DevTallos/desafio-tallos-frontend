@@ -25,8 +25,11 @@
 </template>
 
 <script>
+import io from 'socket.io-client'
 import PopUpAlert from '../components/alert-popups/PopUpAlert.vue';
 import ButtonSubmit from '../components/components-users/ButtonSubmit.vue';
+
+const socket = io('http://localhost:3002')
 
 export default {
   name: "About",

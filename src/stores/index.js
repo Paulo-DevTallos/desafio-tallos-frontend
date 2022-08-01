@@ -29,9 +29,8 @@ export const store = createStore({
         if(res.data.access_token) {
           localStorage.setItem('token', res.data.access_token)
           localStorage.setItem('idUserLogin', res.data.user._id)
-
-          context.commit('authSet', res.data)
-      
+          
+          context.commit('authSet', res.data) 
           window.location.replace('/painel')
         }
       })
