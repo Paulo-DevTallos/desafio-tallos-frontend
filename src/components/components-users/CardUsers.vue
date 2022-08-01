@@ -48,7 +48,10 @@ export default {
     UpdateForm
   },
   props: {
-    data_user: {},
+    data_user: {
+      type: Function,
+      default: () =>({})
+    }
   },
   data() {
     return {
@@ -61,10 +64,21 @@ export default {
       accessLevel: true,
     };
   },
+  async created() {
+    await this.emitter.on('finduser', (user) => {
+      Services.findOne(user).then(res => {
+        this.users = res.data
+        console.log(this.users.name, this.users.email)
+        //this.listUsers()
+      })
+    })
+  },
   methods: {
+
+
     //list users 
     async listUsers() {
-      Services.listar().then(res => {
+      await Services.listar().then(res => {
         const dataUser = this.users = res.data
         return this.users = dataUser.filter(user => user.name !== this.$store.state.user.name)
       })
@@ -103,7 +117,7 @@ export default {
   },
   mounted() {
     this.listUsers()
-   
+
     socket.on('update-user', () => {
       this.listUsers()
     })

@@ -1,17 +1,23 @@
 <template>
   <div class="user-avaliable">
-    <input type="text" v-model="email" placeholder="Digite um e-mail de usuário">
-    <button @click="$emit('finduser', email)">listar usuario</button>
+    <form @submit.prevent="finduser">
+      <input type="text" v-model="email" placeholder="Digite um e-mail de usuário">
+      <button type="submit">listar usuario</button>
+    </form>
   </div>
 </template>
 
 <script>
 export default {
   name: 'SearchBar',
-  emits: ['finduser'],
   data() {
     return {
       email: '',
+    }
+  },
+  methods: {
+    finduser() {
+      this.emitter.emit('finduser', this.email)
     }
   }
 }

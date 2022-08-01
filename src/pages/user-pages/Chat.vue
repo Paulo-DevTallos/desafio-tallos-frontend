@@ -109,9 +109,10 @@ export default {
     },
     sairDoChat() {
       this.joined = false
-      socket.on('left-room', () => {
+      this.users.shift(this.user)
+      /*socket.on('left-room', () => {
         alert('teste')
-      })
+      })*/
     }
   },
   mounted() {
