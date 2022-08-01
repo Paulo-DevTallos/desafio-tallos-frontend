@@ -2,7 +2,8 @@
   <div class="user-avaliable">
     <form @submit.prevent="finduser">
       <input type="text" v-model="email" placeholder="Digite um e-mail de usuário">
-      <button type="submit">listar usuario</button>
+      <button type="submit">Listar usuario</button>
+      <button @click="cleanAndUpdateList" id="btn-list-all">Listar todos</button>
     </form>
   </div>
 </template>
@@ -18,6 +19,10 @@ export default {
   methods: {
     finduser() {
       this.emitter.emit('finduser', this.email)
+    },
+    cleanAndUpdateList() {
+      this.email = ''
+      this.emitter.emit('cleanAndUpdateList', this.email)
     }
   }
 }
@@ -39,5 +44,10 @@ export default {
   cursor: pointer;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
+}
+
+#btn-list-all {
+  border-radius: 5px;
+  margin: 0 5px;
 }
 </style>
