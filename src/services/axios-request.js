@@ -11,7 +11,7 @@ export default {
     return http.post('/api/login', data)
   },
   findOne: (email) => {
-    return http.get(`/api/finduser/${email}`)
+    return http.get(`/api/search/${email}`)
   },
   update: (data, id) => {
     return http.patch(`/api/update/${id}`, data)

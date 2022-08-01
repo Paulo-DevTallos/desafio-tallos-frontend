@@ -22,8 +22,6 @@
 </template>
 
 <script>
-//import Services from  '../../services/axios-request'
-
 import HeaderUser from '../../components/components-users/HeaderUser.vue';
 import FooterUser from '../../components/components-users/FooterUser.vue';
 import Typography from '../../components/components-users/Typography.vue';
@@ -47,12 +45,9 @@ export default {
   data() {
     return {
       title: 'Cadastro de usuários',
-      accessLevel: true
+      accessLevel: true,
     }
   },
-  methods: {
-    
-  }
 }
 </script>
 <style scoped>

@@ -58,10 +58,21 @@ export default {
       accessLevel: true,
     };
   },
+  async created() {
+    //search users
+    await this.emitter.on('finduser', (user) => {
+      Services.findOne(user).then(res => {
+        this.users = res.data
+        console.log('problema resolvido!')
+      })
+    })
+  },
   methods: {
+
+
     //list users 
     async listUsers() {
-      Services.listar().then(res => {
+      await Services.listar().then(res => {
         const dataUser = this.users = res.data
         return this.users = dataUser.filter(user => user.name !== this.$store.state.user.name)
       })
@@ -89,8 +100,6 @@ export default {
       this.id = id
 
       this.teste_id = id
-
-      console.log(this.id, 'esse é o id do card')
     },
     toggleHidden(id) {
       this.hidden = true
@@ -102,15 +111,19 @@ export default {
   },
   mounted() {
     this.listUsers()
+
     socket.on('update-user', () => {
-      alert('usuario alterado')
       this.listUsers()
     })
 
     socket.on('remove-user', () => {
-      alert('usuario alterado')
       this.listUsers()
     })
+
+    socket.on('user-created', () => {
+      this.listUsers()
+      window.location.reload()
+    }) 
   },
 }
 </script>
