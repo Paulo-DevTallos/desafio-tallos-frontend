@@ -12,10 +12,13 @@
         <option value="admin">Admin</option>
       </select>
       <input type="password" v-model="user.password" placeholder="Digite uma senha para o usuário">
-      <ButtonSubmit 
+      <button type="submit">
+        {{ title }}
+      </button>
+      <!--<ButtonSubmit 
         @submitUser="handleSubmitUser"
         :btn_title="title"
-      />
+      />-->
     </div>
   </form>
 </template>
@@ -41,14 +44,19 @@ export default {
     };
   },
   methods: {
+    //handleSubmitUser() {
+      //this.user = ''
+      /*this.emitter.emit('handleSubmitUser', this.user)
+    }*/
     async handleSubmitUser() {
-      await Services.createUser({
+      const response = await Services.createUser({
         name: this.user.name,
         email: this.user.email,
         rules: this.user.rules,
         password: this.user.password
       });
 
+      console.log(response)
       this.user = ''
     }
   },

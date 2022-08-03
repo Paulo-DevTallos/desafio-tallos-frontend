@@ -59,6 +59,25 @@ export default {
     };
   },
   async created() {
+    //register user
+    await this.emitter.on('handleSubmitUser', (user) => {
+      const renderUser = {
+        name: user.name,
+        email: user.email,
+        rules: user.rules,
+        password: user.password,
+      }
+      Services.createUser({renderUser}).then(res => console.log(res.data))
+      /*const user = Services.createUser({
+        name: user.name,
+        email: user.email,
+        rules: user.rules,
+        password: user.password,
+      }).then(res => user = res.data)*/
+      console.log(user.name)
+
+      this.listUsers()
+    })
     //search users
     await this.emitter.on('finduser', (user) => {
       Services.findOne(user).then(res => {
@@ -124,7 +143,6 @@ export default {
 
     socket.on('user-created', () => {
       this.listUsers()
-      window.location.reload()
     }) 
   },
 }
