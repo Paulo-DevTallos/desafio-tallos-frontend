@@ -9,7 +9,15 @@
         </div>
         <div>
           <input type="text" v-model="user.email" placeholder="Digite seu e-mail">
-          <input type="password" v-model="user.password" placeholder="Digite sua senha">
+          <div class="reveling-password">
+            <input :type="inputType" v-model="user.password" placeholder="Digite sua senha">  
+            <span @click="togglePassword">
+              <font-awesome-icon :icon="['fas', 'eye']" v-if="isPassword"/>
+              <font-awesome-icon :icon="['fas', 'eye-slash']" v-else/>
+            </span>
+          </div>
+          <div>
+          </div>
           <ButtonSubmit 
             @submitUser="handleSubmitLogin"
             :btn_title="title"
@@ -25,11 +33,8 @@
 </template>
 
 <script>
-import io from 'socket.io-client'
 import PopUpAlert from '../components/alert-popups/PopUpAlert.vue';
 import ButtonSubmit from '../components/components-users/ButtonSubmit.vue';
-
-const socket = io('http://localhost:3002')
 
 export default {
   name: "About",
@@ -42,15 +47,40 @@ export default {
       message: '',
       hiddenPopup: false,
       title: 'Login',
+      inputType: 'password',
       user: {
         email: "",
         password: "",
       }
     };
   },
+  computed: {
+    isPassword() {
+      return this.inputType === 'password'
+    }
+  },
   methods: {
+    togglePassword() {
+      this.inputType = this.isPassword ? 'text' : 'password'
+    },
+    popupTimeout(msg) {
+      this.hiddenPopup = true
+      this.message = msg
+      setTimeout(() => {
+        this.hiddenPopup = false
+      }, 3000)
+    },
     handleSubmitLogin() {
-      this.$store.dispatch("handleSubmitLogin", this.user)
+      if(this.user.email === '' && this.user.password === '') {
+        this.popupTimeout('Digite um usuário válido')
+      }
+      else if(this.user.email === '') {
+        this.popupTimeout('Digite um e-mail válido')
+      }
+      else if(this.user.password === '') {
+        this.popupTimeout('Digite uma senha válida!')
+      }
+      else this.$store.dispatch("handleSubmitLogin", this.user,)
     }
   },
 }

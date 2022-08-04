@@ -4,7 +4,7 @@
 }
 
 .page-login .banner {
-    width: 65%;
+    width: 70%;
     background-image: url('/img/image-sistema.jpg');
     background-repeat: no-repeat;
     background-position: left;
@@ -12,7 +12,6 @@
 }
 
 .page-login .login-container {
-    width: 35%;
     background-color: #fff;
     display: flex;
     align-items: center;
@@ -35,13 +34,40 @@
     width: 80px;
 }
 
-.login-container input {
+.login-container input[type="text"], .reveling-password {
     width: 100%;
     height: 40px;
     margin-bottom: 10px;
     border-radius: 10px;
     border: 1px solid gray;
-    padding: 12px;
+}
+
+.login-container input {
+    padding: 0 12px;
+}
+
+.login-container .reveling-password {
+    display: flex;
+}
+
+.login-container .reveling-password input {
+    height: 100%;
+    width: 90%;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+}
+
+.login-container .reveling-password span {
+    width: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.reveling-password span svg {
+    font-size: 15px;
+    cursor: pointer;
 }
 
 .login-container p {
@@ -49,4 +75,40 @@
     text-align: center;
     font-size: 13px;
     color: #808080;
+}
+
+/* responsivity */
+@media(max-width: 1000px) {
+    .page-login .banner {
+        background-position: center;
+        background-size: cover;
+    }
+}
+
+@media(max-width: 800px) {
+    html {
+        height: 0;
+    }
+    /*.login-container .logo-container img {
+        width: 50px;
+    }*/
+}
+
+@media(max-width: 768px) {
+    .banner {
+        display: none;
+    }
+    .login-container {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    
+}
+
+@media(max-width: 450px) {
+    .login-container form {
+        padding: 80px 40px;
+        align-items: center;
+    }
 }

@@ -35,3 +35,29 @@ h1 {
     transform: translatex(0);
   }
 }
+
+@media(max-width: 1200px) {
+  .size-content h1{
+    font-size: 30px;
+    line-height: 40px;
+  }
+
+  .size-content img {
+    width: 350px;
+  }
+}
+
+@media(max-width: 1024px) {
+  .content-home {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .size-content {
+    width: 100%;
+  }
+
+  .size-content h1 {
+    text-align: center;
+  }
+}
