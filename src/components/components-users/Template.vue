@@ -18,4 +18,16 @@ export default {
     min-height: 78vh;
     background-color: #c4c4c42d;
   }
+
+  @media(max-width: 690px) {
+    .main-container {
+      padding: 10px 80px;
+    }
+  }
+
+  @media(max-width: 500px) {
+    .main-container {
+      padding: 10px 40px;
+    }
+  }
 </style>
