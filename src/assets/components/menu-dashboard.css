@@ -52,3 +52,19 @@
 .container-dash a span {
   margin-top: 20px;
 }
+
+@media(max-width: 1024px) {
+  .container-dash .menu {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .container-dash .menu li {
+    width: 100%;
+  }
+
+  .container-dash .menu li a {
+    text-align: center;
+  }
+}

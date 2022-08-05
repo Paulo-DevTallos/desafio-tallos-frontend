@@ -43,3 +43,18 @@
 .header-user .user-icon .icon {
   width: 38px;
 }
+
+@media(max-width: 768px) {
+  .header-user img {
+    width: 35px;
+  }
+}
+
+@media(max-width: 600px) {
+  .header-user {
+    padding: 10px 20px;
+  }
+  .header-user .user-name {
+    display: none;
+  }
+}
