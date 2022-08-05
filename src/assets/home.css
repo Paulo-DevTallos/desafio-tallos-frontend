@@ -61,3 +61,15 @@ h1 {
     text-align: center;
   }
 }
+
+@media(max-width: 690px) {
+  .size-content img {
+    width: 300px;
+  }
+}
+
+@media(max-width: 500px) {
+  .size-content img {
+    width: 250px;
+  }
+}
