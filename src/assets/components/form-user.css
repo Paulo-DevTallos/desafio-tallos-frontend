@@ -30,3 +30,9 @@ form button {
   width: 150px;
   filter: drop-shadow(-2px 2px 1px #006d9153);
 } 
+
+@media(max-width: 480px) {
+  form {
+    padding: 40px 20px;
+  }
+}
