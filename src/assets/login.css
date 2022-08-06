@@ -13,7 +13,7 @@
 
 .container-login .login-container {
     height: 100%;
-    background-color: #fff;
+    background-color: var(--primary-color);
     display: flex;
     align-items: center;
 }
@@ -40,7 +40,7 @@
     height: 40px;
     margin-bottom: 10px;
     border-radius: 10px;
-    border: 1px solid gray;
+    border: 1px solid var(--primary-gray-theme);
 }
 
 .login-container input {
@@ -75,7 +75,7 @@
     margin-top: 80px;
     text-align: center;
     font-size: 13px;
-    color: #808080;
+    color: var(--primary-gray-theme);
 }
 
 /* responsivity */
