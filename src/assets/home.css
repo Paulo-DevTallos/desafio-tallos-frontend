@@ -16,7 +16,7 @@
 h1 {
   font-size: 40px;
   line-height: 45px;
-  color: #15427a;
+  color: var(--secondary-blue-theme);
   letter-spacing: 1px;
 }
 
