@@ -1,17 +1,18 @@
-.page-login {
+.container-login {
     display: flex;
     height: 100vh;
 }
 
-.page-login .banner {
+.container-login .banner {
     width: 70%;
     background-image: url('/img/image-sistema.jpg');
     background-repeat: no-repeat;
-    background-position: left center;
+    background-position: center;
     background-size: cover;
 }
 
-.page-login .login-container {
+.container-login .login-container {
+    height: 100%;
     background-color: #fff;
     display: flex;
     align-items: center;
@@ -34,7 +35,7 @@
     width: 80px;
 }
 
-.login-container input[type="text"], .reveling-password {
+.login-container input[type="email"], .reveling-password {
     width: 100%;
     height: 40px;
     margin-bottom: 10px;
@@ -85,7 +86,7 @@
     }
 }
 
-@media(max-width: 800px) {
+@media(max-width: 950px) {
     .banner {
         display: none;
     }
@@ -93,8 +94,6 @@
         flex-direction: column;
         width: 100%;
     }
-
-    
 }
 
 @media(max-width: 450px) {
