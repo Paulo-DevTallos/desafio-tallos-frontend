@@ -19,16 +19,16 @@ export default {
     background-color: #c4c4c42d;
   }
 
-  @media(max-width: 768px) {
+  @media(max-width: 1024px) {
     .main-container {
-      padding: 10px 80px;
-      height: 100vh;
+      padding: 10px 20px;
     }
   }
 
-  @media(max-width: 500px) {
+  @media(max-width: 768px) {
     .main-container {
-      padding: 10px 20px;
+      padding: 10px;
+      
     }
   }
 </style>
