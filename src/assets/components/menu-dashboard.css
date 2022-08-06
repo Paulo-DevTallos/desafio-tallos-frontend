@@ -17,7 +17,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: #fff;
+  background-color: var(--primary-color);
   filter: drop-shadow(-2px 2px 3px #c4c4c4);
   cursor: pointer;
 }
@@ -27,7 +27,7 @@
 }
 
 .container-dash li:hover {
-  color: #009acc;
+  color: var(--primary-blue-theme);
   animation: jump .5s;
 }
 
@@ -63,6 +63,12 @@
 }
 
 @media(max-width: 1024px) {
+  .container-dash .menu li span {
+    font-size: 15px;
+  }
+}
+
+@media(max-width: 800px) {
   .container-dash .menu {
     flex-direction: column;
     justify-content: center;
