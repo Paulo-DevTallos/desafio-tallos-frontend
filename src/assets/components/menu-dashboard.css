@@ -23,12 +23,21 @@
 }
 
 .container-dash li span {
-  padding-left: 10px;
+  text-align: center;
 }
 
 .container-dash li:hover {
   color: #009acc;
   animation: jump .5s;
+}
+
+.container-dash li:last-child {
+  text-align: center;
+}
+
+.container-dash li:last-child span {
+  display: block;
+  padding-top: 10px;
 }
 
 @keyframes jump {
@@ -62,6 +71,10 @@
 
   .container-dash .menu li {
     width: 100%;
+  }
+
+  .container-dash .menu li span {
+    padding: 0;
   }
 
   .container-dash .menu li a {

@@ -57,4 +57,11 @@
   .header-user .user-name {
     display: none;
   }
+
+  .header-user .useful-links a {
+    padding: 3px 5px;
+    background-color: #009acc;
+    color: var(--primary-color);
+    font-size: 10px;
+  }
 }
