@@ -1,6 +1,6 @@
 <template>
   <Header />
-    <Template>
+    <main>
       <div class="content-home">
         <div class="size-content">
           <h1>Conheça a plataforma que nasceu para impulsionar o seu negócio!</h1>
@@ -9,7 +9,7 @@
           <img src="img/home-page.png" alt="home page image">
         </div>
       </div>
-    </Template>
+    </main>
   <Footer />
 </template>
 
