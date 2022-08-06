@@ -64,4 +64,15 @@ export default {
     padding: 40px;
     animation: blow-soft 3000ms ease-in;
   }
+
+  @media(max-width: 480px) {
+    .container-support {
+      width: 100%;
+    }
+    .support-info {
+      font-size: 12px;
+      text-align: center;
+      padding: 0;
+    }
+  }
 </style>
