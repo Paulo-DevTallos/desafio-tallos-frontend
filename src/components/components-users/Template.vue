@@ -27,8 +27,7 @@ export default {
 
   @media(max-width: 768px) {
     .main-container {
-      padding: 10px;
-      
+      padding: 10px; 
     }
   }
 </style>

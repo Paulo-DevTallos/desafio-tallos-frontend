@@ -2,8 +2,10 @@
   <div class="user-avaliable">
     <form @submit.prevent="finduser">
       <input type="text" v-model="email" placeholder="Digite um e-mail de usuário">
-      <button type="submit">Listar usuario</button>
-      <button @click="cleanAndUpdateList" id="btn-list-all">Listar todos</button>
+      <div class="btn-container">
+        <button type="submit">Listar usuario</button>
+        <button @click="cleanAndUpdateList" id="btn-list-all">Listar todos</button>
+      </div>
     </form>
   </div>
 </template>
@@ -36,6 +38,10 @@ export default {
   border-bottom-left-radius: 5px;
 }
 
+.user-avaliable .btn-container {
+  display: inline;
+}
+
 .user-avaliable button {
   padding: 4px 10px;
   background-color: #009acc;
@@ -49,5 +55,20 @@ export default {
 #btn-list-all {
   border-radius: 5px;
   margin: 0 5px;
+}
+
+@media(max-width: 510px) {
+  .user-avaliable input {
+    width: 100%;
+    border-radius: 5px;
+  }
+  .user-avaliable .btn-container {
+    display: block;
+    margin: 5px 0;
+  }
+
+  .user-avaliable .btn-container button:first-child {
+    border-radius: 5px;
+  }
 }
 </style>
