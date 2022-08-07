@@ -10,3 +10,9 @@
 .footer-user strong {
 	padding: 0 5px;
 }
+
+@media(max-width: 480px) {
+	.footer-user {
+		font-size: 12px;
+	}
+}

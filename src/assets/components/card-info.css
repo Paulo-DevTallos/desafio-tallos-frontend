@@ -50,3 +50,11 @@
 .card #click:hover {
   color: #009acc;
 }
+
+@media(max-width: 768px) {
+  .card {
+    width: 200px;
+    right: 10px;
+    font-size: 12px;
+  }
+}

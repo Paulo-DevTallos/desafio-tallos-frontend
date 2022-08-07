@@ -18,3 +18,9 @@
 .navigation button:hover {
   background-color: #072953;
 }
+
+@media(max-width: 600px) {
+  .navigation span {
+    display: none;
+  }
+}

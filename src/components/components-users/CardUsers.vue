@@ -60,28 +60,14 @@ export default {
   },
   async created() {
     //register user
-    await this.emitter.on('handleSubmitUser', (user) => {
-      const renderUser = {
-        name: user.name,
-        email: user.email,
-        rules: user.rules,
-        password: user.password,
-      }
-      Services.createUser({renderUser}).then(res => console.log(res.data))
-      /*const user = Services.createUser({
-        name: user.name,
-        email: user.email,
-        rules: user.rules,
-        password: user.password,
-      }).then(res => user = res.data)*/
-      console.log(user.name)
-
-      this.listUsers()
-    })
+    await this.emitter.on('handleSubmitUser', (data) => {
+      Services.createUser(data)
+      return this.listUsers()
+    }),
     //search users
     await this.emitter.on('finduser', (user) => {
       Services.findOne(user).then(res => {
-        this.users = res.data
+        return this.users = res.data
       })
     }),
     this.emitter.on('cleanAndUpdateList', (email) => {
@@ -101,6 +87,8 @@ export default {
     //update user
     async updateUser(user) {
       const id = this.teste_id
+
+      console.log(user)
 
       await Services.update(user, id)
       this.call_form = false
@@ -150,34 +138,5 @@ export default {
 
 <style scoped>
   @import '../../assets/components/card-users.css';
-.modal-update {
-  background-color: #80808068;
-  filter : drop-shadow(0 0 3px gray);
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  animation: roar .5s ease;
-}
-
-@keyframes roar {
-  from {
-    opacity: 0;
-    visibility: hidden;
-    transform: scale(0.0);
-  }
-  to {
-    opacity: 1;
-    visibility: visible;
-        transform: scale(1.1);
-  }
-}
-.modal-update form {
-  width: 30%;
-}
-
+  @import '../../assets/components/form-update.css';
 </style>

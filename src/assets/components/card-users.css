@@ -42,3 +42,10 @@
     transform: scale(1.1);
 }
 
+@media(max-width: 480px) {
+    .users li {
+        padding: 20px 5px;
+        align-items: center;
+    }
+}
+

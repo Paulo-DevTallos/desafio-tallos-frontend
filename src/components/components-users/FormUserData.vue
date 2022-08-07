@@ -15,23 +15,13 @@
       <button type="submit">
         {{ title }}
       </button>
-      <!--<ButtonSubmit 
-        @submitUser="handleSubmitUser"
-        :btn_title="title"
-      />-->
     </div>
   </form>
 </template>
 
 <script>
-import Services from '../../services/axios-request';
-import ButtonSubmit from './ButtonSubmit.vue';
-
 export default {
   name: "FormUserData",
-  components: { 
-    ButtonSubmit 
-  },
   data() {
     return {
       title: 'Cadastrar',
@@ -44,19 +34,8 @@ export default {
     };
   },
   methods: {
-    //handleSubmitUser() {
-      //this.user = ''
-      /*this.emitter.emit('handleSubmitUser', this.user)
-    }*/
-    async handleSubmitUser() {
-      const response = await Services.createUser({
-        name: this.user.name,
-        email: this.user.email,
-        rules: this.user.rules,
-        password: this.user.password
-      });
-
-      console.log(response)
+    handleSubmitUser() {
+      this.emitter.emit('handleSubmitUser', this.user)
       this.user = ''
     }
   },

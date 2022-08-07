@@ -1,5 +1,13 @@
 @import url(https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;800;900&display=swap);
 
+/*-- variables --*/
+:root {
+  --primary-color: #fff;
+  --primary-gray-theme: #808080;
+  --primary-blue-theme: #009acc;
+  --secondary-blue-theme: #15427a;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -7,7 +15,7 @@
 }
 
 html, body {
-  height: 100vh;
+
   font-family: 'Heebo', sans-serif;
 }
 
@@ -18,6 +26,11 @@ a {
 
 ul {
   list-style: none;
+}
+
+main {
+  max-width: 85%;
+  margin: 0 auto;
 }
 
 /* --scrollbar */

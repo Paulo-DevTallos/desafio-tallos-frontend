@@ -10,9 +10,6 @@ export const store = createStore({
     },
     token: '',
   },
-  getters: {
-
-  },
   mutations: {
     authSet(state, payload) {
       state.token = payload.access_token
@@ -35,9 +32,6 @@ export const store = createStore({
         }
       })
     }
-  },
-  modules: {
-
   },
   plugins: [createPersistedState()], 
 })
