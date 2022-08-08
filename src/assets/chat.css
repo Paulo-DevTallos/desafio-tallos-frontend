@@ -49,7 +49,6 @@
 } 
 .message-box {
     width: 60%;
-    height: 65vh;
     padding-bottom: 0;
 }
 
@@ -135,5 +134,36 @@
     border-radius: 0;
 }
 
+@media(max-width: 1190px) {
+    .form-user-chat {
+        padding: 100px;
+    }
 
+    .form-user-chat input {
+        padding: 0 10px;
+        margin: 10px 0;
+    }
 
+    .form-user-chat button {
+        font-size: 12px;
+    }
+}
+
+@media(max-width: 800px) {
+    .container-chat {
+        flex-direction: column;
+    }
+
+    .online-users, .message-box {
+        width: 100%;
+        margin: 10px 0;
+    }
+}
+
+@media(max-width: 500px) {
+    .form-user-chat {
+        flex-direction: column;
+        padding: 100px 0;
+        align-items: flex-start;
+    }
+}

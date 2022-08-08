@@ -14,6 +14,9 @@
 </template>
 
 <script>
+import io from 'socket.io-client';
+
+const socket = io('http://localhost:3002')
 export default {
   name: 'CardInfo',
   methods: {
@@ -24,6 +27,8 @@ export default {
       localStorage.removeItem('vuex')
       this.$router.push('/login')
     }
+  },
+  mounted() {
   }
 }
 </script>

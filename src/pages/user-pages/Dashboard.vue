@@ -16,7 +16,6 @@ import FooterUser from '../../components/components-users/FooterUser.vue';
 import NavMenuDash from '../../components/components-users/NavMenuDash.vue';
 import Template from '../../components/components-users/Template.vue';
 
-
 export default {
   name: "Dashboard",
   components: {

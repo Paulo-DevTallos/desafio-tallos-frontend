@@ -11,7 +11,7 @@
               Nenhum usuário está online!
             </div>
             <ul v-else class="users">
-              <li v-for="user in users" :key="user">
+              <li v-for="user in users" :key="user"  @click="implement">
                 <div class="status"></div>
                 {{ user }}
               </li>
@@ -89,6 +89,9 @@ export default {
     }
   },
   methods: {
+    implement() {
+      alert('Breve teremos salas individuais')
+    },
     join() {
       socket.emit('join', { name: this.name }, () => {
         this.joined = true  
@@ -107,13 +110,16 @@ export default {
         })
       }
     },
-    sairDoChat() {
-      this.joined = false
+    /*sairDoChat() {
+      socket.on('leave-room', { name: this.name }, () => {
+        console.log(this.name, 'usuario saiu do chat')
+      })
+      /*this.joined = false
       this.users.shift(this.user)
-      /*socket.on('left-room', () => {
-        alert('teste')
-      })*/
-    }
+      socket.on('leave-room', () => {
+        console.log('usuario deixou a sala')
+      })
+    }*/
   },
   mounted() {
     socket.emit('findAllChat', {}, res => {
@@ -138,20 +144,6 @@ export default {
         }, 3000)
       })
     })
-
-    /*socket.on('is-logged', () => {
-      this.users = res
-
-      console.log(res)
-    
-      socket.on('joined-room', (user) => {
-        this.message = `Usuário ${user} está online`
-        this.hiddenPopupOk = true
-        setTimeout(() => {
-          this.hiddenPopupOk = false
-        }, 3000)
-      })
-    })*/
   }
 }
 </script>

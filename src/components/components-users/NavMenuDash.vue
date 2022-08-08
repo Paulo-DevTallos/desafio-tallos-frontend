@@ -25,10 +25,13 @@
 </template>
 
 <script>
+import io from 'socket.io-client'
+const socket = io('http://localhost:3002')
 import SupportView from '../../components/alert-popups/SupportView.vue';
 
 export default {
   name: "NavMenuDash",
+  components: { SupportView },
   data() {
     return {
       isVisible: false,
@@ -37,9 +40,8 @@ export default {
   methods: {
     callSupport() {
       this.isVisible = !this.isVisible
-    }
+    },
   },
-  components: { SupportView }
 }
 </script>
 
