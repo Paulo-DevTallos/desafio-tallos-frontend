@@ -63,7 +63,7 @@ export default {
     await this.emitter.on('handleSubmitUser', (data) => {
       Services.createUser(data)
       return this.listUsers()
-    }),
+    })
     //search users
     await this.emitter.on('finduser', (user) => {
       Services.findOne(user).then(res => {
@@ -87,8 +87,6 @@ export default {
     //update user
     async updateUser(user) {
       const id = this.teste_id
-
-      console.log(user)
 
       await Services.update(user, id)
       this.call_form = false
@@ -121,6 +119,10 @@ export default {
   mounted() {
     this.listUsers()
 
+    socket.on('user-created', () => {
+      this.listUsers()
+    })
+
     socket.on('update-user', () => {
       this.listUsers()
     })
@@ -129,9 +131,6 @@ export default {
       this.listUsers()
     })
 
-    socket.on('user-created', () => {
-      this.listUsers()
-    }) 
   },
 }
 </script>
