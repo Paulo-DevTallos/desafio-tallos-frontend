@@ -62,6 +62,7 @@ export default {
     //register user
     await this.emitter.on('handleSubmitUser', (data) => {
       Services.createUser(data)
+      alert('Usuário cadastrado com sucesso!')
       return this.listUsers()
     })
     //search users
