@@ -27,7 +27,7 @@ export default {
   },
   mounted() {
     socket.on('is-logged', () => {
-      alert(`um novo usuario logou`)
+      console.log('um novo usuario logou')
     })
   }
 }
