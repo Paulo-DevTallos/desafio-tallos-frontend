@@ -1,3 +1,5 @@
+import { mapGetters } from 'vuex';
+import { mapGetters } from 'vuex';
 <template>
   <div class="container-login">
     <div class="banner"> 
@@ -41,7 +43,7 @@ export default {
   components: {
     PopUpAlert,
     ButtonSubmit
-},
+  },
   data() {
     return {
       message: '',
@@ -70,8 +72,7 @@ export default {
         this.hiddenPopup = false
       }, 3000)
     },
-    handleSubmitLogin() {
-      //verificar validação com dados do banco para melhoria da identificação no login
+    async handleSubmitLogin() {
       if(this.user.email === '' && this.user.password === '') {
         this.popupTimeout('Digite um usuário válido')
       }
@@ -81,7 +82,13 @@ export default {
       else if(this.user.password === '') {
         this.popupTimeout('Digite uma senha válida!')
       } 
-      else this.$store.dispatch("handleSubmitLogin", this.user,)
+      else {
+        await this.$store.dispatch('handleSubmitLogin', this.user)
+        .catch(Error => {
+          console.error(Error.code, 'dados incorretos')
+          this.popupTimeout('Seus dados estão incorretos!')
+        })
+      } 
     }
   },
 }
