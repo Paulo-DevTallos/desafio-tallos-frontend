@@ -1,5 +1,6 @@
 <template>
   <div id="box-modal">
+    <font-awesome-icon :icon="['fas', 'circle-check']" />
     {{ info_message }}
   </div>
 </template>
@@ -16,17 +17,18 @@ export default {
 <style scoped>
   #box-modal {
     padding: 30px;
-    height: 80px;
+    height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 10px;
-    border: 2px solid green;
-    background-color: #62ff0068;
+    box-shadow: 0 0 5px #121212a9;
+    background-color: var(--primary-color);
     position: absolute;
-    bottom: 25px;
+    bottom: 30px;
     right: 25px;
     font-size: 15px;
+    font-weight: 500;
     animation: roar .5s;
   }
 
@@ -39,5 +41,11 @@ export default {
       opacity: 1;
       visibility: visible;
     }
+  }
+
+  #box-modal svg {
+    padding-right: 10px;
+    font-size: 30px;
+    color: #2fc92f;
   }
 </style>

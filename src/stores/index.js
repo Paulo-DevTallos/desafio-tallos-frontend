@@ -14,7 +14,7 @@ export const store = createStore({
     authSet(state, payload) {
       state.token = payload.access_token
       state.user = payload.user
-    }
+    },
   },
   actions: {
     async handleSubmitLogin(context, user) {
@@ -23,12 +23,15 @@ export const store = createStore({
         password: user.password
       })
       .then(res => {
-        if(res.data.access_token) {
-          localStorage.setItem('token', res.data.access_token)
-          localStorage.setItem('idUserLogin', res.data.user._id)
-          
-          context.commit('authSet', res.data) 
-          window.location.replace('/painel')
+        if(res.status === 200) {
+          if(res.data.access_token) {
+            localStorage.setItem('token', res.data.access_token)
+            localStorage.setItem('session_id', res.data.user._id)
+            
+            context.commit('authSet', res.data) 
+            console.log('logou')
+            window.location.replace('/painel')
+          }
         }
       })
     }
