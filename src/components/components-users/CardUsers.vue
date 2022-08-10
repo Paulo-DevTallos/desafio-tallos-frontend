@@ -61,8 +61,11 @@ export default {
   async created() {
     //register user
     await this.emitter.on('handleSubmitUser', (data) => {
+      if(data === '') {
+        alert('digite um usuario')
+      }
       Services.createUser(data)
-      alert('Usuário cadastrado com sucesso!')
+      //alert('Usuário cadastrado com sucesso!')
       return this.listUsers()
     })
     //search users
@@ -88,6 +91,8 @@ export default {
     //update user
     async updateUser(user) {
       const id = this.teste_id
+
+      console.log(id)
 
       await Services.update(user, id)
       this.call_form = false

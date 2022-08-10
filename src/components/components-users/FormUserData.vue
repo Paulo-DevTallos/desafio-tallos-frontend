@@ -34,9 +34,8 @@ export default {
     };
   },
   methods: {
-    handleSubmitUser() {
-      this.emitter.emit('handleSubmitUser', this.user)
-      this.user = ''
+    async handleSubmitUser() {
+      await this.emitter.emit('handleSubmitUser', this.user)
     }
   },
 }
