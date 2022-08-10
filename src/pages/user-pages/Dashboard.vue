@@ -27,7 +27,11 @@ export default {
   },
   mounted() {
     socket.on('is-logged', () => {
+      const sessionLogin = localStorage.getItem('session_id')
+      console.log(sessionLogin)
+      alert('um novo usuario logou')
       console.log('um novo usuario logou')
+      
     })
   }
 }

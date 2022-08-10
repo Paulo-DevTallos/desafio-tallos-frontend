@@ -30,7 +30,8 @@ export const store = createStore({
             
             context.commit('authSet', res.data) 
             console.log('logou')
-            window.location.replace('/painel')
+            //window.location.replace('/painel')      
+            this.$router.push({name: 'dashboard'})
           }
         }
       })
