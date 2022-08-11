@@ -17,14 +17,22 @@
       </button>
     </div>
   </form>
+  <PopUpOk 
+    :info_message="message"
+    v-if="hiddenPopup"
+  />
 </template>
 
 <script>
+import PopUpOk from '../alert-popups/PopUpOk.vue';
 export default {
   name: "FormUserData",
+  components: { PopUpOk },
   data() {
     return {
-      title: 'Cadastrar',
+      title: "Cadastrar",
+      message: "teste",
+      hiddenPopup: false,
       user: {
         name: "",
         email: "",
@@ -35,7 +43,12 @@ export default {
   },
   methods: {
     async handleSubmitUser() {
-      await this.emitter.emit('handleSubmitUser', this.user)
+      await this.emitter.emit("handleSubmitUser", this.user);
+      this.hiddenPopup = true
+      this.message = `Usuário ${this.user.name} cadastrado com sucesso!`
+      setTimeout(() => {
+        this.hiddenPopup = false
+      }, 3000)
     }
   },
 }

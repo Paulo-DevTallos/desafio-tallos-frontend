@@ -24,7 +24,7 @@ export default {
     border-radius: 10px;
     box-shadow: 0 0 5px #121212a9;
     background-color: var(--primary-color);
-    position: absolute;
+    position: fixed;
     bottom: 30px;
     right: 25px;
     font-size: 15px;
