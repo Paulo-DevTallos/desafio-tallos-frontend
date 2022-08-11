@@ -24,7 +24,7 @@
       </div>
       <ConfirmModal 
         v-if="hidden && id === user._id" 
-        @delete-user="deleteUser(user.email)"
+        @delete-user="deleteUser(user._id)"
         @close-modal="closeModal"
       />
       <div class="modal-update" v-if="call_form && id === user._id">
@@ -107,8 +107,8 @@ export default {
       this.listUsers()
     },
     //delete user
-    async deleteUser(email) {
-      await Services.removeUser(email).then(res => {
+    async deleteUser(id) {
+      await Services.removeUser(id).then(res => {
         if (res.status === 200) {
           this.listUsers()
         }
@@ -141,8 +141,9 @@ export default {
       this.listUsers()
     })
 
-    await socket.on('remove-user', (email) => {
-      console.log(email)
+    await socket.on('remove-user', (id, msg) => {
+      //socket.to('remove-user', id).emit('teste', msg)
+      console.log(id)
       this.listUsers()
     })
 
