@@ -28,10 +28,7 @@ export const store = createStore({
             localStorage.setItem('token', res.data.access_token)
             localStorage.setItem('session_id', res.data.user._id)
             
-            context.commit('authSet', res.data) 
-            console.log('logou')
-            //window.location.replace('/painel')      
-            this.$router.push({name: 'dashboard'})
+            context.commit('authSet', res.data)  
           }
         }
       })

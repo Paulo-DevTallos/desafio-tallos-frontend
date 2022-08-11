@@ -21,10 +21,10 @@ export default {
 			if(date.getHours() >= 0 && date.getHours() < 12) {
 				this.day_time = 'bom dia, seja bem vindo!'
 			}
-			if(date.getHours() >= 12 && date.getHours() < 18) {
+			else if(date.getHours() >= 12 && date.getHours() < 18) {
 				this.day_time = 'boa tarde, seja bem vindo!'
 			}
-			else {
+			else{
 				this.day_time = 'boa noite, seja bem vindo!'
 			}
 		}, 1000)

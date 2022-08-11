@@ -24,10 +24,7 @@ export default {
   name: 'CardInfo',
   methods: {
     logout() {
-      localStorage.removeItem('token')
-      localStorage.removeItem('email')
-      localStorage.removeItem('idUserLogin')
-      localStorage.removeItem('vuex')
+      localStorage.clear()
       this.$router.push('/login')
     }
   },
