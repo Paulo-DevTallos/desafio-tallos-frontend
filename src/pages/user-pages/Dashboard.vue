@@ -43,7 +43,7 @@ export default {
       this.message = msg
       setTimeout(() => {
         this.hiddenPopup = false
-      }, 7000)
+      }, 5000)
     },
   },
   async mounted() {
@@ -56,7 +56,7 @@ export default {
         setTimeout(() => {
           localStorage.clear()
           this.$router.push('/login')
-        }, 7000)
+        }, 5000)
       }
   
     })
