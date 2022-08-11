@@ -1,6 +1,9 @@
 <template>
   <ul class="users">
-    <li v-for="user in users" :key="user._id">
+    <div v-if="emptyList" class="empty-list">
+      Sua lista de usuários está vazia, Cadastre um novo usuário para alimentar a lista!
+    </div>
+    <li v-else v-for="user in users" :key="user._id">
       <div>
         <div class="content-user">
           <span class="title-id">Nome:</span><span>{{ user.name }}</span>
@@ -57,6 +60,11 @@ export default {
       teste_id: null,
       accessLevel: true,
     };
+  },
+  computed: {
+    emptyList() {
+      return this.users.length === 0
+    }
   },
   async created() {
     //register user
@@ -122,7 +130,7 @@ export default {
       this.hidden = false
     },
   },
-  mounted() {
+  async mounted() {
     this.listUsers()
 
     socket.on('user-created', () => {
@@ -133,7 +141,8 @@ export default {
       this.listUsers()
     })
 
-    socket.on('remove-user', () => {
+    await socket.on('remove-user', (email) => {
+      console.log(email)
       this.listUsers()
     })
 

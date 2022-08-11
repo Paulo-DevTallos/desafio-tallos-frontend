@@ -11,28 +11,36 @@
         <option value="operador">Operador</option>
         <option value="admin">Admin</option>
       </select>
-      <button>
+      <button type="submit">
         {{ title }}
       </button>
     </div>
   </form>
+  <PopUpOk 
+    :info_message="message"
+    v-if="hiddenPopup"
+  />
 </template>
 
 <script>
+import PopUpOk from '../alert-popups/PopUpOk.vue';
 export default {
   name: "UpdateForm",
-  emits: ['update-user'],
+  emits: ["update-user"],
+  components: { PopUpOk },
   data() {
     return {
-      emits: ['update-user'],
-      title: 'Atualizar',
+      emits: ["update-user"],
+      title: "Atualizar",
+      message: 'teste',
+      hiddenPopup: true,
       user: {
         name: "",
         email: "",
         rules: "",
       }
-    }
-  }
+    };
+  },
 }
 </script>
 
