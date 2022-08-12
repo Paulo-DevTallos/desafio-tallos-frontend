@@ -11,6 +11,10 @@
     left: 0;
     animation: roar .5s ease;
   }
+
+  .modal-update #color-btn {
+    background-color: red;
+  }
   
   @keyframes roar {
     from {

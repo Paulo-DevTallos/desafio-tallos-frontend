@@ -1,39 +1,44 @@
 <template>
-  <ul class="users">
-    <div v-if="emptyList" class="empty-list">
-      Sua lista de usuários está vazia, Cadastre um novo usuário para alimentar a lista!
-    </div>
-    <li v-else v-for="user in users" :key="user._id">
-      <div>
-        <div class="content-user">
-          <span class="title-id">Nome:</span><span>{{ user.name }}</span>
-        </div>
-        <div class="content-user"> 
-          <span class="title-id">Email:</span><span>{{ user.email }}</span>
-        </div>
-        <div class="content-user"> 
-          <span class="title-id">Permissão:</span><span>{{ user.rules }}</span>
-        </div>
+  <div>
+    <ul class="users">
+      <div v-if="emptyList" class="empty-list">
+        Sua lista está vazia, Cadastre um novo usuário!
       </div>
-      <div 
-        class="command-user" 
-        v-if="accessLevel && this.$store.state.user.rules === 'admin'"
-      >
-        <font-awesome-icon @click="editUser(user._id)" :icon="['fas', 'user-pen']" />
-        <font-awesome-icon @click="toggleHidden(user._id)" :icon="['fas', 'trash-can']" />
-      </div>
-      <ConfirmModal 
-        v-if="hidden && id === user._id" 
-        @delete-user="deleteUser(user._id)"
-        @close-modal="closeModal"
-      />
-      <div class="modal-update" v-if="call_form && id === user._id">
-        <UpdateForm 
-          @update-user="(updateUser)"  
+      <li v-else v-for="user in users" :key="user._id">
+        <div>
+          <div class="content-user">
+            <span class="title-id">Nome:</span><span>{{ user.name }}</span>
+          </div>
+          <div class="content-user"> 
+            <span class="title-id">Email:</span><span>{{ user.email }}</span>
+          </div>
+          <div class="content-user"> 
+            <span class="title-id">Permissão:</span><span>{{ user.rules }}</span>
+          </div>
+        </div>
+        <div 
+          class="command-user" 
+          v-if="accessLevel && this.$store.state.user.rules === 'admin'"
+        >
+          <font-awesome-icon @click="() => editUser(user._id, user)" :icon="['fas', 'user-pen']" />
+          <font-awesome-icon @click="() => toggleHidden(user._id)" :icon="['fas', 'trash-can']" />
+        </div>
+        <ConfirmModal 
+          v-if="hidden && id === user._id" 
+          @delete-user="deleteUser(user._id)"
+          @close-modal="closeModal"
         />
-      </div>
-    </li>
-  </ul>
+      </li>
+    </ul>
+    
+    <div class="modal-update" v-show="call_form" >
+      <UpdateForm 
+        :userData="userToUpdate"
+        @update-user="(updateUser)"  
+        @close-modal-update="(closeModalUpdate)"
+      />
+    </div>
+  </div>
 </template>
 
 <script>
@@ -53,6 +58,7 @@ export default {
   data() {
     return {
       users: [],
+      userToUpdate: { name: '', email: '', rules: '' },
       call_form: false,
       hidden: false,
       isCurrentUser: true,
@@ -78,6 +84,7 @@ export default {
         return this.users = res.data
       })
     }),
+    //clean input search
     this.emitter.on('cleanAndUpdateList', (email) => {
       if(!email) {
         this.listUsers()
@@ -95,9 +102,8 @@ export default {
     //update user
     async updateUser(user) {
       const id = this.teste_id
-
       console.log(id)
-
+    
       await Services.update(user, id)
       this.call_form = false
       this.listUsers()
@@ -112,9 +118,14 @@ export default {
       })
     },
     //toggle functions
-    editUser(id) {
+    editUser(id, user) {
       this.call_form = !this.call_form
-      this.id = id
+
+      this.userToUpdate.name = user.name
+      this.userToUpdate.email = user.email
+      this.userToUpdate.rules = user.rules
+      console.log(this.id = id)
+      console.log(this.userToUpdate)
 
       this.teste_id = id
     },
@@ -125,6 +136,9 @@ export default {
     closeModal() {
       this.hidden = false
     },
+    closeModalUpdate() {
+      this.call_form = false
+    }
   },
   async mounted() {
     this.listUsers()
@@ -137,12 +151,7 @@ export default {
       this.listUsers()
     })
 
-    await socket.on('remove-user', (id) => {
-     const sessionId = localStorage.getItem('session_id')
-      if(sessionId === id) {
-        localStorage.clear()
-        this.$router.push('/login')
-      }
+    await socket.on('remove-user', () => {
       this.listUsers()
     })
 
