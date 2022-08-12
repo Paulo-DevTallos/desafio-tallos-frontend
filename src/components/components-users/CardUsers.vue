@@ -30,14 +30,21 @@
         />
       </li>
     </ul>
-    
-    <div class="modal-update" v-show="call_form" >
+    <div class="modal-update" v-show="call_form">
       <UpdateForm 
         :userData="userToUpdate"
         @update-user="(updateUser)"  
         @close-modal-update="(closeModalUpdate)"
       />
     </div>
+    <PopUpOk 
+      :info_message="message"
+      v-if="hiddenPopupOk"
+    />
+    <PopUpAlert 
+      :info_message="message"
+      v-if="hiddenPopupAlert"
+    />
   </div>
 </template>
 
@@ -46,6 +53,8 @@ import { io } from 'socket.io-client'
 import Services from '../../services/axios-request';
 import ConfirmModal from './ConfirmModal.vue';
 import UpdateForm from './UpdateForm.vue';
+import PopUpOk from '../alert-popups/PopUpOk.vue';
+import PopUpAlert from '../alert-popups/PopUpAlert.vue';
 
 const socket = io('http://localhost:3002')
 
@@ -53,18 +62,24 @@ export default {
   name: "CardUsers",
   components: {
     ConfirmModal,
-    UpdateForm
+    UpdateForm,
+    PopUpOk,
+    PopUpAlert,
+    PopUpAlert,
   },
   data() {
     return {
       users: [],
-      userToUpdate: { name: '', email: '', rules: '' },
+      userToUpdate: { name: '', email: '', rules: '' }, //capturando dados a serem enviados para o form de update
       call_form: false,
       hidden: false,
       isCurrentUser: true,
       id: 0,
       teste_id: null,
       accessLevel: true,
+      message: '',
+      hiddenPopupOk: false,
+      hiddenPopupAlert: false
     };
   },
   computed: {
@@ -75,7 +90,11 @@ export default {
   async created() {
     //register user
     await this.emitter.on('handleSubmitUser', (data) => {
-      Services.createUser(data)
+      Services.createUser(data).catch(Error => {
+        console.log(Error.code, 'usuário já existe')
+        this.popupTimeoutAlert('Usuário já existe!')
+      })
+      this.popupTimeoutOk(`Usuário ${data.name} cadastrado com sucesso!`)
       return this.listUsers()
     })
     //search users
@@ -92,6 +111,21 @@ export default {
     })
   },
   methods: {
+    //method popup
+    popupTimeoutOk(msg) {
+      this.hiddenPopupOk = true
+      this.message = msg
+      setTimeout(() => {
+        this.hiddenPopupOk = false
+      }, 3000)
+    },
+    popupTimeoutAlert(msg) {
+      this.hiddenPopupAlert = true
+      this.message = msg
+      setTimeout(() => {
+        this.hiddenPopupAlert = false
+      }, 3000)
+    },
     //list users 
     async listUsers() {
       await Services.listar().then(res => {

@@ -12,7 +12,7 @@
         <option value="operador">Operador</option>
         <option value="admin">Admin</option>
       </select>
-      <div>
+      <div class="">
         <button type="submit">
           {{ title }}
         </button>

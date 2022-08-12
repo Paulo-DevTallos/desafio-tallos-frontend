@@ -16,23 +16,22 @@
         {{ title }}
       </button>
     </div>
+    <PopUpAlert 
+      :info_message="message"
+      v-if="hiddenPopupAlert"
+    />
   </form>
-  <PopUpOk 
-    :info_message="message"
-    v-if="hiddenPopup"
-  />
 </template>
 
 <script>
-import PopUpOk from '../alert-popups/PopUpOk.vue';
+import PopUpAlert from '../alert-popups/PopUpAlert.vue';
 export default {
   name: "FormUserData",
-  components: { PopUpOk },
+  components: { PopUpAlert },
   data() {
     return {
       title: "Cadastrar",
-      message: "teste",
-      hiddenPopup: false,
+      hiddenPopupAlert: false,
       user: {
         name: "",
         email: "",
@@ -42,17 +41,34 @@ export default {
     };
   },
   methods: {
-    async handleSubmitUser() {
-      await this.emitter.emit("handleSubmitUser", this.user)
-      this.user.name = ''
-      this.user.email = ''
-      this.user.rules = ''
-      this.user.password = ''
-      this.hiddenPopup = true
-      this.message = `Usuário ${this.user.name} cadastrado com sucesso!`
+    popupTimeoutAlert(msg) {
+      this.hiddenPopupAlert = true
+      this.message = msg
       setTimeout(() => {
-        this.hiddenPopup = false
+        this.hiddenPopupAlert = false
       }, 3000)
+    },
+    //submit event
+    async handleSubmitUser() {
+      if (this.user.name === "") {
+        this.popupTimeoutAlert('Digite um nome para o usuário!')
+      }
+      else if (this.user.email === "") {
+        this.popupTimeoutAlert('Digite um e-mail para o usuário!')
+      }
+      else if (this.user.rules === "") {
+        this.popupTimeoutAlert('Digite um departamento para o usuário!')
+      }
+      else if (this.user.password === "") {
+        this.popupTimeoutAlert('Digite uma senha para o usuário!')
+      }
+      else {
+        await this.emitter.emit("handleSubmitUser", this.user);
+        this.user.name = "";
+        this.user.email = "";
+        this.user.rules = "";
+        this.user.password = "";
+      }
     }
   },
 }
