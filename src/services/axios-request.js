@@ -16,7 +16,7 @@ export default {
   update: (data, id) => {
     return http.patch(`/api/update/${id}`, data)
   },
-  removeUser: (email) => {
-    return http.delete(`/api/remove/${email}`)
+  removeUser: (id) => {
+    return http.delete(`/api/remove/${id}`)
   }
 }

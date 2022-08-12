@@ -27,10 +27,9 @@ export const store = createStore({
           if(res.data.access_token) {
             localStorage.setItem('token', res.data.access_token)
             localStorage.setItem('session_id', res.data.user._id)
+            localStorage.setItem('email', res.data.user.email)
             
-            context.commit('authSet', res.data) 
-            console.log('logou')
-            window.location.replace('/painel')
+            context.commit('authSet', res.data)  
           }
         }
       })

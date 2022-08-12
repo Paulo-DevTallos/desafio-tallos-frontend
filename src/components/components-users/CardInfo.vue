@@ -1,6 +1,9 @@
 <template>
   <div class="card">
     <div class="id">
+      {{ $store.state.user.name }}
+    </div>
+    <div class="card-id">
       {{ $store.state.user.email }}
     </div>
     <div class="card-id">
@@ -21,10 +24,7 @@ export default {
   name: 'CardInfo',
   methods: {
     logout() {
-      localStorage.removeItem('token')
-      localStorage.removeItem('email')
-      localStorage.removeItem('idUserLogin')
-      localStorage.removeItem('vuex')
+      localStorage.clear()
       this.$router.push('/login')
     }
   },

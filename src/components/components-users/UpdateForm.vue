@@ -1,5 +1,6 @@
 <template>
-  <form @submit.prevent="$emit('update-user', user)">
+  <div>
+    <form @submit.prevent="$emit('update-user', user)" :userData="user">
     <div>
       <font-awesome-icon :icon="['fas', 'file-pen']" />
     </div>
@@ -11,28 +12,56 @@
         <option value="operador">Operador</option>
         <option value="admin">Admin</option>
       </select>
-      <button>
-        {{ title }}
-      </button>
+      <div class="">
+        <button type="submit">
+          {{ title }}
+        </button>
+        <button @click="$emit('close-modal-update')" id="color-btn">
+          Cancelar
+        </button>
+      </div>
     </div>
   </form>
+  <PopUpOk 
+    :info_message="message"
+    v-if="hiddenPopup"
+  />
+  </div>
 </template>
 
 <script>
+import PopUpOk from '../alert-popups/PopUpOk.vue';
 export default {
   name: "UpdateForm",
-  emits: ['update-user'],
+  emits: ["update-user", "close-modal-update"],
+  components: { PopUpOk },
+  props: { 
+    userData: Object 
+  },
   data() {
     return {
-      emits: ['update-user'],
-      title: 'Atualizar',
+      emits: ["update-user"],
+      title: "Atualizar",
+      message: 'teste',
+      hiddenPopup: true,
       user: {
-        name: "",
-        email: "",
-        rules: "",
-      }
+        name: this.userData.name,
+        email: this.userData.email,
+        rules: this.userData.user,
+      },
+    };
+  },
+  watch: {
+    userData: {
+      handler(userData) {     
+        console.log(userData)       
+        this.user.name = userData.name;
+        this.user.email = userData.email;
+        this.user.rules = userData.rules;
+      },
+      deep: true,
     }
-  }
+  },
 }
 </script>
 

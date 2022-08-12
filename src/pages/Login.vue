@@ -85,9 +85,11 @@ export default {
       else {
         await this.$store.dispatch('handleSubmitLogin', this.user)
         .catch(Error => {
-          console.error(Error.code, 'dados incorretos')
+          console.error(Error, 'dados incorretos')
           this.popupTimeout('Seus dados estão incorretos!')
         })
+
+        this.$router.push('/painel')
       } 
     }
   },

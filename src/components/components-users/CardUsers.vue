@@ -1,36 +1,51 @@
 <template>
-  <ul class="users">
-    <li v-for="user in users" :key="user._id">
-      <div>
-        <div class="content-user">
-          <span class="title-id">Nome:</span><span>{{ user.name }}</span>
-        </div>
-        <div class="content-user"> 
-          <span class="title-id">Email:</span><span>{{ user.email }}</span>
-        </div>
-        <div class="content-user"> 
-          <span class="title-id">Permissão:</span><span>{{ user.rules }}</span>
-        </div>
+  <div>
+    <ul class="users">
+      <div v-if="emptyList" class="empty-list">
+        Sua lista está vazia, Cadastre um novo usuário!
       </div>
-      <div 
-        class="command-user" 
-        v-if="accessLevel && this.$store.state.user.rules === 'admin'"
-      >
-        <font-awesome-icon @click="editUser(user._id)" :icon="['fas', 'user-pen']" />
-        <font-awesome-icon @click="toggleHidden(user._id)" :icon="['fas', 'trash-can']" />
-      </div>
-      <ConfirmModal 
-        v-if="hidden && id === user._id" 
-        @delete-user="deleteUser(user.email)"
-        @close-modal="closeModal"
-      />
-      <div class="modal-update" v-if="call_form && id === user._id">
-        <UpdateForm 
-          @update-user="(updateUser)"  
+      <li v-else v-for="user in users" :key="user._id">
+        <div>
+          <div class="content-user">
+            <span class="title-id">Nome:</span><span>{{ user.name }}</span>
+          </div>
+          <div class="content-user"> 
+            <span class="title-id">Email:</span><span>{{ user.email }}</span>
+          </div>
+          <div class="content-user"> 
+            <span class="title-id">Permissão:</span><span>{{ user.rules }}</span>
+          </div>
+        </div>
+        <div 
+          class="command-user" 
+          v-if="accessLevel && this.$store.state.user.rules === 'admin'"
+        >
+          <font-awesome-icon @click="() => editUser(user._id, user)" :icon="['fas', 'user-pen']" />
+          <font-awesome-icon @click="() => toggleHidden(user._id)" :icon="['fas', 'trash-can']" />
+        </div>
+        <ConfirmModal 
+          v-if="hidden && id === user._id" 
+          @delete-user="deleteUser(user._id)"
+          @close-modal="closeModal"
         />
-      </div>
-    </li>
-  </ul>
+      </li>
+    </ul>
+    <div class="modal-update" v-show="call_form">
+      <UpdateForm 
+        :userData="userToUpdate"
+        @update-user="(updateUser)"  
+        @close-modal-update="(closeModalUpdate)"
+      />
+    </div>
+    <PopUpOk 
+      :info_message="message"
+      v-if="hiddenPopupOk"
+    />
+    <PopUpAlert 
+      :info_message="message"
+      v-if="hiddenPopupAlert"
+    />
+  </div>
 </template>
 
 <script>
@@ -38,6 +53,8 @@ import { io } from 'socket.io-client'
 import Services from '../../services/axios-request';
 import ConfirmModal from './ConfirmModal.vue';
 import UpdateForm from './UpdateForm.vue';
+import PopUpOk from '../alert-popups/PopUpOk.vue';
+import PopUpAlert from '../alert-popups/PopUpAlert.vue';
 
 const socket = io('http://localhost:3002')
 
@@ -45,24 +62,39 @@ export default {
   name: "CardUsers",
   components: {
     ConfirmModal,
-    UpdateForm
+    UpdateForm,
+    PopUpOk,
+    PopUpAlert,
+    PopUpAlert,
   },
   data() {
     return {
       users: [],
+      userToUpdate: { name: '', email: '', rules: '' }, //capturando dados a serem enviados para o form de update
       call_form: false,
       hidden: false,
       isCurrentUser: true,
       id: 0,
       teste_id: null,
       accessLevel: true,
+      message: '',
+      hiddenPopupOk: false,
+      hiddenPopupAlert: false
     };
+  },
+  computed: {
+    emptyList() {
+      return this.users.length === 0
+    }
   },
   async created() {
     //register user
     await this.emitter.on('handleSubmitUser', (data) => {
-      Services.createUser(data)
-      alert('Usuário cadastrado com sucesso!')
+      Services.createUser(data).catch(Error => {
+        console.log(Error.code, 'usuário já existe')
+        this.popupTimeoutAlert('Usuário já existe!')
+      })
+      this.popupTimeoutOk(`Usuário ${data.name} cadastrado com sucesso!`)
       return this.listUsers()
     })
     //search users
@@ -71,6 +103,7 @@ export default {
         return this.users = res.data
       })
     }),
+    //clean input search
     this.emitter.on('cleanAndUpdateList', (email) => {
       if(!email) {
         this.listUsers()
@@ -78,6 +111,21 @@ export default {
     })
   },
   methods: {
+    //method popup
+    popupTimeoutOk(msg) {
+      this.hiddenPopupOk = true
+      this.message = msg
+      setTimeout(() => {
+        this.hiddenPopupOk = false
+      }, 3000)
+    },
+    popupTimeoutAlert(msg) {
+      this.hiddenPopupAlert = true
+      this.message = msg
+      setTimeout(() => {
+        this.hiddenPopupAlert = false
+      }, 3000)
+    },
     //list users 
     async listUsers() {
       await Services.listar().then(res => {
@@ -88,14 +136,15 @@ export default {
     //update user
     async updateUser(user) {
       const id = this.teste_id
-
+      console.log(id)
+    
       await Services.update(user, id)
       this.call_form = false
       this.listUsers()
     },
     //delete user
-    async deleteUser(email) {
-      await Services.removeUser(email).then(res => {
+    async deleteUser(id) {
+      await Services.removeUser(id).then(res => {
         if (res.status === 200) {
           this.listUsers()
         }
@@ -103,9 +152,14 @@ export default {
       })
     },
     //toggle functions
-    editUser(id) {
+    editUser(id, user) {
       this.call_form = !this.call_form
-      this.id = id
+
+      this.userToUpdate.name = user.name
+      this.userToUpdate.email = user.email
+      this.userToUpdate.rules = user.rules
+      console.log(this.id = id)
+      console.log(this.userToUpdate)
 
       this.teste_id = id
     },
@@ -116,8 +170,11 @@ export default {
     closeModal() {
       this.hidden = false
     },
+    closeModalUpdate() {
+      this.call_form = false
+    }
   },
-  mounted() {
+  async mounted() {
     this.listUsers()
 
     socket.on('user-created', () => {
@@ -128,7 +185,7 @@ export default {
       this.listUsers()
     })
 
-    socket.on('remove-user', () => {
+    await socket.on('remove-user', () => {
       this.listUsers()
     })
 

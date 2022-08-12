@@ -5,6 +5,16 @@
     height: 60vh;
 }
 
+.users .empty-list {
+    height: 100%;
+    padding: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #808080;
+    text-align: center;
+}
+
 .users li {
     display: flex;
     justify-content: space-between;

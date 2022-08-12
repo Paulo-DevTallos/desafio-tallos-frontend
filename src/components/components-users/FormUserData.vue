@@ -16,15 +16,22 @@
         {{ title }}
       </button>
     </div>
+    <PopUpAlert 
+      :info_message="message"
+      v-if="hiddenPopupAlert"
+    />
   </form>
 </template>
 
 <script>
+import PopUpAlert from '../alert-popups/PopUpAlert.vue';
 export default {
   name: "FormUserData",
+  components: { PopUpAlert },
   data() {
     return {
-      title: 'Cadastrar',
+      title: "Cadastrar",
+      hiddenPopupAlert: false,
       user: {
         name: "",
         email: "",
@@ -34,9 +41,34 @@ export default {
     };
   },
   methods: {
-    handleSubmitUser() {
-      this.emitter.emit('handleSubmitUser', this.user)
-      this.user = ''
+    popupTimeoutAlert(msg) {
+      this.hiddenPopupAlert = true
+      this.message = msg
+      setTimeout(() => {
+        this.hiddenPopupAlert = false
+      }, 3000)
+    },
+    //submit event
+    async handleSubmitUser() {
+      if (this.user.name === "") {
+        this.popupTimeoutAlert('Digite um nome para o usuário!')
+      }
+      else if (this.user.email === "") {
+        this.popupTimeoutAlert('Digite um e-mail para o usuário!')
+      }
+      else if (this.user.rules === "") {
+        this.popupTimeoutAlert('Digite um departamento para o usuário!')
+      }
+      else if (this.user.password === "") {
+        this.popupTimeoutAlert('Digite uma senha para o usuário!')
+      }
+      else {
+        await this.emitter.emit("handleSubmitUser", this.user);
+        this.user.name = "";
+        this.user.email = "";
+        this.user.rules = "";
+        this.user.password = "";
+      }
     }
   },
 }

@@ -3,13 +3,12 @@
     <Template>
       <Grettings />
       <NavMenuDash />
+      
     </Template>
   <FooterUser />
 </template>
 
 <script>
-import { io } from 'socket.io-client';
-const socket = io('http://localhost:3002')
 import HeaderUser from '../../components/components-users/HeaderUser.vue';
 import Grettings from '../../components/components-users/Grettings.vue';
 import FooterUser from '../../components/components-users/FooterUser.vue';
@@ -24,11 +23,7 @@ export default {
     FooterUser,
     NavMenuDash,
     Template,
+  
   },
-  mounted() {
-    socket.on('is-logged', () => {
-      console.log('um novo usuario logou')
-    })
-  }
 }
 </script>
