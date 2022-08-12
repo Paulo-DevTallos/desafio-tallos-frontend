@@ -69,11 +69,7 @@ export default {
   async created() {
     //register user
     await this.emitter.on('handleSubmitUser', (data) => {
-      if(data === '') {
-        alert('digite um usuario')
-      }
       Services.createUser(data)
-      //alert('Usuário cadastrado com sucesso!')
       return this.listUsers()
     })
     //search users
@@ -141,9 +137,12 @@ export default {
       this.listUsers()
     })
 
-    await socket.on('remove-user', (id, msg) => {
-      //socket.to('remove-user', id).emit('teste', msg)
-      console.log(id)
+    await socket.on('remove-user', (id) => {
+     const sessionId = localStorage.getItem('session_id')
+      if(sessionId === id) {
+        localStorage.clear()
+        this.$router.push('/login')
+      }
       this.listUsers()
     })
 

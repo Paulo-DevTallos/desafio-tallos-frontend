@@ -43,7 +43,11 @@ export default {
   },
   methods: {
     async handleSubmitUser() {
-      await this.emitter.emit("handleSubmitUser", this.user);
+      await this.emitter.emit("handleSubmitUser", this.user)
+      this.user.name = ''
+      this.user.email = ''
+      this.user.rules = ''
+      this.user.password = ''
       this.hiddenPopup = true
       this.message = `Usuário ${this.user.name} cadastrado com sucesso!`
       setTimeout(() => {
