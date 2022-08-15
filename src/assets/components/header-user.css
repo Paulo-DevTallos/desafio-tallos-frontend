@@ -31,9 +31,13 @@
 
 .header-user .user-icon {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center; 
   cursor: pointer;
+  background-color: #e4e4e4;
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
 }
 
 .header-user .user-icon .user-name {
@@ -63,5 +67,16 @@
     background-color: #009acc;
     color: var(--primary-color);
     font-size: 10px;
+  }
+}
+
+@media(max-width: 480px) {
+  .header-user .user-icon {
+    width: 39px;
+    height: 39px;
+  }
+  .header-user .user-icon .icon{
+    width: 40px;
+    height: 35px;
   }
 }

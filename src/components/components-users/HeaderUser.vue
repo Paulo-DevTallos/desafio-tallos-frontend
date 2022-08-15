@@ -13,10 +13,7 @@
           <img src="/img/tallos-logo-(1).png" alt="botão do menu">
         </RouterLink>
       </div>
-      <div @click="toggleCardInfo" class="user-icon">
-        <div class="user-name">
-          {{ $store.state.user.name }}
-        </div> 
+      <div @click="toggleCardInfo" class="user-icon"> 
         <img src="/img/user.svg" class="icon" alt="icone do usuário">
         <CardInfo v-if="status"/>
       </div>
