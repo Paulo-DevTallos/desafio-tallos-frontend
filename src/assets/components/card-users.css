@@ -26,20 +26,6 @@
     border-bottom: 1px solid #c4c4c4;
 }
 
-
-/*.users li {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid #c6c6c6;
-    padding: 20px;
-}
-
-.users .title-id {
-    padding-right: 5px;
-    font-weight: bold;
-}*/
-
-
 .table .command-user {
     display: flex;
     justify-content: flex-start;
