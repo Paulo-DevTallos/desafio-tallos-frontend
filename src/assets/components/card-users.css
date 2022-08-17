@@ -1,8 +1,8 @@
-.users {
+.table {
     padding: 0 10px;
     font-size: 13px;
-    overflow-y: scroll;
     height: 60vh;
+    overflow-y: scroll;
 }
 
 .users .empty-list {
@@ -15,7 +15,19 @@
     text-align: center;
 }
 
-.users li {
+.table-thead {
+    width: 100%;
+    text-align: start;
+}
+
+.table-thead th, td {
+    text-align: start;
+    padding: 13px 0;
+    border-bottom: 1px solid #c4c4c4;
+}
+
+
+/*.users li {
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid #c6c6c6;
@@ -25,36 +37,35 @@
 .users .title-id {
     padding-right: 5px;
     font-weight: bold;
-}
+}*/
 
 
-.command-user {
-    height: 100%;
+.table .command-user {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 }
 
-.users .command-user svg {
-    font-size: 20px;
+.table .command-user svg {
+    font-size: 1.2rem;
     margin: 10px;
     cursor: pointer;
     transition: .2s ease-in;
 }
 
-.users .command-user svg:first-child:hover {
-    color: #00125b;
+.table .command-user svg:first-child:hover {
+    color: #009acc;
     transform: scale(1.1);
 }
 
-.users .command-user svg:last-child:hover {
+.table .command-user svg:last-child:hover {
     color: red;
     transform: scale(1.1);
 }
 
-@media(max-width: 480px) {
-    .users li {
-        padding: 20px 5px;
+@media(max-width: 850px) {
+    .table-thead th, td {
+        padding: 13px 15px;
         align-items: center;
     }
 }
