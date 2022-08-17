@@ -45,6 +45,10 @@
       :info_message="message"
       v-if="hiddenPopupAlert"
     />
+    <PopUpWarn 
+      :info_message="message"
+      v-if="hiddenPopupWarn"
+    />
   </div>
 </template>
 
@@ -55,8 +59,9 @@ import ConfirmModal from './ConfirmModal.vue';
 import UpdateForm from './UpdateForm.vue';
 import PopUpOk from '../alert-popups/PopUpOk.vue';
 import PopUpAlert from '../alert-popups/PopUpAlert.vue';
+import PopUpWarn from '../alert-popups/PopUpWarn.vue';
 
-const socket = io('http://localhost:3002')
+const socket = io('http://localhost:3005')
 
 export default {
   name: "CardUsers",
@@ -66,7 +71,8 @@ export default {
     PopUpOk,
     PopUpAlert,
     PopUpAlert,
-  },
+    PopUpWarn,
+},
   data() {
     return {
       users: [],
@@ -79,7 +85,8 @@ export default {
       accessLevel: true,
       message: '',
       hiddenPopupOk: false,
-      hiddenPopupAlert: false
+      hiddenPopupAlert: false,
+      hiddenPopupWarn: false,  
     };
   },
   computed: {
@@ -95,7 +102,7 @@ export default {
         this.popupTimeoutAlert('Usuário já existe!')
       })
       this.popupTimeoutOk(`Usuário ${data.name} cadastrado com sucesso!`)
-      return this.listUsers()
+      //return this.listUsers()
     })
     //search users
     await this.emitter.on('finduser', (user) => {
@@ -126,6 +133,13 @@ export default {
         this.hiddenPopupAlert = false
       }, 3000)
     },
+    popupTimeoutWarn(msg) {
+      this.hiddenPopupWarn = true
+      this.message = msg
+      setTimeout(() => {
+        this.hiddenPopupWarn = false
+      }, 3000)
+    },
     //list users 
     async listUsers() {
       await Services.listar().then(res => {
@@ -140,7 +154,7 @@ export default {
     
       await Services.update(user, id)
       this.call_form = false
-      this.listUsers()
+      //this.listUsers()
     },
     //delete user
     async deleteUser(id) {
@@ -181,8 +195,16 @@ export default {
       this.listUsers()
     })
 
-    socket.on('update-user', () => {
+    await socket.on('update-user', (id) => {
       this.listUsers()
+
+      if(localStorage.getItem('session_id') === id) {
+        this.popupTimeoutWarn('Suas permissões foram alteradas. Logue novamente')
+        setTimeout(() => {
+          localStorage.clear()
+          this.$router.push('/login')
+        }, 5000)
+      }
     })
 
     await socket.on('remove-user', () => {
