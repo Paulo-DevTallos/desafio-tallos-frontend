@@ -5,6 +5,7 @@
 	justify-content: center;
 	align-items: center;
 	box-shadow: -2px -2px 5px #80808086;
+	font-size: var(--secondary-font-text-size);
 }
 
 .footer-user strong {
