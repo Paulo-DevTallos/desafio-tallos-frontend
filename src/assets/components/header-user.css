@@ -1,7 +1,6 @@
 .header-user {
   width: 100%;
-  height: 14vh;
-  padding: 10px 80px;
+  padding: 16px 80px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -29,6 +28,16 @@
   width: 50px;
 }
 
+.header-user .user-field {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-user .user-field p {
+  font-size: var(--secondary-font-text-size);
+}
+
 .header-user .user-icon {
   display: flex;
   justify-content: center;
@@ -38,6 +47,7 @@
   height: 50px;
   width: 50px;
   border-radius: 100%;
+  margin-left: 20px;
 }
 
 .header-user .user-icon .user-name {
@@ -71,6 +81,9 @@
 }
 
 @media(max-width: 480px) {
+  .header-user .user-field p {
+    display: none;
+  }
   .header-user .user-icon {
     width: 39px;
     height: 39px;
