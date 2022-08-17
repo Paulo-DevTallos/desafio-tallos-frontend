@@ -1,35 +1,31 @@
 <template>
-  <div>
-    <ul class="users">
-      <div v-if="emptyList" class="empty-list">
-        Sua lista está vazia, Cadastre um novo usuário!
-      </div>
-      <li v-else v-for="user in users" :key="user._id">
-        <div>
-          <div class="content-user">
-            <span class="title-id">Nome:</span><span>{{ user.name }}</span>
-          </div>
-          <div class="content-user"> 
-            <span class="title-id">Email:</span><span>{{ user.email }}</span>
-          </div>
-          <div class="content-user"> 
-            <span class="title-id">Permissão:</span><span>{{ user.rules }}</span>
-          </div>
-        </div>
-        <div 
-          class="command-user" 
-          v-if="accessLevel && this.$store.state.user.rules === 'admin'"
-        >
-          <font-awesome-icon @click="() => editUser(user._id, user)" :icon="['fas', 'user-pen']" />
-          <font-awesome-icon @click="() => toggleHidden(user._id)" :icon="['fas', 'trash-can']" />
-        </div>
-        <ConfirmModal 
-          v-if="hidden && id === user._id" 
-          @delete-user="deleteUser(user._id)"
-          @close-modal="closeModal"
-        />
-      </li>
-    </ul>
+  <div class="table">
+    <table class="table-thead">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>E-mail</th>
+          <th>Permissão</th>
+          <th id="op-size">Opções</th>
+        </tr>
+      </thead>
+      <tbody v-for="user in users" :key="user._id">
+        <tr>
+          <td>{{ user.name }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.rules }}</td>
+          <td class="command-user">
+            <font-awesome-icon @click="() => editUser(user._id, user)" :icon="['fas', 'user-pen']" />
+            <font-awesome-icon @click="() => toggleHidden(user._id)" :icon="['fas', 'trash-can']" />
+          </td>
+          <ConfirmModal 
+            v-if="hidden && id === user._id" 
+            @delete-user="deleteUser(user._id)"
+            @close-modal="closeModal"
+          />
+        </tr>
+      </tbody>
+    </table>
     <div class="modal-update" v-show="call_form">
       <UpdateForm 
         :userData="userToUpdate"
@@ -102,7 +98,6 @@ export default {
         this.popupTimeoutAlert('Usuário já existe!')
       })
       this.popupTimeoutOk(`Usuário ${data.name} cadastrado com sucesso!`)
-      //return this.listUsers()
     })
     //search users
     await this.emitter.on('finduser', (user) => {
@@ -154,7 +149,6 @@ export default {
     
       await Services.update(user, id)
       this.call_form = false
-      //this.listUsers()
     },
     //delete user
     async deleteUser(id) {
