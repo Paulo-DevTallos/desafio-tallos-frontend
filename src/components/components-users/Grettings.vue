@@ -19,13 +19,13 @@ export default {
 			const date = new Date()
 
 			if(date.getHours() >= 0 && date.getHours() < 12) {
-				this.day_time = 'bom dia, é ótimo te ver por aqui! ;)'
+				this.day_time = 'bom dia, é bom te ver por aqui! ;)'
 			}
 			else if(date.getHours() >= 12 && date.getHours() < 18) {
-				this.day_time = 'boa tarde, é ótimo te ver por aqui! ;)'
+				this.day_time = 'boa tarde, é bom te ver por aqui! ;)'
 			}
 			else{
-				this.day_time = 'boa noite, é ótimo te ver por aqui! ;)'
+				this.day_time = 'boa noite, é bom te ver por aqui! ;)'
 			}
 		}, 1000)
 	}
