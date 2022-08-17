@@ -1,31 +1,27 @@
 <template>
   <div>
     <form @submit.prevent="$emit('update-user', user)" :userData="user">
-    <div>
-      <font-awesome-icon :icon="['fas', 'file-pen']" />
-    </div>
-    <div>
-      <input type="text" v-model="user.name" placeholder="Digite um nome de usuário">
-      <input type="text" v-model="user.email" placeholder="Digite o e-mail do usuário">
-      <select name="permission" v-model="user.rules">
-        <option value="" disabled>--Selecione a permissão--</option>
-        <option value="operador">Operador</option>
-        <option value="admin">Admin</option>
-      </select>
-      <div class="">
-        <button type="submit">
-          {{ title }}
-        </button>
-        <button @click="$emit('close-modal-update')" id="color-btn">
-          Cancelar
-        </button>
+      <div>
+        <font-awesome-icon :icon="['fas', 'file-pen']" />
       </div>
-    </div>
-  </form>
-  <PopUpOk 
-    :info_message="message"
-    v-if="hiddenPopup"
-  />
+      <div>
+        <input type="text" v-model="user.name" placeholder="Digite um nome de usuário">
+        <input type="text" v-model="user.email" placeholder="Digite o e-mail do usuário">
+        <select name="permission" v-model="user.rules">
+          <option value="" disabled>--Selecione a permissão--</option>
+          <option value="operador">Operador</option>
+          <option value="admin">Admin</option>
+        </select>
+        <div class="">
+          <button type="submit">
+            {{ title }}
+          </button>
+          <button @click="$emit('close-modal-update')" id="color-btn">
+            Cancelar
+          </button>
+        </div>
+      </div>
+    </form>
   </div>
 </template>
 
@@ -43,7 +39,6 @@ export default {
       emits: ["update-user"],
       title: "Atualizar",
       message: 'teste',
-      hiddenPopup: true,
       user: {
         name: this.userData.name,
         email: this.userData.email,
