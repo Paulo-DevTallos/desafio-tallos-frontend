@@ -26,7 +26,7 @@
 
 <script>
 import io from 'socket.io-client'
-const socket = io('http://localhost:3002')
+const socket = io('http://localhost:3005')
 import SupportView from '../../components/alert-popups/SupportView.vue';
 
 export default {

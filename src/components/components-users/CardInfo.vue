@@ -19,7 +19,7 @@
 <script>
 import io from 'socket.io-client';
 
-const socket = io('http://localhost:3002')
+const socket = io('http://localhost:3005')
 export default {
   name: 'CardInfo',
   methods: {

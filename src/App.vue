@@ -14,7 +14,7 @@
 import { io } from 'socket.io-client';
 import PopUpWarn from './components/alert-popups/PopUpWarn.vue';
 import PopUpAlert from './components/alert-popups/PopUpAlert.vue';
-const socket = io('http://localhost:3002')
+const socket = io('http://localhost:3005')
 export default {
   name: 'App',
   components: {

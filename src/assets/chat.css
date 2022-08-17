@@ -71,7 +71,7 @@
 
 .form-user-chat > input, button {
     height: 40px;
-    padding: 0 20px;
+    padding: 0;
     border-radius: 10px;
     border: none;
 }
