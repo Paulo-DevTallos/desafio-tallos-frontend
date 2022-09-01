@@ -8,6 +8,7 @@
   top: 80px;
   right: 85px;
   padding: 10px;
+  font-size: var(--secondary-font-text-size);
   cursor: auto;
   animation: appearOnClick .2s linear;
 }

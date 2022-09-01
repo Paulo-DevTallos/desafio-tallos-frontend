@@ -13,6 +13,7 @@
   height: 150px;
   margin: 10px;
   border-radius: 5px;
+  font-size: var(--secondary-font-text-size);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,6 +21,10 @@
   background-color: var(--primary-color);
   filter: drop-shadow(-2px 2px 3px #c4c4c4);
   cursor: pointer;
+}
+
+.container-dash li svg {
+  font-size: 20px;
 }
 
 .container-dash li span {
