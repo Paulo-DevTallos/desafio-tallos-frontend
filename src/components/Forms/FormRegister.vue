@@ -6,8 +6,8 @@
 		</div>
 		<form @submit.prevent="$emit('handleSubmit', user)">
 			<div class="tag-form-info">
-				<span>Informações pessoais</span>
-				<div class="inputs-container">
+				<span @click="hiddenPersonalInfo">Informações pessoais</span>
+				<div class="inputs-container" v-if="hiddenPersonal">
 					<div>
 						<label>Nome Completo</label>
 						<BaseInput
@@ -56,16 +56,104 @@
 					</div>
 				</div>
 			</div>
+			<div class="tag-form-info">
+				<span @click="hiddenAddressInfo">Enredeço</span>
+				<div class="inputs-container" v-if="hiddenAddress">
+					<div>
+						<label>Rua</label>
+						<BaseInput
+							type="text"
+							placeholder="Ex.: Av. Beira Mar, 1010"
+						/>
+					</div>
+					<div>
+						<label>Complemento</label>
+						<BaseInput
+							type="text"
+							placeholder="Ex.: Casa, Ap, Sala"
+						/>
+					</div>
+					<div>
+						<label>CEP</label>
+						<BaseInput
+							type="text"
+							placeholder="00.000-000"
+						/>
+					</div>
+					<div>
+						<label>Bairro</label>
+						<BaseInput
+							type="text"
+							placeholder="Ex.: Centro"
+						/>
+					</div>
+					<div>
+						<label>Cidade</label>
+						<BaseInput
+							type="text"
+							placeholder="Ex.: Fortaleza"
+						/>
+					</div>
+					<div>
+						<label>País</label>
+						<BaseInput
+							type="text"
+							placeholder="Ex.: Brasil"
+						/>
+					</div>
+				</div>
+			</div>
+			<div class="tag-form-info">
+				<span @click="hiddenCompanyInfo">Organização</span>
+				<div class="inputs-container" v-if="hiddenCompany">
+					<div>
+						<label>Cargo</label>
+						<BaseInput
+							type="text"
+							placeholder="Ex.: Vendedor"
+						/>
+					</div>
+					<div>
+						<label>Departamento</label>
+						<BaseInput
+							type="text"
+							placeholder="Ex.: Vendas"
+						/>
+					</div>
+					<div>
+						<label>E-mail corporativo</label>
+						<BaseInput
+							type="text"
+							placeholder="Ex.: email@tallos.com"
+						/>
+					</div>
+					<div>
+						<label>Área de atuação (Micro-setor)</label>
+						<BaseInput
+							type="text"
+							placeholder="Ex.: Tecnologia"
+						/>
+					</div>
+				</div>
+			</div>
+			<div class="btn-spacing">
+				<MainButton
+					type="submit"
+					class="success-btn"
+					:title_btn="'Cadastrar'"
+				/>
+			</div>
 		</form>
 	</div>
 </template>
 
 <script>
+import MainButton from "../Buttons/MainButton.vue";
 import BaseInput from "../Inputs/BaseInput.vue";
 
 export default {
 	name: "FormRegister",
-	components: { BaseInput },
+	components: { BaseInput, MainButton },
 	emits: ['handleSubmit'],
 };
 </script>
