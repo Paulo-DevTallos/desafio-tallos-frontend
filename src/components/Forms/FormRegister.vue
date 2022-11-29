@@ -155,5 +155,38 @@ export default {
 	name: "FormRegister",
 	components: { BaseInput, MainButton },
 	emits: ['handleSubmit'],
+	data() {
+		return {
+			hiddenPersonal: false,
+			hiddenAddress: false,
+			hiddenCompany: false,
+		}
+	},
+	methods: {
+		hiddenPersonalInfo() {
+			this.hiddenPersonal = !this.hiddenPersonal
+
+			if (this.hiddenPersonal) {
+				this.hiddenAddress = false
+				this.hiddenCompany = false
+			}
+		},
+		hiddenAddressInfo() {
+			this.hiddenAddress = !this.hiddenAddress
+
+			if (this.hiddenAddress) {
+				this.hiddenPersonal = false
+				this.hiddenCompany = false
+			}
+		},
+		hiddenCompanyInfo() {
+			this.hiddenCompany = !this.hiddenCompany
+
+			if (this.hiddenCompany) {
+				this.hiddenPersonal = false
+				this.hiddenAddress = false
+			}
+		}
+	}
 };
 </script>
