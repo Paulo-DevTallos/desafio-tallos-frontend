@@ -1,0 +1,15 @@
+.page-login {
+	display: flex;
+	height: 100vh;
+
+	.banner {
+		width: 65%;
+		@include bg-application(url('/img/image-sistema.jpg'), no-repeat, left, cover);
+	}
+
+	.login-container {
+		width: 35%;
+    background-color: #fff;
+		@include alignment-items(flex, unset, center);
+	}
+}

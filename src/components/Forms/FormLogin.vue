@@ -13,7 +13,10 @@
 			/>
 		</div>
 		<div>
-			<MainButton :title_btn="'Login'" />
+			<MainButton
+				type="submit"
+				:title_btn="'Login'"
+			/>
 		</div>
 	</form>
 </template>

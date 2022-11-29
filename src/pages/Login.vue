@@ -1,7 +1,6 @@
 <template>
   <div class="page-login">
-    <div class="banner">
-    </div>
+    <div class="banner"></div>
     <div class="login-container">
 			<div class="logo-container">
 				<img src="/img/tallos-logo-(1).png" alt="Logo Tallos">
@@ -14,10 +13,10 @@
             @submitUser="handleSubmitLogin"
             :btn_title="title"
           />
-          <p>Desafio Tallos gerenciador de funcionários &copy;2022</p>
         </div>
       </form>
 			<FormLogin />
+			<p>Desafio Tallos gerenciador de funcionários &copy;2022</p>
       <PopUpAlert
         :info_alert="user_connected"
         v-if="isLoggedUser"/>

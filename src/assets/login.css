@@ -1,15 +1,3 @@
-.page-login {
-    display: flex;
-    height: 100vh;
-}
-
-.page-login .banner {
-    width: 65%;
-    background-image: url('/img/image-sistema.jpg');
-    background-repeat: no-repeat;
-    background-position: left;
-    background-size: cover;
-}
 
 .page-login .login-container {
     width: 35%;

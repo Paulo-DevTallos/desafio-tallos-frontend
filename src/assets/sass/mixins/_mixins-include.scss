@@ -1,5 +1,14 @@
+//alignment
 @mixin alignment-items($flex, $justify, $align) {
 	display: $flex;
 	justify-content: $justify;
 	align-items: $align;
+}
+
+//set-bg
+@mixin bg-application($image, $repetition, $position, $size) {
+	background-image: $image;
+	background-repeat: $repetition;
+	background-position: $position;
+	background-size: $size;
 }
