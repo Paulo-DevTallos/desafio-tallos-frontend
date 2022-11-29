@@ -16,6 +16,7 @@
 			<MainButton
 				type="submit"
 				:title_btn="'Login'"
+				class="success-btn"
 			/>
 		</div>
 	</form>
