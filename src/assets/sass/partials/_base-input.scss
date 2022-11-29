@@ -1,0 +1,14 @@
+.base-input {
+	border: 1px solid gray;
+	border-radius: 8px;
+	padding: 0 12px;
+	height: 30px;
+	margin-bottom: 5px;
+
+	input {
+		height: 100%;
+		border: none;
+		outline: none;
+		font-size: 0.8rem;
+	}
+}

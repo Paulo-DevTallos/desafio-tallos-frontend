@@ -1,9 +1,11 @@
 <template>
-	<input
-		v-bind="$attrs"
-		v-model="inputValue"
-		@blur="handleValue"
-	/>
+	<div class="base-input">
+		<input
+			v-bind="$attrs"
+			v-model="inputValue"
+			@blur="handleValue"
+		/>
+	</div>
 </template>
 
 <script>

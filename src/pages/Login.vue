@@ -1,23 +1,24 @@
 <template>
   <div class="page-login">
-    <div class="banner"> 
+    <div class="banner">
     </div>
     <div class="login-container">
+			<div class="logo-container">
+				<img src="/img/tallos-logo-(1).png" alt="Logo Tallos">
+			</div>
       <form @submit.prevent="handleSubmitLogin">
-        <div class="logo-container">
-          <img src="/img/tallos-logo-(1).png" alt="Logo Tallos">
-        </div>
         <div>
           <input type="text" v-model="user.email" placeholder="Digite seu e-mail">
           <input type="password" v-model="user.password" placeholder="Digite sua senha">
-          <ButtonSubmit 
+          <ButtonSubmit
             @submitUser="handleSubmitLogin"
             :btn_title="title"
           />
           <p>Desafio Tallos gerenciador de funcionários &copy;2022</p>
         </div>
       </form>
-      <PopUpAlert 
+			<FormLogin />
+      <PopUpAlert
         :info_alert="user_connected"
         v-if="isLoggedUser"/>
     </div>
@@ -27,12 +28,14 @@
 <script>
 import PopUpAlert from '../components/alert-popups/PopUpAlert.vue';
 import ButtonSubmit from '../components/components-users/ButtonSubmit.vue';
+import FormLogin from '../components/Forms/FormLogin.vue';
 
 export default {
   name: "About",
   components: {
     PopUpAlert,
-    ButtonSubmit
+    ButtonSubmit,
+    FormLogin
 },
   data() {
     return {
