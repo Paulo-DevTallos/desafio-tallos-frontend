@@ -182,7 +182,6 @@ export default {
 			hiddenAddress: false,
 			hiddenCompany: false,
 			user: {
-				cod_user: null,
 				name: '',
 				email: '',
 				contact: '',

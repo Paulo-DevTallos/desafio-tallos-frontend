@@ -4,8 +4,7 @@
       <Typography :title="title" />
       <div class="container-contacts">
         <div class="container-form">
-          <!--<FormUserData />-->
-					<FormRegister />
+					<FormRegister @handleSubmit="createUser"/>
         </div>
         <div class="user-list">
           <header class="user-avaliable">
@@ -27,7 +26,6 @@ import FooterUser from '../../components/components-users/FooterUser.vue';
 import Typography from '../../components/components-users/Typography.vue';
 import CardUsers from '../../components/components-users/CardUsers.vue';
 import Template from '../../components/components-users/Template.vue';
-import FormUserData from '../../components/components-users/FormUserData.vue';
 import SearchBar from '../../components/components-users/SearchBar.vue';
 import FormRegister from '../../components/Forms/FormRegister.vue';
 
@@ -39,7 +37,6 @@ export default {
     Typography,
     CardUsers,
     Template,
-    FormUserData,
     SearchBar,
     FormRegister
 },
@@ -50,7 +47,9 @@ export default {
     }
   },
   methods: {
-
+		createUser(user) {
+			console.log(user)
+		}
   }
 }
 </script>
