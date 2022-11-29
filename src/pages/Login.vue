@@ -39,9 +39,14 @@ export default {
   },
   methods: {
     submitLogin(user) {
-      this.$store.dispatch("handleSubmitLogin", user);
+			this.$store.dispatch('userStore/login', user);
       alert('usuario logado')
     }
   },
+
+	mounted() {
+		console.log(this.$store)
+
+	}
 }
 </script>

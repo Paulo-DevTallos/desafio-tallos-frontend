@@ -19,8 +19,8 @@
 </template>
 
 <script>
-//import Services from  '../../services/axios-request'
-
+import socketModule from '../../services/socket'
+import userService from '../../services/axios-request'
 import HeaderUser from '../../components/components-users/HeaderUser.vue';
 import FooterUser from '../../components/components-users/FooterUser.vue';
 import Typography from '../../components/components-users/Typography.vue';
@@ -47,10 +47,22 @@ export default {
     }
   },
   methods: {
-		createUser(user) {
-			console.log(user)
+		async createUser(user) {
+			await userService.createUser(user).then(res => {
+				if (res.status === 201) {
+					console.log('Usuario criado!')
+				}
+			})
 		}
-  }
+  },
+
+	mounted() {
+		socketModule.connectionSocket().on(
+			'user-created', () => {
+				console.log('teste')
+			}
+		)
+	}
 }
 </script>
 <style scoped>
