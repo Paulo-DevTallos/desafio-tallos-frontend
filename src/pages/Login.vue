@@ -16,7 +16,6 @@
 
 <script>
 import PopUpAlert from '../components/alert-popups/PopUpAlert.vue';
-import ButtonSubmit from '../components/components-users/ButtonSubmit.vue';
 import FormLogin from '../components/Forms/FormLogin.vue';
 
 export default {
@@ -45,7 +44,3 @@ export default {
   },
 }
 </script>
-
-<style scoped>
-  @import '../assets/login.css';
-</style>
