@@ -9,7 +9,7 @@ services:
       - ./:/home/app
     working_dir: /home/app
     ports:
-      - 8080:8080
+      - 5000:5000
     environment: 
       - CHOKIDAR_USEPOLLING=true
     

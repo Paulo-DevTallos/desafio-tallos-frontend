@@ -56,9 +56,8 @@ export default {
     async updateUser(user) {
       const id = this.teste_id
 
-      await Services.update(user, id).then(res => {
-          Services.listar() 
-      })
+      await Services.update(user, id)
+      Services.listar() 
 
       this.call_form = false
     },
@@ -75,11 +74,6 @@ export default {
         this.hidden = false
       })
     },
-
-    //list user 
-    async listuser(email) {
-      console.log('teste')
-    }, 
 
     //toggle functions
     editUser(id) {

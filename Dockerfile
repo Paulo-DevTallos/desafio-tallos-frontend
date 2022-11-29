@@ -4,4 +4,4 @@ WORKDIR /home/app
 
 COPY . .
 
-EXPOSE 8080
+EXPOSE 5000

@@ -27,9 +27,9 @@ export default {
       emits: ['update-user'],
       title: 'Atualizar',
       user: {
-        name: "",
-        email: "",
-        rules: "",
+        name: this.user.name,
+        email: this.user.email,
+        rules: this.user.rules,
       }
     }
   }
