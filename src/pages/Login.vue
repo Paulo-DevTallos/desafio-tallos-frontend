@@ -5,16 +5,6 @@
 			<div class="logo-container">
 				<img src="/img/tallos-logo-(1).png" alt="Logo Tallos">
 			</div>
-      <form @submit.prevent="handleSubmitLogin">
-        <div>
-          <input type="text" v-model="user.email" placeholder="Digite seu e-mail">
-          <input type="password" v-model="user.password" placeholder="Digite sua senha">
-          <ButtonSubmit
-            @submitUser="handleSubmitLogin"
-            :btn_title="title"
-          />
-        </div>
-      </form>
 			<FormLogin />
 			<p>Desafio Tallos gerenciador de funcionários &copy;2022</p>
       <PopUpAlert

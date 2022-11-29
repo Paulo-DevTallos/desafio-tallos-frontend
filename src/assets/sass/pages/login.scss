@@ -10,6 +10,31 @@
 	.login-container {
 		width: 35%;
     background-color: #fff;
-		@include alignment-items(flex, unset, center);
+		@include alignment-items(flex, center, center);
+		flex-direction: column;
+		padding: 0 40px;
+
+		.logo-container {
+			margin-bottom: 40px;
+
+			img {
+				width: 80px;
+			}
+		}
+
+		form {
+			padding: 0 20px;
+			width: 80%;
+			text-align: center;
+		}
+
+		p {
+			margin-top: 80px;
+			text-align: center;
+			font-size: 0.8rem;
+			color: #808080;
+		}
 	}
+
+
 }
