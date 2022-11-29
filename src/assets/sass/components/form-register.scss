@@ -1,0 +1,59 @@
+.form-register-contact {
+	width: 500px;
+	padding: 50px;
+
+	.icon-container {
+		@include alignment-items(flex, center, center);
+		flex-direction: column;
+		margin-bottom: 30px;
+
+		svg {
+			font-size: 50px;
+			margin-bottom: 10px;
+			color: #009acc;
+		}
+
+		span {
+			font-size: 20px;
+			font-weight: 600;
+		}
+	}
+
+	.tag-form-info {
+		cursor: pointer;
+		border: 1px solid #d3d2d2;
+		padding: 10px 20px;
+
+		span {
+			display: block;
+			color: #009acc;
+			transition: .2s ease-in-out;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+
+		.inputs-container {
+			margin: 20px 0;
+
+			.base-input {
+				border-radius: 5px;
+				border-color: rgb(159, 159, 159);
+
+				input {
+					border-radius: 8px;
+					padding: 0 12px;
+				}
+			}
+
+			textarea {
+				height: 60px;
+				width: 100%;
+				border-radius: 5px;
+				font-family: 'Nunito', Arial, Helvetica, sans-serif;
+				padding: 8px 12px;
+			}
+		}
+	}
+}

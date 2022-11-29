@@ -4,7 +4,8 @@
       <Typography :title="title" />
       <div class="container-contacts">
         <div class="container-form">
-          <FormUserData />
+          <!--<FormUserData />-->
+					<FormRegister />
         </div>
         <div class="user-list">
           <header class="user-avaliable">
@@ -28,6 +29,7 @@ import CardUsers from '../../components/components-users/CardUsers.vue';
 import Template from '../../components/components-users/Template.vue';
 import FormUserData from '../../components/components-users/FormUserData.vue';
 import SearchBar from '../../components/components-users/SearchBar.vue';
+import FormRegister from '../../components/Forms/FormRegister.vue';
 
 export default {
   name: "Contacts",
@@ -39,6 +41,7 @@ export default {
     Template,
     FormUserData,
     SearchBar,
+    FormRegister
 },
   emits: ['finduser'],
   data() {
@@ -47,7 +50,7 @@ export default {
     }
   },
   methods: {
-    
+
   }
 }
 </script>
