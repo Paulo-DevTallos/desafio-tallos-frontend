@@ -28,6 +28,7 @@
 import CardInfo from "./CardInfo.vue";
 export default {
 	name: "HeaderUser",
+	components: { CardInfo },
 	data() {
 		return {
 			status: null,
@@ -38,6 +39,5 @@ export default {
 			this.status = !this.status;
 		},
 	},
-	components: { CardInfo },
 };
 </script>
