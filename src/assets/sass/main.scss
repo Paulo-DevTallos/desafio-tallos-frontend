@@ -3,7 +3,9 @@
 @import './mixins/mixins-include';
 
 //components structure
-@import './components/header.scss';
+@import './components/header';
+@import './components/template-default';
+@import './components/header-user';
 
 //partials
 @import './partials/base-input';

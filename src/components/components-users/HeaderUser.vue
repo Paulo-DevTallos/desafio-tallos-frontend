@@ -1,46 +1,43 @@
 <template>
-  <header class="header-user">
-      <div class="useful-links">
-        <a href="https://tallos.com.br/blog/" target="_blank">
-          Tallos blog
-        </a>
-        <a href="https://help.tallos.com.br/" target="_blank">
-          FAQ
-        </a>
-      </div>
-      <div>
-        <RouterLink to="/painel">
-          <img src="/img/tallos-logo-(1).png" alt="botão do menu">
-        </RouterLink>
-      </div>
-      <div @click="toggleCardInfo" class="user-icon">
-        <div class="user-name">
-          {{ $store.state.user.name }}
-        </div> 
-        <img src="/img/user.svg" class="icon" alt="icone do usuário">
-        <CardInfo v-if="status"/>
-      </div>
-  </header>
+	<header class="header-user">
+		<div class="useful-links">
+			<div class="menu-mobile">
+				<font-awesome-icon :icon="['fas', 'bars']" />
+			</div>
+			<div>
+				<a href="https://tallos.com.br/blog/" target="_blank"> Tallos blog </a>
+				<a href="https://help.tallos.com.br/" target="_blank"> FAQ </a>
+			</div>
+		</div>
+		<div>
+			<RouterLink to="/painel">
+				<img src="/img/tallos-logo-(1).png" alt="botão do menu" />
+			</RouterLink>
+		</div>
+		<div @click="toggleCardInfo" class="user-card">
+			<div class="user-name">
+				{{ $store.state.user.name }}
+			</div>
+			<img src="/img/user.svg" class="icon" alt="icone do usuário" />
+			<CardInfo v-if="status" />
+		</div>
+	</header>
 </template>
 
 <script>
-import CardInfo from './CardInfo.vue';
+import CardInfo from "./CardInfo.vue";
 export default {
-    name: "HeaderUser",
-    data() {
-      return {
-        status: null,
-      }
-    },
-    methods: {
-      toggleCardInfo() {
-        this.status = !this.status
-      }
-    },
-    components: { CardInfo }
-}
+	name: "HeaderUser",
+	data() {
+		return {
+			status: null,
+		};
+	},
+	methods: {
+		toggleCardInfo() {
+			this.status = !this.status;
+		},
+	},
+	components: { CardInfo },
+};
 </script>
-
-<style scoped>
-  @import '../../assets/components/header-user.css';
-</style>

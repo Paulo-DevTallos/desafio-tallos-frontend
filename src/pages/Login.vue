@@ -5,7 +5,9 @@
 			<div class="logo-container">
 				<img src="/img/tallos-logo-(1).png" alt="Logo Tallos">
 			</div>
-			<FormLogin />
+			<FormLogin
+				@handleLogin="submitLogin"
+			/>
 			<p>Desafio Tallos gerenciador de funcionários &copy;2022</p>
       <PopUpAlert
         :info_alert="user_connected"
@@ -22,7 +24,6 @@ export default {
   name: "About",
   components: {
     PopUpAlert,
-    ButtonSubmit,
     FormLogin
 },
   data() {
@@ -37,8 +38,8 @@ export default {
     };
   },
   methods: {
-    handleSubmitLogin() {
-      this.$store.dispatch("handleSubmitLogin", this.user);
+    submitLogin(user) {
+      this.$store.dispatch("handleSubmitLogin", user);
       alert('usuario logado')
     }
   },

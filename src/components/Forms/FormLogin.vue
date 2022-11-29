@@ -29,6 +29,7 @@ import BaseInput from "../Inputs/BaseInput.vue";
 export default {
 	name: "FormLogin",
 	components: { BaseInput, MainButton },
+	emits: ['handleLogin'],
 	data() {
 		return {
 			user: {
