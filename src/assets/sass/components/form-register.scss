@@ -37,6 +37,10 @@
 		.inputs-container {
 			margin: 20px 0;
 
+			label {
+				font-size: 12px;
+			}
+
 			.base-input {
 				border-radius: 5px;
 				border-color: rgb(159, 159, 159);
@@ -58,7 +62,7 @@
 	}
 
 	.btn-spacing {
-		padding-top: 40px;
+		padding-top: 30px;
 		text-align: center;
 	}
 }

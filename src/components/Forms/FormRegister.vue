@@ -12,6 +12,7 @@
 						<label>Nome Completo</label>
 						<BaseInput
 							type="text"
+							v-model="user.name"
 							placeholder="Ex.: Joao Carlos Silveira"
 						/>
 					</div>
@@ -19,6 +20,7 @@
 						<label>E-mail</label>
 						<BaseInput
 							type="text"
+							v-model="user.email"
 							placeholder="Ex.: meuemail@example.com"
 						/>
 					</div>
@@ -26,6 +28,7 @@
 						<label>Contato</label>
 						<BaseInput
 							type="text"
+							v-model="user.contact"
 							placeholder="Ex.: Somente número"
 						/>
 					</div>
@@ -33,6 +36,7 @@
 						<label>CPF</label>
 						<BaseInput
 							type="text"
+							v-model="user.cpf"
 							placeholder="Ex.: 000.000.000-00"
 						/>
 					</div>
@@ -40,17 +44,23 @@
 						<label>Matricula</label>
 						<BaseInput
 							type="text"
+							v-model="user.register_code"
 							placeholder="Ex.: Somente números"
 						/>
 					</div>
 					<div>
 						<label>Descrição</label>
-						<textarea class="textarea-field" placeholder="Informações sobre o contato"></textarea>
+						<textarea
+							class="textarea-field"
+							v-model="user.description"
+							placeholder="Informações sobre o contato"
+						></textarea>
 					</div>
 					<div>
 						<label>Senha</label>
 						<BaseInput
 							type="password"
+							v-model="user.password"
 							placeholder="*****"
 						/>
 					</div>
@@ -63,6 +73,7 @@
 						<label>Rua</label>
 						<BaseInput
 							type="text"
+							v-model="user.location.address.street"
 							placeholder="Ex.: Av. Beira Mar, 1010"
 						/>
 					</div>
@@ -70,6 +81,7 @@
 						<label>Complemento</label>
 						<BaseInput
 							type="text"
+							v-model="user.location.address.complement"
 							placeholder="Ex.: Casa, Ap, Sala"
 						/>
 					</div>
@@ -77,6 +89,7 @@
 						<label>CEP</label>
 						<BaseInput
 							type="text"
+							v-model="user.location.address.zipcode"
 							placeholder="00.000-000"
 						/>
 					</div>
@@ -84,6 +97,7 @@
 						<label>Bairro</label>
 						<BaseInput
 							type="text"
+							v-model="user.location.address.neighborhood"
 							placeholder="Ex.: Centro"
 						/>
 					</div>
@@ -91,6 +105,7 @@
 						<label>Cidade</label>
 						<BaseInput
 							type="text"
+							v-model="user.location.address.city"
 							placeholder="Ex.: Fortaleza"
 						/>
 					</div>
@@ -98,6 +113,7 @@
 						<label>País</label>
 						<BaseInput
 							type="text"
+							v-model="user.location.address.country"
 							placeholder="Ex.: Brasil"
 						/>
 					</div>
@@ -110,6 +126,7 @@
 						<label>Cargo</label>
 						<BaseInput
 							type="text"
+							v-model="user.corparative_info.office"
 							placeholder="Ex.: Vendedor"
 						/>
 					</div>
@@ -117,6 +134,7 @@
 						<label>Departamento</label>
 						<BaseInput
 							type="text"
+							v-model="user.corparative_info.dept"
 							placeholder="Ex.: Vendas"
 						/>
 					</div>
@@ -124,13 +142,16 @@
 						<label>E-mail corporativo</label>
 						<BaseInput
 							type="text"
+							v-model="user.corparative_info.corporative_mail"
 							placeholder="Ex.: email@tallos.com"
 						/>
 					</div>
+					<!--Cadastro de setores para criar relação com DB-->
 					<div>
 						<label>Área de atuação (Micro-setor)</label>
 						<BaseInput
 							type="text"
+							v-model="user.corparative_info.sub_dept"
 							placeholder="Ex.: Tecnologia"
 						/>
 					</div>
@@ -160,6 +181,32 @@ export default {
 			hiddenPersonal: false,
 			hiddenAddress: false,
 			hiddenCompany: false,
+			user: {
+				cod_user: null,
+				name: '',
+				email: '',
+				contact: '',
+				cpf: '',
+				register_code: '',
+				description: '',
+				password: '',
+				location: {
+					address: {
+						street: '',
+						complement: '',
+						zipcode: '',
+						neighborhood: '',
+						city: '',
+						country: '',
+					},
+				},
+				corparative_info: {
+					office: '',
+					dept: '',
+					corporative_mail: '',
+					sub_dept: '',
+				},
+			}
 		}
 	},
 	methods: {
