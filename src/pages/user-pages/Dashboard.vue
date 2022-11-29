@@ -2,6 +2,7 @@
 	<HeaderUser />
 	<Template>
 		<Grettings />
+		<Typography :title="'Dashboard'"/>
 		<div class="container-interactions">
 			<InfoCardStatistic :icon_name="'users'" :card_description="description" />
 			<NavMenuDash />
@@ -16,20 +17,22 @@ const socket = io("http://localhost:3002");
 import HeaderUser from "../../components/components-users/HeaderUser.vue";
 import Grettings from "../../components/components-users/Grettings.vue";
 import FooterUser from "../../components/components-users/FooterUser.vue";
-import NavMenuDash from "../../components/components-users/NavMenuDash.vue";
+import NavMenuDash from "../../components/Menus/NavMenuDash.vue";
 import Template from "../../components/components-users/Template.vue";
 import InfoCardStatistic from "../../components/Cards/InfoCardStatistic.vue";
+import Typography from "../../components/components-users/Typography.vue";
 
 export default {
 	name: "Dashboard",
 	components: {
-		HeaderUser,
-		Grettings,
-		FooterUser,
-		NavMenuDash,
-		Template,
-		InfoCardStatistic,
-	},
+    HeaderUser,
+    Grettings,
+    FooterUser,
+    NavMenuDash,
+    Template,
+    InfoCardStatistic,
+    Typography
+},
 	data() {
 		return {
 			description: 'Quantidade de usuários cadastrados na plataforma',
@@ -46,5 +49,6 @@ export default {
 <style scoped>
 .container-interactions {
 	display: flex;
+	margin: 10px 0 30px;
 }
 </style>
