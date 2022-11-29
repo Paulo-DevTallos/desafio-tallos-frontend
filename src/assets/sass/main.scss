@@ -1,1 +1,6 @@
+//setup application
 @import './base';
+@import './mixins/mixins-include';
+
+//components structure
+@import './components/header.scss';

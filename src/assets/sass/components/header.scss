@@ -1,0 +1,10 @@
+.header {
+	background-color: #fff;
+  box-shadow: 5px 0 10px rgba(128, 128, 128, 0.445);
+  padding: 15px 150px;
+	@include alignment-items(flex, space-between, center);
+
+	img {
+		@include alignment-items(flex, space-between, center);
+	}
+}

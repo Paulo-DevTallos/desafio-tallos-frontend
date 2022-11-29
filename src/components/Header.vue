@@ -12,12 +12,8 @@ import NavBar from './NavBar.vue'
 
 export default {
   name: "header",
-  components: { 
-    NavBar, 
+  components: {
+    NavBar,
   }
 }
 </script>
-
-<style scoped>
-  @import '../assets/components/header.css';
-</style>
