@@ -1,6 +1,7 @@
 export default {
 	GET_USERS(state, payload) {
 		console.log(state, payload)
+		state.users = payload
 	},
 
 	LOGIN(state, payload) {
