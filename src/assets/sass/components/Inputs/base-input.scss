@@ -1,0 +1,10 @@
+.base-input {
+	border-radius: 5px;
+	border-color: rgb(159, 159, 159);
+	@include alignment-items(flex, center, center);
+
+	input {
+		border-radius: 8px;
+		padding: 0 12px;
+	}
+}
