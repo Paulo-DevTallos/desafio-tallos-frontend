@@ -16,7 +16,7 @@
 		</div>
 		<div @click="toggleCardInfo" class="user-card">
 			<div class="user-name">
-				{{ $store.state.user.name }}
+				{{ $store.state.userStore.userName }}
 			</div>
 			<img src="/img/user.svg" class="icon" alt="icone do usuário" />
 			<CardInfo v-if="status" />

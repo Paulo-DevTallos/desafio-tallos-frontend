@@ -2,12 +2,10 @@
 	<form @submit.prevent="$emit('handleLogin', user)">
 		<div>
 			<BaseInput
-				type="text"
 				v-model="user.email"
 				placeholder="Digite seu e-mail"
 			/>
 			<BaseInput
-				type="password"
 				v-model="user.password"
 				placeholder="Digite sua senha"
 				:hiddenRevellingPassword="true"
