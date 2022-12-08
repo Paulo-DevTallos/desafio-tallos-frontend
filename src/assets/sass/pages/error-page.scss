@@ -1,0 +1,25 @@
+.page-error-container {
+	@include alignment-items(flex, center, center);
+	height: 100vh;
+
+	.content-error {
+		width: 50%;
+		@include alignment-items(flex, center, center);
+		flex-direction: column;
+
+		img {
+			width: 270px;
+			margin-bottom: 20px;
+		}
+
+		h3 {
+			margin: 40px;
+			font-size: 1.5rem;
+			color: #009acc;
+		}
+
+		.logo {
+			width: 130px;
+		}
+	}
+}
