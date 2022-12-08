@@ -18,7 +18,7 @@ export default {
 				localStorage.setItem('token', res.data.access_token)
 				context.commit('LOGIN', res.data)
 
-				window.location.replace('/painel')
+				window.location.replace('/app')
 			}
 		})
 	}
