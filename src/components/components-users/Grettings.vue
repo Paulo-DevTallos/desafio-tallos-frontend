@@ -1,7 +1,7 @@
 <template>
 	<div class="grettings-container">
 		<img src="/img/user.svg" class="icon" alt="icon de usuario">
-		<span>Olá {{ $store.state.user.name }} {{ day_time }}, como é bom te ver por aqui! ;)</span>
+		<span>Olá {{ $store.state.userStore.userName }} {{ day_time }}, como é bom te ver por aqui! ;)</span>
 	</div>
 </template>
 

@@ -1,11 +1,15 @@
 <template>
-  <main class="main-container">
-    <slot></slot>
-  </main>
+	<HeaderUser />
+	<main class="main-container">
+		<router-view></router-view>
+	</main>
 </template>
 
 <script>
+import HeaderUser from "./HeaderUser.vue";
+
 export default {
-  name: 'Template',
-}
+	name: "Template",
+	components: { HeaderUser },
+};
 </script>
