@@ -10,7 +10,7 @@
 			</div>
 		</div>
 		<div>
-			<RouterLink to="/painel">
+			<RouterLink to="/app/dashboard">
 				<img src="/img/tallos-logo-(1).png" alt="botão do menu" />
 			</RouterLink>
 		</div>

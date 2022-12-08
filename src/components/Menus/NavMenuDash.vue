@@ -1,14 +1,14 @@
 <template>
 	<nav class="container-dash">
 		<ul class="menu">
-			<li>
+			<li aria-disabled>
 				<RouterLink to="/chat">
 					<font-awesome-icon :icon="['fas', 'headset']" />
-					<span>Acessar Chat</span> 
+					<span>Acessar Chat</span>
 				</RouterLink>
 			</li>
 			<li>
-				<RouterLink to="/contacts">
+				<RouterLink to="/app/contacts">
 					<font-awesome-icon :icon="['fas', 'list-check']" />
 					<span>Acessar Contatos</span>
 				</RouterLink>
