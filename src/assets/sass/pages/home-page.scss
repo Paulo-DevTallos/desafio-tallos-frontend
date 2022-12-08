@@ -1,0 +1,35 @@
+.content-home {
+	@include alignment-items(flex, center, center);
+	padding: 0 10%;
+	min-height: 81.5vh;
+
+	.size-content {
+		width: 50%;
+		@include alignment-items(flex, center, center);
+	}
+
+	h1 {
+		font-size: 40px;
+		line-height: 45px;
+		color: #15427a;
+		letter-spacing: 1px;
+	}
+
+	img {
+		width: 500px;
+		animation: slide 2000ms alternate;
+
+		@keyframes slide {
+			0% {
+				transform: translatex(0);
+			}
+			50% {
+				transform: translatex(40px);
+			}
+			100% {
+				transform: translatex(0);
+			}
+		}
+	}
+
+}

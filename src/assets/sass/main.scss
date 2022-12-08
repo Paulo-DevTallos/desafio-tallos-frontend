@@ -15,7 +15,8 @@
 //partials
 @import './partials/base-input';
 @import './partials/main-button';
-@import './pages/error-page.scss';
 
 //pages
+@import './pages/home-page.scss';
 @import './pages/login.scss';
+@import './pages/error-page.scss';

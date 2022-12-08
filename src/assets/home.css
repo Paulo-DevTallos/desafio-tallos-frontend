@@ -1,25 +1,6 @@
-.content-home {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 78vh;
-}
 
-.size-content {
-  width: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-h1 {
-  font-size: 40px;
-  line-height: 45px;
-  color: #15427a;
-  letter-spacing: 1px;
-}
-
-.content-home img {
+/*.content-home img {
   width: 500px;
   animation: slide 2000ms alternate;
 }
@@ -34,4 +15,4 @@ h1 {
   100% {
     transform: translatex(0);
   }
-}
+}*/
