@@ -14,7 +14,7 @@ export default {
 		}
 	},
 
-	mounted() {
+	created() {
 		setInterval(() => {
 			const date = new Date()
 
