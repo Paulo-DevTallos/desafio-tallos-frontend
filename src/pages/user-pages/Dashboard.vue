@@ -1,6 +1,6 @@
 <template>
 	<Grettings />
-	<Typography :title="'Dashboard'"/>
+	<Typography :title="'Dashboard'" />
 	<div class="container-interactions">
 		<InfoCardStatistic :icon_name="'users'" :card_description="description" />
 		<NavMenuDash />
@@ -19,16 +19,16 @@ import Typography from "../../components/components-users/Typography.vue";
 export default {
 	name: "Dashboard",
 	components: {
-    Grettings,
-    NavMenuDash,
-    Template,
-    InfoCardStatistic,
-    Typography
-},
+		Grettings,
+		NavMenuDash,
+		Template,
+		InfoCardStatistic,
+		Typography,
+	},
 	data() {
 		return {
-			description: 'Quantidade de usuários cadastrados na plataforma',
-		}
+			description: "Quantidade de usuários cadastrados na plataforma",
+		};
 	},
 	mounted() {
 		socket.on("is-logged", () => {
