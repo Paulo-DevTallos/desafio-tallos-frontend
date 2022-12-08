@@ -8,7 +8,7 @@
 			<FormLogin
 				@handleLogin="submitLogin"
 			/>
-			<p>Desafio Tallos gerenciador de funcionários &copy;2022</p>
+			<p>Desafio Tallos gerenciador de funcionários &copy;{{ year }}</p>
       <PopUpAlert
         :info_alert="user_connected"
         v-if="isLoggedUser"/>
@@ -31,6 +31,7 @@ export default {
       user_connected: '',
       isLoggedUser: false,
       title: 'Login',
+			year: '',
       user: {
         email: "",
         password: "",
@@ -41,12 +42,16 @@ export default {
     submitLogin(user) {
 			this.$store.dispatch('userStore/login', user);
       alert('usuario logado')
-    }
+    },
+
+		loardCurrentDate() {
+			const currentDate = new Date()
+			this.year = currentDate.getFullYear().toLocaleString()
+		}
   },
 
-	mounted() {
-		console.log(this.$store)
-
+	created() {
+		this.loardCurrentDate()
 	}
 }
 </script>
