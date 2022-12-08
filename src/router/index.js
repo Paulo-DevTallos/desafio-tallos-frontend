@@ -23,23 +23,37 @@ const router = createRouter({
       component: () => import('../pages/Login.vue')
     },
     {
-      path: '/painel',
-      name: 'dashboard',
+      path: '/app',
+      name: 'template',
       beforeEnter: guard(),
-      component: () => import('../pages/user-pages/Dashboard.vue')
-    },
+			redirect: '/app/dashboard',
+      component: () => import('../components/components-users/Template.vue'),
+			children: [
+				{
+					path: 'dashboard',
+					name: 'dashboard',
+					beforeEnter: guard(),
+					component: () => import('../pages/user-pages/Dashboard.vue')
+				},
+				{
+					path: 'contacts',
+					name: 'contacts',
+					beforeEnter: guard(),
+					component: () => import('../pages/user-pages/Contacts.vue')
+				}
+			]
+		},
     {
       path: '/chat',
       name: 'chat',
       beforeEnter: guard(),
       component: () => import('../pages/user-pages/Chat.vue')
     },
-    {
-      path: '/contacts',
-      name: 'contacts',
-      beforeEnter: guard(),
-      component: () => import('../pages/user-pages/Contacts.vue')
-    }
+		{
+			path: '/:pathMatch(.*)*',
+			name: 'not-found',
+			component: () => import('../pages/NotFoundPage/index.vue')
+		}
   ]
 })
 
