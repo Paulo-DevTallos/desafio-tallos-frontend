@@ -10,6 +10,8 @@
 				type="password"
 				v-model="user.password"
 				placeholder="Digite sua senha"
+				:hiddenRevellingPassword="true"
+				:class="spacingPlaceholder"
 			/>
 		</div>
 		<div>
@@ -35,7 +37,8 @@ export default {
 			user: {
 				email: '',
 				password: '',
-			}
+			},
+			spacingPlaceholder: 'spacing-base',
 		}
 	}
 };
