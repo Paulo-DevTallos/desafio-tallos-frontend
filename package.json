@@ -20,6 +20,7 @@
     "vuex-persistedstate": "^4.1.0"
   },
   "devDependencies": {
+    "@iconify/vue": "^4.0.1",
     "@vitejs/plugin-vue": "^2.3.3",
     "sass": "^1.56.1",
     "vite": "^2.9.12"
