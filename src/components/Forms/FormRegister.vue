@@ -59,6 +59,7 @@
 					<div>
 						<label>Senha</label>
 						<BaseInput
+							@keydown.tab="tabPress"
 							type="password"
 							v-model="user.password"
 							placeholder="*****"
@@ -112,6 +113,7 @@
 					<div>
 						<label>País</label>
 						<BaseInput
+							@keydown.tab="tabPress"
 							type="text"
 							v-model="user.location.address.country"
 							placeholder="Ex.: Brasil"
@@ -149,7 +151,7 @@
 					<!--Cadastro de setores para criar relação com DB-->
 					<div>
 						<label>Área de atuação (Micro-setor)</label>
-						<BaseInput
+						<BaseInputs
 							type="text"
 							v-model="user.corparative_info.sub_dept"
 							placeholder="Ex.: Tecnologia"
@@ -212,7 +214,7 @@ export default {
 		hiddenPersonalInfo() {
 			this.hiddenPersonal = !this.hiddenPersonal
 
-			if (this.hiddenPersonal) {
+			if (this.hiddenPersonal ) {
 				this.hiddenAddress = false
 				this.hiddenCompany = false
 			}
@@ -231,6 +233,14 @@ export default {
 			if (this.hiddenCompany) {
 				this.hiddenPersonal = false
 				this.hiddenAddress = false
+			}
+		},
+		//IMPLEMENTAR PARAMETROS PARA IDENTIFICAR OS CAMPOS DE ACORDO COM O INPUT
+		//COLOCAR ICONE DE INFORMAÇÃO PARA REPASSAR AO USUARIO
+		tabPress(event, fieldOpen, filedClose) {
+			if (event.keyCode === 9) {
+				fieldOpen = false
+				filedClose = true
 			}
 		}
 	}
